@@ -1,0 +1,258 @@
+/* HeroSection.css */
+
+/* === Tailwind Layer (Optional) === */
+
+.hero-section {
+  @apply bg-[#003B3C] min-h-screen relative overflow-hidden font-sans;
+}
+
+.hero-container {
+  @apply container mx-auto px-6 lg:px-12 py-16 lg:py-24 grid lg:grid-cols-2 gap-12 lg:gap-8 xl:gap-20;
+}
+
+.hero-left {
+  @apply z-10 relative flex flex-col justify-center;
+}
+
+.dot-row {
+  @apply flex space-x-2 mb-4;
+}
+
+.dot {
+  @apply w-2 h-2 rounded-full bg-green-300;
+}
+
+.dot-1 {
+  @apply opacity-70;
+}
+.dot-2 {
+  @apply opacity-50;
+}
+.dot-3 {
+  @apply opacity-30;
+}
+
+.hero-heading {
+  @apply text-5xl md:text-6xl lg:text-5xl xl:text-6xl font-extrabold text-white leading-tight mb-6 relative;
+}
+
+.highlighted-text {
+  @apply relative;
+}
+
+.highlight-bar {
+  @apply absolute left-0 bottom-[-10px] w-full h-1 bg-green-300 opacity-50 rounded-full;
+}
+
+.highlight-shadow {
+  @apply absolute left-0 bottom-[-15px] w-full h-4 bg-gray-900 bg-opacity-30 border border-white border-opacity-20 rounded-full shadow-lg;
+}
+
+.hero-desc {
+  @apply text-gray-300 text-base md:text-lg max-w-lg mb-8 leading-relaxed;
+}
+
+.hero-buttons {
+  @apply flex space-x-4;
+}
+
+.btn-primary {
+  @apply bg-[#FF5733] text-white font-semibold py-3 px-8 rounded-lg shadow-xl hover:bg-[#E04F2E] transition-colors text-sm md:text-base;
+}
+
+.btn-secondary {
+  @apply border border-green-300 text-green-300 font-semibold py-3 px-8 rounded-lg hover:bg-green-300 hover:text-[#003B3C] transition-colors text-sm md:text-base;
+}
+
+.hero-right {
+  @apply hidden lg:block h-[550px] xl:h-[650px] relative z-0;
+}
+
+.hero-glow {
+  @apply absolute top-0 left-1/2 transform -translate-x-1/2 w-96 h-96 bg-green-400 rounded-full blur-3xl opacity-5 pointer-events-none;
+}
+
+.hero-footer-bg {
+  @apply absolute bottom-0 left-0 w-full h-40 overflow-hidden;
+}
+
+.hero-mountains {
+  @apply absolute inset-0 bg-cover bg-center bg-no-repeat opacity-20;
+  background-image: url("https://images.unsplash.com/photo-1549877990-2e403487431e?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3");
+}
+
+.hero-gradient {
+  @apply absolute inset-0 bg-gradient-to-t from-[#003B3C] via-transparent to-transparent;
+}
+
+.hero-foreground {
+  @apply absolute bottom-0 left-0 w-full h-40 bg-cover bg-center bg-no-repeat;
+  background-image: url("https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3");
+}
+
+/* === Image Grid with Flex Effect === */
+.image-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+  perspective: 1000px;
+}
+
+.grid-item {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transform-style: preserve-3d;
+  border-radius: 1.5rem; /* All four edges curved equally */
+  aspect-ratio: 1; /* Make them perfect squares */
+}
+
+/* Individual Flex Effects for Each Image - all have same rounded corners now */
+.grid-item:nth-child(1) {
+  transform: rotate(-3deg) translateY(8px) translateX(-5px);
+}
+
+.grid-item:nth-child(2) {
+  transform: rotate(4deg) translateY(-10px) translateX(5px);
+}
+
+.grid-item:nth-child(3) {
+  transform: rotate(-2deg) translateY(5px) translateX(-8px);
+}
+
+.grid-item:nth-child(4) {
+  transform: rotate(3deg) translateY(-5px) translateX(8px);
+}
+
+/* Image styling with reduced size - all four edges curved equally */
+.grid-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  filter: brightness(0.95);
+  border-radius: 1.5rem; /* All four edges curved equally */
+}
+
+/* Hover Flex Effects */
+.grid-item:hover {
+  transform: scale(1.08) rotate(0deg) translateY(-15px) !important;
+  z-index: 10;
+  box-shadow: 
+    0 25px 50px rgba(0, 0, 0, 0.5),
+    0 0 0 1px rgba(255, 255, 255, 0.15);
+}
+
+.grid-item:hover img {
+  transform: scale(1.15);
+  filter: brightness(1.1);
+  border-radius: 1.5rem; /* Maintain curved edges on hover */
+}
+
+/* Floating Animation */
+@keyframes gentleFloat {
+  0%, 100% {
+    transform: translateY(0px) rotate(var(--base-rotate)) translateX(var(--base-translate-x));
+  }
+  50% {
+    transform: translateY(-8px) rotate(var(--base-rotate)) translateX(var(--base-translate-x));
+  }
+}
+
+/* Apply floating animation with your specific transforms */
+.grid-item:nth-child(1) {
+  --base-rotate: -3deg;
+  --base-translate-x: -5px;
+  animation: gentleFloat 6s ease-in-out infinite;
+}
+
+.grid-item:nth-child(2) {
+  --base-rotate: 4deg;
+  --base-translate-x: 5px;
+  animation: gentleFloat 5s ease-in-out infinite 0.5s;
+}
+
+.grid-item:nth-child(3) {
+  --base-rotate: -2deg;
+  --base-translate-x: -8px;
+  animation: gentleFloat 7s ease-in-out infinite 1s;
+}
+
+.grid-item:nth-child(4) {
+  --base-rotate: 3deg;
+  --base-translate-x: 8px;
+  animation: gentleFloat 6.5s ease-in-out infinite 1.5s;
+}
+
+/* Glow effect on hover */
+.grid-item::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 1.5rem; /* Match the curved edges */
+  background: linear-gradient(45deg, #4ecdc4, #45b7d1, #ff6b6b);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: -1;
+  filter: blur(20px);
+  transform: translateZ(-10px);
+}
+
+.grid-item:hover::after {
+  opacity: 0.4;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .image-grid {
+    max-width: 350px;
+  }
+}
+
+@media (max-width: 768px) {
+  .image-grid {
+    gap: 1rem;
+    max-width: 300px;
+  }
+  
+  /* Reduce flex effect on mobile */
+  .grid-item:nth-child(1),
+  .grid-item:nth-child(2),
+  .grid-item:nth-child(3),
+  .grid-item:nth-child(4) {
+    transform: rotate(0deg) translateY(0px) translateX(0px);
+    animation: none;
+  }
+  
+  .grid-item:hover {
+    transform: scale(1.05) translateY(-5px) !important;
+  }
+  
+  .grid-item {
+    border-radius: 1rem; /* Slightly smaller radius on mobile */
+  }
+  
+  .grid-item img {
+    border-radius: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .image-grid {
+    max-width: 250px;
+  }
+  
+  .grid-item {
+    border-radius: 0.8rem; /* Even smaller radius on very small screens */
+  }
+  
+  .grid-item img {
+    border-radius: 0.8rem;
+  }
+}

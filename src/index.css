@@ -1,0 +1,12 @@
+/* src/index.css */
+
+/* Import Tailwind's base styles, components, and utilities */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom global styles (optional, but good for font setup) */
+body {
+  /* Use the custom font setup in tailwind.config.js */
+  font-family: 'Inter', sans-serif; 
+}

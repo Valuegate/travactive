@@ -1,12 +1,131 @@
-/* src/index.css */
+@reference "tailwindcss";
 
-/* Import Tailwind's base styles, components, and utilities */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Custom global styles (optional, but good for font setup) */
+/* GLOBAL STYLES */
 body {
-  /* Use the custom font setup in tailwind.config.js */
-  font-family: 'Inter', sans-serif; 
+  font-family: 'Inter', sans-serif;
+}
+
+.hero-heading {
+  @apply text-5xl md:text-6xl lg:text-5xl xl:text-6xl font-extrabold text-white leading-tight mb-6 relative;
+}
+
+.hero-desc {
+  @apply text-gray-300 text-base md:text-lg max-w-lg mb-8 leading-relaxed;
+}
+
+/* ======== ANIMATIONS ======== */
+@keyframes blink {
+  0%, 50%, 100% { opacity: 1; }
+  25%, 75% { opacity: 0; }
+}
+
+
+.animate-blink {
+  animation: blink 1s infinite;
+}
+
+
+/* Floating effect for images */
+
+
+
+
+@keyframes floatLoop {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.animate-float {
+  animation: floatLoop 3s ease-in-out infinite;
+}
+
+
+/* ======== MASK FADE ======== */
+.mask-fade-all {
+  -webkit-mask-image: radial-gradient(circle, rgba(0,0,0,1) 85%, rgba(0,0,0,0) 100%);
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  -webkit-mask-size: cover;
+  mask-image: radial-gradient(circle, rgba(0,0,0,1) 85%, rgba(0,0,0,0) 100%);
+  mask-repeat: no-repeat;
+  mask-position: center;
+  mask-size: cover;
+}
+
+/* ======== BUTTONS ======== */
+.hero-buttons {
+  @apply flex space-x-4;
+}
+
+.btn-primary {
+  @apply bg-[#FF5733] text-white font-semibold py-3 px-8 rounded-lg shadow-xl hover:bg-[#E04F2E] transition-colors text-sm md:text-base;
+}
+
+.btn-secondary {
+  @apply border border-green-300 text-green-300 font-semibold py-3 px-8 rounded-lg hover:bg-green-300 hover:text-[#003B3C] transition-colors text-sm md:text-base;
+}
+
+/* ======== HERO SECTION ======== */
+
+/* Background Star Gradient */
+.hero-stars {
+  @apply absolute inset-0 w-full h-full;
+  background:
+    radial-gradient(1px 1px at 20% 30%, white, transparent),
+    radial-gradient(1px 1px at 40% 50%, white, transparent),
+    radial-gradient(1px 1px at 60% 70%, white, transparent),
+    radial-gradient(1px 1px at 80% 20%, white, transparent),
+    radial-gradient(1px 1px at 10% 80%, white, transparent),
+    linear-gradient(180deg, #000022, #000044 60%, #000011);
+  background-size: 100% 100%;
+  background-repeat: repeat;
+  opacity: 0.9;
+  z-index: -20;
+  animation: twinkle 2s infinite alternate;
+}
+
+/* Color Gradient Layer */
+.hero-gradient {
+  @apply absolute inset-0;
+  background: linear-gradient(135deg, #00FFD1 0%, #0099FF 50%, #330066 100%);
+  z-index: -9;
+}
+
+/* Mountain Background */
+.hero-mountains {
+  @apply absolute inset-0 bg-cover bg-center bg-no-repeat;
+  background-image: url("https://images.unsplash.com/photo-1549877990-2e403487431e?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3");
+  opacity: 0.25;
+}
+
+/* Radial Glow */
+.hero-radial {
+  @apply absolute top-0 left-1/2 transform -translate-x-1/2 w-96 h-96 rounded-full;
+  background: radial-gradient(circle, rgba(255,255,255,0.3), transparent 70%);
+  z-index: -8;
+}
+
+/* Foreground Bottom */
+.hero-foreground {
+  @apply absolute bottom-0 left-0 w-full h-64 bg-cover bg-center bg-no-repeat;
+  background-image: url("https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3");
+  opacity: 0.3;
+}
+
+/* ======== ANIMATIONS ======== */
+@keyframes slide {
+  0%, 20% { transform: translateX(0); }
+  25%, 45% { transform: translateX(-100%); }
+  50%, 70% { transform: translateX(-200%); }
+  75%, 95% { transform: translateX(-300%); }
+  100% { transform: translateX(0); }
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.8; }
+  50% { opacity: 0.3; }
 }

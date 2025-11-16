@@ -1,14 +1,14 @@
 import React from "react";
 
 // ✅ Import images from src/assets/img
-import mapPin from "../assets/img/mapPin.jpeg";
-import beach from "../assets/img/beach.jpeg";
-import city from "../assets/img/city.jpg";
-import roadmap from "../assets/img/roadmap.jpeg";
-import manwalking from "../assets/img/manwalking.jpeg";
-import graduates from "../assets/img/graduates.jpg";
-import studentpic from "../assets/img/studentpic.jpg"
-import girlonboat from "../assets/img/girlonboat.jpg"
+import mapPin from "../assets/mapPin.jpeg";
+import beach from "../assets/beach.jpeg";
+import city from "../assets/city.jpg";
+import roadmap from "../assets/roadmap.jpeg";
+import manwalking from "../assets/manwalking.jpeg";
+import graduates from "../assets/graduates.jpg";
+import studentpic from "../assets/studentpic.jpg"
+import girlonboat from "../assets/girlonboat.jpg"
 
 
 const ImageGrid = () => {

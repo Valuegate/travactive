@@ -1,25 +1,30 @@
-import React from 'react';
+import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import HeroSection from './components/HeroSection';
-import Navbar from './components/Navbar';
-// import Footer from './components/Footer';
+import Navbar from "./Components/Navbar.jsx";
+import Footer from "./Components/Footer.jsx";
+import Home from "./Pages/Home.jsx";
+import About from "./Pages/About.jsx";
+import Contact from "./Pages/Contact.jsx";
+import "./index.css";
 
-function App() {
-  return ( 
+const App = () => {
+  return (
     <Router>
-      <Navbar />
-      <Routes>
-        <Route 
-          path="/" 
-          element={
-            <HeroSection />
-          }
-        />
-        {/* Add other routes as needed */}
-      </Routes>
-      {/* <Footer /> */}
+      {/* Navbar appears on all pages */}
+       {/* <Navbar />  */}
+
+      {/* Page content changes based on route */}
+      <div className="mt-6">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/contact" element={<Contact />} />
+        </Routes>
+      </div>
+      {/* Footer appears on all pages */}
+       <Footer /> 
     </Router>
   );
-}
+};
 
 export default App;

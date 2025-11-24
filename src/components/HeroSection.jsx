@@ -148,7 +148,7 @@ const HeroSection = () => {
     <img
       src={img7}
       alt="Travel 7"
-      className="absolute top-12 left-28 w-[180px] xl:w-[214px] h-[120px] xl:h-[140px] object-cover rounded-xl border-1 border-yellow-200 shadow-md "
+      className="absolute top-12 left-28 w-[180px] xl:w-[214px] h-[120px] xl:h-[140px] object-cover rounded-xl border-1 border-yellow-2  00 shadow-md "
     />
   </div>
 </div>

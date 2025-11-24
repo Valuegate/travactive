@@ -157,11 +157,11 @@ const Home = () => {
                   className="bg-white shadow-md rounded-2xl p-6 text-left hover:shadow-lg transition-all duration-300 relative"
                 >
                   <h5 className="text-[#023436] font-semibold text-sm mb-3 absolute top-4 left-6">
-                    SATISFACTION
+                    ⭐ Testimonial 1 – Student Traveler
                   </h5>
                   <p className="text-gray-700 italic mt-10 text-sm sm:text-base">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Laudantium excepturi minima sapiente fugit deleniti.
+                    "Travactiv has completely changed how I plan my study trips! I used to spend hours searching for visa requirements and accommodation tips, 
+                    but now everything is organized in one place. It’s simple, fast, and incredibly helpful. I honestly feel more confident traveling as a student!"
                   </p>
                   <div className="flex items-center gap-3 mt-6">
                     <img

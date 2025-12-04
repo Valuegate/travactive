@@ -1,5 +1,4 @@
 @reference "tailwindcss";
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -10,7 +9,7 @@ body {
 }
 
 .hero-heading {
-  @apply text-5xl md:text-6xl lg:text-5xl xl:text-6xl font-extrabold text-white leading-tight mb-6 relative;
+  @apply text-5xl md:text-6xl lg:text-5xl xl:text-5xl font-bold text-white leading-tight tracking-[4px] mb-4 relative;
 }
 
 .hero-desc {
@@ -57,36 +56,80 @@ body {
 }
 
 /* ======== BUTTONS ======== */
+
+
 .hero-buttons {
   @apply flex space-x-4;
 }
 
 .btn-primary {
-  @apply bg-[#FF5733] text-white font-semibold py-3 px-8 rounded-lg shadow-xl hover:bg-[#E04F2E] transition-colors text-sm md:text-base;
+  @apply bg-[#FF5733] w-[277px] text-white  font-semibold text-center  px-2 rounded-[30px] shadow-xl text-sm md:text-base relative overflow-hidden;
+}
+
+/* Position both texts on top of each other */
+.btn-primary .text-switch span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+/* Default text visible initially */
+.btn-primary .text-switch span:first-child {
+  opacity: 1;
+}
+
+/* Trigger animation on hover */
+.btn-primary:hover .text-switch span:first-child {
+  animation: fadeText 2s infinite;
+}
+
+.btn-primary:hover .text-switch span:last-child {
+  animation: fadeText 2s infinite 1s; /* delay by half cycle */
+}
+
+/* Animation to fade in/out */
+@keyframes fadeText {
+  0%, 45%, 100% { opacity: 0; }
+  50%, 95% { opacity: 1; }
+}
+
+
+
+
+@keyframes blinkColor {
+  0% {
+    color: #FF5733;
+  }
+  50% {
+    color: #003B3C;
+  }
+  100% {
+    color: #ffffff;
+  }
 }
 
 .btn-secondary {
-  @apply border border-green-300 text-green-300 font-semibold py-3 px-8 rounded-lg hover:bg-green-300 hover:text-[#003B3C] transition-colors text-sm md:text-base;
+  @apply border border-[#FF5733] text-[#FF5733]  font-semibold py-3 px-8 rounded-[30px] transition-colors text-sm md:text-base;
 }
 
-/* ======== HERO SECTION ======== */
-
-/* Background Star Gradient */
-.hero-stars {
-  @apply absolute inset-0 w-full h-full;
-  background:
-    radial-gradient(1px 1px at 20% 30%, white, transparent),
-    radial-gradient(1px 1px at 40% 50%, white, transparent),
-    radial-gradient(1px 1px at 60% 70%, white, transparent),
-    radial-gradient(1px 1px at 80% 20%, white, transparent),
-    radial-gradient(1px 1px at 10% 80%, white, transparent),
-    linear-gradient(180deg, #000022, #000044 60%, #000011);
-  background-size: 100% 100%;
-  background-repeat: repeat;
-  opacity: 0.9;
-  z-index: -20;
-  animation: twinkle 2s infinite alternate;
+.btn-secondary:hover {
+  background-color: #ff583331;
+  animation: blinkColor 0.1s infinite alternate;
 }
+
+.card-icon {
+  width: 103px;           /* rounded from 102.987 */
+  height: 99px;           /* rounded from 98.941 */
+  transform: rotate(0deg); /* angle */
+  opacity: 1;             /* fully visible */
+  position: absolute;     /* so top & left work */
+  top: 10.12px;           /* distance from top of container */
+  left: 10.51px;          /* distance from left of container */
+}
+
 
 /* Color Gradient Layer */
 .hero-gradient {

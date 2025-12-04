@@ -11,7 +11,7 @@ import img8 from "../assets/Image.png";
 import Frame1 from "../assets/Frame1.png";
 import Frame2 from "../assets/Frame2.png";
 import HeroSection from "../Components/Herosection.jsx";
-import { travelCards, IconCard } from "../assets/travelCards.js";
+import { travelCards, IconCard, testimonialData } from "../assets/travelCards.js";
 import CTA from "../Components/CTA.jsx"
 
 const Home = () => {
@@ -73,20 +73,49 @@ const Home = () => {
   {travelCards.map((card, index) => (
     <div
       key={index}
-      className="bg-white shadow-md rounded-[24px] overflow-hidden 
+      className="relative bg-white shadow-sm rounded-[24px] overflow-hidden 
                  transition-transform duration-300 hover:-translate-y-2 hover:scale-105 hover:brightness-110"
-      style={{ width: "318px" }} // fixed width
+      style={{ width: "318px"}}
+      onMouseEnter={(e) => (e.currentTarget.style.border = `1px solid ${card.borderColor}`)}
+    onMouseLeave={(e) => (e.currentTarget.style.border = "3px solid transparent")}
     >
-      <div className="overflow-hidden rounded-[24px]">
-        <img
-          src={card.img}
-          alt={card.title}
-          className="w-full h-[480px] object-cover transition-transform duration-500 hover:scale-110"
-        />
+      {/* Card Image */}
+      <img
+        src={card.img}
+        alt={card.title}
+        className="w-full h-[480px] object-fit transition-transform duration-500"
+      />
+
+      {/* Overlay with Text & Icon */}
+      <div className="absolute inset-0 bg-white bg-opacity-60 opacity-0 hover:opacity-100 transition-opacity duration-300 flex flex-col justify-center items-center text-center p-4">
+        {/* Icon at top */}
+        <img className="w-[124px] h-[124px] pb-3" src={card.icon} alt="Card icons"  />
+
+        {/* Card Text */}
+      
+        <p
+   style={{
+    width: "270px",
+    height: "216px",
+    transform: "rotate(0deg)",
+    opacity: 1,
+    fontFamily: "'Inter', sans-serif",  // updated font
+    fontWeight: 400,                    // Regular
+    fontStyle: "normal",                // Regular style
+    fontSize: "18px",                    // updated size
+    lineHeight: "27px",                  // updated line-height
+    letterSpacing: "0%",                 // updated letter-spacing
+    textAlign: "center",                 // center text
+    color: "black",
+  }}
+>
+  {card.desc}
+</p>
       </div>
     </div>
   ))}
 </section>
+
 
 
 
@@ -149,45 +178,34 @@ const Home = () => {
 
             </div>
 
-            {/* Testimonial Cards */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-              {[Frame2, Frame1, Frame2, Frame1].map((img, i) => (
-                <div
-                  key={i}
-                  className="bg-white shadow-md rounded-2xl p-6 text-left hover:shadow-lg transition-all duration-300 relative"
-                >
-                  <h5 className="text-[#023436] font-semibold text-sm mb-3 absolute top-4 left-6">
-                    SATISFACTION
-                  </h5>
-                  <p className="text-gray-700 italic mt-10 text-sm sm:text-base">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Laudantium excepturi minima sapiente fugit deleniti.
-                  </p>
-                  <div className="flex items-center gap-3 mt-6">
-                    <img
-                      src={img}
-                      alt="user"
-                      className="w-10 h-10 rounded-full object-cover"
-                    />
-                    <div>
-                      <h4 className="font-semibold text-[#023436]">
-                        {["Sarah M.", "David K.", "Anita O.", "John P."][i]}
-                      </h4>
-                      <span className="text-sm text-gray-500">
-                        {
-                          [
-                            "International Student",
-                            "Frequent Traveler",
-                            "Graduate Student",
-                            "Digital Nomad",
-                          ][i]
-                        }
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              ))}
+             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+      {testimonialData.map((item, i) => (
+        <div
+          key={i}
+          className="bg-white shadow-md rounded-2xl p-6 text-left hover:shadow-lg transition-all duration-300 relative"
+        >
+          <h5 className="text-[#023436] font-semibold text-sm mb-3 absolute top-4 left-6">
+            {item.title}
+          </h5>
+
+          <p className="text-gray-700 italic mt-10 text-sm sm:text-base">
+            {item.text}
+          </p>
+
+          <div className="flex items-center gap-3 mt-6">
+            <img
+              src={item.img}
+              alt="user"
+              className="w-10 h-10 rounded-full object-cover"
+            />
+            <div>
+              <h4 className="font-semibold text-[#023436]">{item.name}</h4>
+              <span className="text-sm text-gray-500">{item.role}</span>
             </div>
+          </div>
+        </div>
+      ))}
+    </div>
 
             {/* CTA Card */}
             {/* <div className="bg-[#FF4C29] text-white text-center py-12 rounded-2xl shadow-md max-w-6xl mx-auto px-4 mt-10 sm:mt-16 md:mt-20">

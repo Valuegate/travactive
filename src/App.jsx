@@ -5,7 +5,9 @@ import Footer from "./Components/Footer.jsx";
 import Home from "./Pages/Home.jsx";
 import About from "./Pages/About.jsx";
 import Contact from "./Pages/Contact.jsx";
+import GetStarted from "./Pages/GetStarted.jsx";
 import "./index.css";
+
 
 const App = () => {
   return (
@@ -19,11 +21,15 @@ const App = () => {
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
+          
+<Route path="/get-started" element={<GetStarted />} />
+
         </Routes>
       </div>
       {/* Footer appears on all pages */}
        <Footer /> 
     </Router>
+    
   );
 };
 

@@ -6,12 +6,13 @@ import img4 from "../assets/Img4.png";
 import img5 from "../assets/Img5.png";
 import img6 from "../assets/Img6.png";
 import img7 from "../assets/Img7.png";
+import Dot from "../assets/HeroDot.png";
 import MobileCarousel from "./MobileCarousel";
 import HeroImage from "../assets/HeroImage.png";
 import "../index.css";
 
 const HeroSection = () => {
-  const lines = ["Smarter Travel", "Decisions,", "Powered by AI"];
+  const lines = ["Smarter Travel", "Decisions, Powered by", " AI"];
   const [displayedLines, setDisplayedLines] = useState(["", "", ""]);
   const [lineIndex, setLineIndex] = useState(0);
   const [charIndex, setCharIndex] = useState(0);
@@ -38,27 +39,47 @@ const HeroSection = () => {
 
   return (
     <section
-      className="relative min-h-screen mb-12 text-white  px-8 sm:px-6 md:px-10 lg:px-16 pt-[2px] pb-12 flex flex-col lg:flex-row items-center justify-between overflow-hidden"
+      className="relative min-h-screen  w-[1472px] -mb-1 -mt-28 text-white px-8 sm:px-6 md:px-10 lg:px-16 pt-[2px] pb-12 flex flex-col lg:flex-row items-center justify-between overflow-hidden"
       style={{
         backgroundImage: `linear-gradient(rgba(2, 52, 54, 0.85), rgba(2, 52, 54, 0.85)), url(${HeroImage})`,
         backgroundSize: "contain",
         backgroundPosition: "left center",
         backgroundRepeat: "no-repeat",
+        width: "1472px",
+        height: "942px",
       }}
     >
-     
       {/* Background Carousel for mobile & tablet only */}
       <MobileCarousel images={[img1, img2, img3, img4, img5, img6, img7]} />
 
       {/* Left side — Text content */}
-      <div className="relative w-full lg:w-1/2 space-y-4 text-center lg:text-left flex flex-col items-center lg:items-start z-10">
+      <div className="relative ml-12 -mt-12  w-full lg:w-1/2 space-y-4 text-center lg:text-left flex flex-col items-center lg:items-start z-10">
         {/* H1 with highlight shadow */}
         <div className="relative inline-block w-full">
-          <h1 className="hero-heading">
+          <img src={Dot} alt="" className=" mb-3 " />
+          <h1
+            className="font-outfit font-bold text-[56px] leading-[70px] tracking-[8px]
+ "
+          >
             {displayedLines.map((line, i) => (
-              <span key={i} className="block">
+              <span
+                key={i}
+                className={`
+        block 
+        ${
+          i === 1
+            ? "font-outfit font-medium text-[56px] leading-[70px] tracking-[0] "
+            : ""
+        } 
+        ${
+          i === 2
+            ? "font-outfit font-bold text-[56px] leading-[70px] tracking-[2px] "
+            : ""
+        }
+      `}
+              >
                 {line}
-                {/* Only show the blinking cursor after the last line */}
+
                 {i === displayedLines.length - 1 && (
                   <span className="ml-1 text-[#FF4C29] animate-blink font-outfit">
                     |
@@ -67,6 +88,7 @@ const HeroSection = () => {
               </span>
             ))}
           </h1>
+
           <span className="highlight-shadow"></span>
         </div>
 
@@ -89,13 +111,13 @@ const HeroSection = () => {
       </div>
 
       {/* Right side — Image grid (visible only on large screens) */}
-      <div className="hidden lg:grid lg:w-1/2 grid-cols-2 gap-5.5 py-24 mt-14">
+      <div className="hidden lg:grid lg:w-1/2 grid-cols-2 gap-5.5 py-24 mt-14 mr-[-28px]">
         {/* Group 1 */}
-        <div className="relative ml-22 mt-1 w-[240px]  h-[280px] rounded-[32px] shadow-lg animate-float transform transition-transform duration-300 hover:-translate-x-2 hover:scale-110  hover:shadow-cyan-500">
+        <div className="relative ml-22 mt-1 w-[240px]  h-[280px] rounded-[32px] shadow-lg animate-float transform transition-transform duration-300 hover:-translate-x-2 hover:scale-110  hover:shadow-emerald-700">
           <img
             src={img1}
             alt="Travel 1"
-            className="w-[240px] xl:w-[256px] h-[280px] xl:h-[300px] shadow-lg object-cover rounded-[32px]"
+            className="w-[240px] xl:w-[256px] h-[280px] xl:h-[300px] object-cover rounded-[32px]"
           />
           <img
             src={img2}
@@ -105,7 +127,7 @@ const HeroSection = () => {
         </div>
 
         {/* Group 2 */}
-        <div className="relative w-[300px] rounded-[32px] mt-12 transform transition-transform duration-300 hover:-translate-x-2 shadow-sm hover:scale-110 hover:brightness-110 animate-float  hover:shadow-cyan-500">
+        <div className="relative w-[300px] rounded-[32px] mt-12 transform transition-transform duration-300 hover:-translate-x-2 shadow-sm hover:scale-110 hover:brightness-110 animate-float  hover:shadow-emerald-700">
           <img
             src={img4}
             alt="Travel 4"
@@ -119,7 +141,7 @@ const HeroSection = () => {
         </div>
 
         {/* Group 3 */}
-        <div className="relative -mt-12 -ml-6 w-[354px] h-[260px] transform rounded-[32px] shadow-lg transition-transform duration-300 hover:-translate-x-2 hover:scale-110 hover:brightness-110 animate-float hover:shadow-cyan-500">
+        <div className="relative -mt-12 -ml-6 w-[354px] h-[260px] transform rounded-[32px] shadow-lg transition-transform duration-300 hover:-translate-x-2 hover:scale-110 hover:brightness-110 animate-float hover:shadow-emerald-700">
           <img
             src={img5}
             alt="Travel 5"
@@ -128,7 +150,7 @@ const HeroSection = () => {
         </div>
 
         {/* Group 4 */}
-        <div className="relative mt-1 w-[254px] rounded-[32px] shadow-sm transform transition-transform duration-300 hover:-translate-x-2 hover:scale-110 hover:brightness-110 animate-float hover:shadow-cyan-500">
+        <div className="relative mt-1 w-[254px] rounded-[32px] shadow-sm transform transition-transform duration-300 hover:-translate-x-2 hover:scale-110 hover:brightness-110 animate-float hover:shadow-emerald-700">
           <img
             src={img6}
             alt="Travel 6"
@@ -137,7 +159,7 @@ const HeroSection = () => {
           <img
             src={img7}
             alt="Travel 7"
-            className="absolute top-12 left-28 w-[180px] xl:w-[214px] h-[120px] xl:h-[140px] object-cover rounded-[16px] border-2 border-yellow-100 shadow-md "
+            className="absolute top-12 left-28 w-[180px] xl:w-[214px] h-[120px] xl:h-[140px] object-cover rounded-[16px] border-2 border-yellow-100"
           />
         </div>
       </div>

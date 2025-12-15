@@ -67,7 +67,7 @@ const Footer = () => {
               />
               <button
                 type="submit"
-                className="bg-[#FF4C29] text-white px-4 py-2 text-sm font-semibold hover:bg-[#ff684d] transition"
+                className="bg-[#FF4C29] -ml-6 text-white  px-1 py-2 text-sm font-semibold hover:bg-[#ff684d] transition "
               >
                 Subscribe
               </button>

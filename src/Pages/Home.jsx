@@ -1,4 +1,9 @@
 import React, { useState, useEffect } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/pagination";
+import { Navigation, Autoplay } from "swiper/modules";
+
 import Navbar from "../Components/Navbar";
 import img1 from "../assets/Img1.png";
 import img2 from "../assets/Img2.png";
@@ -11,8 +16,12 @@ import img8 from "../assets/Image.png";
 import Frame1 from "../assets/Frame1.png";
 import Frame2 from "../assets/Frame2.png";
 import HeroSection from "../Components/Herosection.jsx";
-import { travelCards, IconCard, testimonialData } from "../assets/travelCards.js";
-import CTA from "../Components/CTA.jsx"
+import {
+  travelCards,
+  IconCard,
+  testimonialData,
+} from "../assets/travelCards.js";
+import CTA from "../Components/CTA.jsx";
 
 const Home = () => {
   const text = " Smarter Travel Decisions, Powered by AI";
@@ -38,18 +47,15 @@ const Home = () => {
 
       {/* Hero Section */}
       <HeroSection />
-      
 
       {/* Divider Image */}
-    <div className="relative">
-  <img
-    src={img8}
-    alt="img8"
-    className="hidden mb-4 lg:block w-full h-[100px] xl:h-[55px] object-cover opacity-40 rounded-[12px] mask-fade-all"
-  />
-</div>
-
-
+      <div className="relative">
+        <img
+          src={img8}
+          alt="img8"
+          className="hidden mb-4 lg:block w-full h-[100px] xl:h-[55px] object-cover opacity-40 rounded-[12px] mask-fade-all"
+        />
+      </div>
 
       {/* Main Content */}
       <div className="min-h-screen bg-slate-50 px-4 sm:px-8 md:px-10 lg:px-20 py-10 text-slate-900">
@@ -69,58 +75,63 @@ const Home = () => {
         </section>
 
         {/* Card Grid */}
-     <section className="flex flex-col items-center sm:grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-  {travelCards.map((card, index) => (
-    <div
-      key={index}
-      className="relative bg-white shadow-sm rounded-[24px] overflow-hidden 
+        <section className="flex flex-col items-center sm:grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {travelCards.map((card, index) => (
+            <div
+              key={index}
+              className="relative bg-white shadow-sm rounded-[24px] overflow-hidden 
                  transition-transform duration-300 hover:-translate-y-2 hover:scale-105 hover:brightness-110"
-      style={{ width: "318px"}}
-      onMouseEnter={(e) => (e.currentTarget.style.border = `1px solid ${card.borderColor}`)}
-    onMouseLeave={(e) => (e.currentTarget.style.border = "3px solid transparent")}
-    >
-      {/* Card Image */}
-      <img
-        src={card.img}
-        alt={card.title}
-        className="w-full h-[480px] object-fit transition-transform duration-500"
-      />
+              style={{ width: "318px" }}
+              onMouseEnter={(e) =>
+                (e.currentTarget.style.border = `1px solid ${card.borderColor}`)
+              }
+              onMouseLeave={(e) =>
+                (e.currentTarget.style.border = "3px solid transparent")
+              }
+            >
+              {/* Card Image */}
+              <img
+                src={card.img}
+                alt={card.title}
+                className="w-full h-[480px] object-fit transition-transform duration-500"
+              />
 
-      {/* Overlay with Text & Icon */}
-      <div className="absolute inset-0 bg-white bg-opacity-60 opacity-0 hover:opacity-100 transition-opacity duration-300 flex flex-col justify-center items-center text-center p-4">
-        {/* Icon at top */}
-        <img className="w-[124px] h-[124px] pb-3" src={card.icon} alt="Card icons"  />
+              {/* Overlay with Text & Icon */}
+              <div className="absolute inset-0 bg-white bg-opacity-60 opacity-0 hover:opacity-100 transition-opacity duration-300 flex flex-col justify-center items-center text-center p-4">
+                {/* Icon at top */}
+                <img
+                  className="w-[124px] h-[124px] pb-3"
+                  src={card.icon}
+                  alt="Card icons"
+                />
 
-        {/* Card Text */}
-      
-        <p
-   style={{
-    width: "270px",
-    height: "216px",
-    transform: "rotate(0deg)",
-    opacity: 1,
-    fontFamily: "'Inter', sans-serif",  // updated font
-    fontWeight: 400,                    // Regular
-    fontStyle: "normal",                // Regular style
-    fontSize: "18px",                    // updated size
-    lineHeight: "27px",                  // updated line-height
-    letterSpacing: "0%",                 // updated letter-spacing
-    textAlign: "center",                 // center text
-    color: "black",
-  }}
->
-  {card.desc}
-</p>
-      </div>
-    </div>
-  ))}
-</section>
+                {/* Card Text */}
 
-
-
+                <p
+                  style={{
+                    width: "270px",
+                    height: "216px",
+                    transform: "rotate(0deg)",
+                    opacity: 1,
+                    fontFamily: "'Inter', sans-serif", // updated font
+                    fontWeight: 400, // Regular
+                    fontStyle: "normal", // Regular style
+                    fontSize: "18px", // updated size
+                    lineHeight: "27px", // updated line-height
+                    letterSpacing: "0%", // updated letter-spacing
+                    textAlign: "center", // center text
+                    color: "black",
+                  }}
+                >
+                  {card.desc}
+                </p>
+              </div>
+            </div>
+          ))}
+        </section>
 
         {/* Icon Cards */}
-        <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-16 ">
+        <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-30 ">
           {IconCard.map((card, index) => (
             <div
               key={index}
@@ -136,7 +147,7 @@ const Home = () => {
               )}
               {card.desc ? (
                 <div
-                  className="text-slate-600 text-sm sm:text-base flex-grow"
+                  className="text-slate-600 text-sm sm:text-base grow"
                   dangerouslySetInnerHTML={{ __html: card.desc }}
                 />
               ) : (
@@ -144,7 +155,7 @@ const Home = () => {
                   <h4 className="text-lg font-semibold mb-2 mt-2">
                     {card.title}
                   </h4>
-                  <p className="text-slate-600 text-sm flex-grow">
+                  <p className="text-slate-600 text-sm grow">
                     {card.text}
                   </p>
                 </>
@@ -154,80 +165,92 @@ const Home = () => {
         </section>
 
         {/* Testimonials */}
-        <section className="bg-gray-50 py-16 mt-16">
-          <div className="max-w-6xl mx-auto text-center px-4">
-            <h2 className="font-inter font-medium text-[14px] leading-[14px] text-center text-[#023436]">
-  Testimonials
-</h2>
+        
+<section className="bg-gray-50 py-16 mt-26">
+  <div className="max-w-6xl mx-auto text-center px-4">
 
-            <div className="mt-2 mb-12">
-              <div className="flex justify-center">
-  <h3
-  className="font-outfit font-semibold text-[24px] sm:text-[28px] md:text-[32px] lg:text-[36px] xl:text-[40px] leading-[32px] sm:leading-[38px] md:leading-[44px] lg:leading-[50px] xl:leading-[52px] text-center max-w-[791px] mx-auto text-[#212322] opacity-100"
->
-  A New Platform, A Growing Community
-</h3>
+    <h2 className="font-inter font-medium text-[14px] text-[#023436]">
+      Testimonials
+    </h2>
 
-</div>
+    <div className="mt-2 mb-12">
+      <div className="flex justify-center">
+        <h3 className="font-outfit font-semibold text-[24px] sm:text-[28px] md:text-[32px] lg:text-[36px] xl:text-[40px] text-[#212322] max-w-[791px]">
+          A New Platform, A Growing Community
+        </h3>
+      </div>
 
-             <p className="font-inter font-normal text-[16px] leading-[24px] text-gray-600 text-center max-w-3xl mx-auto">
-  We’re just getting started, but the excitement is real. Read
-  what early users are saying as we reshape how travelers and
-  students access the information they need.
-</p>
-
-            </div>
-
-             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-      {testimonialData.map((item, i) => (
-        <div
-          key={i}
-          className="bg-white shadow-md rounded-2xl p-6 text-left hover:shadow-lg transition-all duration-300 relative"
-        >
-          <h5 className="text-[#023436] font-semibold text-sm mb-3 absolute top-4 left-6">
-            {item.title}
-          </h5>
-
-          <p className="text-gray-700 italic mt-10 text-sm sm:text-base">
-            {item.text}
-          </p>
-
-          <div className="flex items-center gap-3 mt-6">
-            <img
-              src={item.img}
-              alt="user"
-              className="w-10 h-10 rounded-full object-cover"
-            />
-            <div>
-              <h4 className="font-semibold text-[#023436]">{item.name}</h4>
-              <span className="text-sm text-gray-500">{item.role}</span>
-            </div>
-          </div>
-        </div>
-      ))}
+      <p className="font-inter text-[16px] leading-[24px] text-gray-600 max-w-3xl mx-auto">
+        We’re just getting started, but the excitement is real. Read what early
+        users are saying as we reshape how travelers and students access the
+        information they need.
+      </p>
     </div>
 
-            {/* CTA Card */}
-            {/* <div className="bg-[#FF4C29] text-white text-center py-12 rounded-2xl shadow-md max-w-6xl mx-auto px-4 mt-10 sm:mt-16 md:mt-20">
-              <h3 className="font-[Outfit] font-semibold text-2xl sm:text-3xl md:text-[40px] lg:text-[48px] leading-tight md:leading-[54px] lg:leading-[58px] max-w-[792px] mx-auto mb-4">
-                Don’t Just Travel — Travel Informed
-              </h3>
+    {/* Swiper */}
+    <Swiper
+      slidesPerView={1}
+      spaceBetween={200}
+       loop={true}   //
+      breakpoints={{
+        640: { slidesPerView: 1 },
+        768: { slidesPerView: 2 },
+        1024: { slidesPerView: 3 },
+        1280: { slidesPerView: 4 },
+      }}
+      autoplay={{ delay: 2500 }}
+      navigation={{
+        nextEl: ".swiper-next-btn",
+        prevEl: ".swiper-prev-btn",
+      }}
+      modules={[Navigation, Autoplay]}
+      className="pb-10"
+    >
+      {testimonialData.map((item, i) => (
+        <SwiperSlide key={i}>
+          <div className="bg-white w-70 shadow-sm rounded-2xl p-8 text-left hover:shadow-lg transition-all duration-300 relative">
+            <h5 className="text-[#03B5AA] font-semibold text-sm mb-3 absolute top-4 left-6">
+              {item.title}
+            </h5>
 
-              <p className="text-sm sm:text-base md:text-[16px] leading-relaxed md:leading-[24px] font-normal max-w-2xl mx-auto mb-6">
-                Get AI-powered insights, real-time advisories, and simplified
-                updates that help you make smarter choices—whether you’re
-                studying abroad or exploring the world.
-              </p>
+            <p className="text-gray-700 font-inter w-[210px] h-[200px] mt-10 text-sm sm:text-base">
+              {item.text}
+            </p>
 
-              <button className="bg-[#005A58] text-white text-[15px] sm:text-[16px] font-[Sora] font-semibold w-[180px] sm:w-[200px] md:w-[229px] px-6 py-3 rounded-full transition duration-300 hover:bg-[#007A76] hover:scale-105">
-                Get Started Now
-              </button>
-            </div> */}
-
-            <CTA />
-
+            <div className="flex items-center gap-3 mt-1">
+              <img
+                src={item.img}
+                alt="user"
+                className="w-10 h-10 rounded-full object-cover"
+              />
+              <div>
+                <h4 className="font-semibold text-[#023436]">
+                  {item.name}
+                </h4>
+                <span className="text-sm text-gray-500">{item.role}</span>
+              </div>
+            </div>
           </div>
-        </section>
+        </SwiperSlide>
+      ))}
+    </Swiper>
+
+    {/* 🔥 Navigation Buttons (MUST be outside the Swiper!) */}
+    <div className="flex justify-center gap-4 mt-6">
+      <button className="swiper-prev-btn w-auto bg-[#ffffff] text-[#464a4a] px-6 py-3 shadow-sm shadow-gray-250 rounded-full font-semibold hover:bg-[#E6F7F6] transition">
+        &lt;
+      </button>
+
+      <button className="swiper-next-btn w-auto bg-[#ffffff]  text-[#464a4a] shadow-sm shadow-gray-250 px-6 py-3 rounded-full font-semibold hover:bg-[#E6F7F6] transition">
+        &gt;
+      </button>
+    </div>
+
+  </div>
+</section>
+
+
+        <CTA />
       </div>
     </div>
   );

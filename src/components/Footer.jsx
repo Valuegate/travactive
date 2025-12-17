@@ -64,7 +64,7 @@ const Footer = () => {
 
           {/* Social Icons */}
            <div className="flex gap-[7.27px]">
-  {[Facebook, Instagram, Twitter, LinkedIn].map((icon, i) => (
+  {[Facebook, LinkedIn ,Instagram, Twitter ].map((icon, i) => (
     <a
       key={i}
       href="#"

@@ -193,53 +193,161 @@ const About = () => {
       <div class="w-[1512px] h-0 border-t-2 border-[#023436] opacity-100 absolute top-[1042px]  "></div>
 
       {/* ======= About Section ======= */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-8 mt-28 space-y-16 flex flex-row  ">
-  {/* First Div */}
-  <div className="flex flex-col lg:flex-col items-center justify-center  text-center lg:text-left">
+     <section
+  className="mx-auto px-6 py-12 grid grid-cols-1 lg:grid-cols-2 gap-12"
+  style={{
+    width: "1345px",
+    height: "1040px",
+    opacity: 0.98,
+    position: "relative",
+    gap: "86px",
+    top: "120px",
+    left: "0px",
+  }}
+>
+  {/* Left Side */}
+  <div className="flex flex-col items-start gap-6">
     {/* Text */}
-    <div className="flex-1 max-w-xl flex flex-col justify-center">
-      <h3 className="font-[Outfit] font-semibold text-[40px] lg:text-[48px] leading-[48px] text-[#023436]">
-        Behind Travactiv
-      </h3>
-      <p className="font-[Inter] font-normal text-[16px] leading-[26px] text-slate-600 mt-2">
-        We make travel decisions easier by combining verified information with AI-powered insights. Plan confidently with real-time updates and data-driven travel tools built for today’s explorer. 
-        We’re not just another travel platform; we’re your partner in navigating visas, rules, advisories, and opportunities. Whether you’re a student chasing dreams abroad or a traveler seeking safe, confident journeys, Travactiv was designed to put trustworthy information at your fingertips.
-      </p>
+    <div className="w-full max-w-md">
+      <h2
+  className="text-[#023436] font-outfit font-semibold"
+  style={{
+    width: "660px",
+    height: "52px",
+    opacity: 1,
+    fontWeight: 600,
+    fontStyle: "normal",
+    fontSize: "40px",
+    lineHeight: "52px",
+    letterSpacing: "0%",
+  }}
+>
+  Behind Travactiv
+</h2>
+
+      <p
+  className="text-gray-600"
+  style={{
+    width: "655px",
+    height: "96px",
+    opacity: 1,
+    fontFamily: "Inter",
+    fontWeight: 400,
+    fontStyle: "normal",
+    fontSize: "16px",
+    lineHeight: "24px",
+    letterSpacing: "0px",
+  }}
+>
+  At Travactiv, we believe travel decisions should be guided by clarity, not confusion. Built with the modern traveler in mind, our platform blends trusted global sources with AI-powered insights—so you get accurate, timely, and practical information without the noise.
+</p>
+ <p
+  className="text-gray-600"
+  style={{
+    width: "655px",
+    height: "96px",
+    opacity: 1,
+    fontFamily: "Inter",
+    fontWeight: 400,
+    fontStyle: "normal",
+    fontSize: "16px",
+    lineHeight: "24px",
+    letterSpacing: "0px",
+  }}
+>
+   We’re not just another travel platform; we’re your partner in navigating visas, rules, advisories, and opportunities. Whether you’re a student chasing dreams abroad or a traveler seeking safe, confident journeys, Travactiv was designed to put trustworthy information at your fingertips..
+</p>
+
     </div>
 
     {/* Image */}
-    <div className="flex-1 max-w-[560px] h-[350px] sm:h-[400px] md:h-[450px] lg:h-[500px] rounded-2xl overflow-hidden shadow-lg flex justify-center items-center">
-      <img
-        src={Globe2}
-        alt="Travel Info"
-        className="w-full h-full object-cover rounded-2xl transform transition duration-500 hover:scale-105"
-      />
-    </div>
+    <div
+  className="w-full h-[724px] overflow-hidden shadow-lg"
+  style={{
+    width: "660px",
+    height: "724px",
+    opacity: 1,
+    borderTopLeftRadius: "16px",
+    borderTopRightRadius: "80px",
+    borderBottomRightRadius: "16px",
+    borderBottomLeftRadius: "16px",
+  }}
+>
+  <img
+    src={Globe}
+    alt="Left Section Illustration"
+    className="w-full h-full object-cover"
+  />
+</div>
+
   </div>
 
-  {/* Second Div */}
-  <div className="flex flex-col lg:flex-col items-center justify-center gap-4 text-center lg:text-left">
-     {/* Image */}
-    <div className="flex-1 max-w-[560px] h-[350px] sm:h-[380px] md:h-[450px] lg:h-[500px] rounded-2xl overflow-hidden shadow-lg flex justify-center items-center">
-      <img
-        src={Globe}
-        alt="Visa Info"
-        className="w-full h-full object-cover rounded-2xl transform transition duration-500 hover:scale-105"
-      />
-    </div>
-    {/* Text */}
-    <div className="flex-1 max-w-xl flex flex-col justify-center">
-      <h3 className="font-[Outfit] font-semibold text-[28px] sm:text-[32px] md:text-[36px] lg:text-[48px] leading-[42px] text-[#023436]">
-        Why Choose Travactiv
-      </h3>
-      <p className="font-[Inter] font-normal text-[14px] sm:text-[15px] md:text-[16px] leading-[22px] sm:leading-[24px] text-slate-600 mt-2">
-        At Travactiv, we believe travel decisions should be guided by clarity, not confusion. Built with the modern traveler in mind, our platform blends trusted global sources with AI-powered insights — so you get accurate, timely, and practical information without the noise.
-      </p>
-    </div>
+  {/* Right Side */}
+  <div className="flex flex-col items-start gap-6">
+    {/* Image */}
+   <div
+  className="overflow-hidden shadow-lg"
+  style={{
+    width: "661px",
+    height: "724px",
+    opacity: 1,
+    borderTopLeftRadius: "16px",
+    borderTopRightRadius: "16px",
+    borderBottomRightRadius: "16px",
+    borderBottomLeftRadius: "80px",
+  }}
+>
+  <img
+    src={Globe2}
+    alt="Right Section Illustration"
+    className="w-full h-full object-cover"
+  />
+</div>
 
-   
+
+    {/* Text */}
+    <div className="w-full max-w-md">
+      <h2
+  className="text-[#023436] font-outfit font-semibold"
+  style={{
+    width: "442px",
+    height: "52px",
+    opacity: 1,
+    fontWeight: 600,
+    fontStyle: "normal",
+    fontSize: "40px",
+    lineHeight: "52px",
+    letterSpacing: "0%",
+    textAlign: "right",
+    marginLeft: "200px",
+    
+  }}
+>
+  Why Choose Travactiv
+</h2>
+
+      
+ <p
+  className="text-gray-600 text-right"
+  style={{
+    width: "655px",
+    height: "120px",
+    opacity: 1,
+    fontFamily: "Inter",
+    fontWeight: 400,
+    fontStyle: "normal",
+    fontSize: "16px",
+    lineHeight: "24px",
+    letterSpacing: "0px",
+  }}
+>
+  At Travactiv, we go beyond ordinary travel updates. Every piece of information you see is AI-verified, sourced from credible global channels, and tailored to your journey. No noise, no guesswork—just the clarity you need to make informed decisions. Whether you’re navigating visa requirements, checking safety advisories, or planning your next adventure, Travactiv ensures you stay one step ahead.
+</p>
+
+    </div>
   </div>
 </section>
+
 
 
 
@@ -248,10 +356,10 @@ const About = () => {
         <img
           src={img8}
           alt="img8"
-          className="hidden mt-16 lg:block w-full h-[180px] xl:h-[100px] object-cover opacity-70 rounded-[5px]"
+          className="hidden mt-46 lg:block w-full h-[180px] xl:h-[100px] object-cover opacity-100 rounded-[5px]"
         />
       </div>
-
+ 
       {/* CTA */}
       <CTA />
     </>

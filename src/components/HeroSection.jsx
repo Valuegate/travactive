@@ -111,7 +111,7 @@ const HeroSection = () => {
       </div>
 
       {/* Right side — Image grid (visible only on large screens) */}
-      <div className="hidden lg:grid lg:w-1/2 grid-cols-2 gap-9.5 py-24 mt-14 mr-[-28px]">
+      <div className="hidden lg:grid lg:w-1/2 grid-cols-2 gap-7.5 py-24 mt-14 mr-[-28px]">
         {/* Group 1 */}
         <div className="relative ml-22 mt-1 w-[240px]  h-[280px] rounded-[32px] shadow-lg animate-float transform transition-transform duration-300 ">
           <img

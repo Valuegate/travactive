@@ -111,9 +111,9 @@ const HeroSection = () => {
       </div>
 
       {/* Right side — Image grid (visible only on large screens) */}
-      <div className="hidden lg:grid lg:w-1/2 grid-cols-2 gap-5.5 py-24 mt-14 mr-[-28px]">
+      <div className="hidden lg:grid lg:w-1/2 grid-cols-2 gap-9.5 py-24 mt-14 mr-[-28px]">
         {/* Group 1 */}
-        <div className="relative ml-22 mt-1 w-[240px]  h-[280px] rounded-[32px] shadow-lg animate-float transform transition-transform duration-300 hover:-translate-x-2 hover:scale-110  hover:shadow-emerald-700">
+        <div className="relative ml-22 mt-1 w-[240px]  h-[280px] rounded-[32px] shadow-lg animate-float transform transition-transform duration-300 ">
           <img
             src={img1}
             alt="Travel 1"
@@ -127,7 +127,7 @@ const HeroSection = () => {
         </div>
 
         {/* Group 2 */}
-        <div className="relative w-[300px] rounded-[32px] mt-12 transform transition-transform duration-300 hover:-translate-x-2 shadow-sm hover:scale-110 hover:brightness-110 animate-float  hover:shadow-emerald-700">
+        <div className="relative w-[300px] rounded-[32px] mt-12 transform transition-transform duration-300  shadow-sm  animate-float  ">
           <img
             src={img4}
             alt="Travel 4"
@@ -141,7 +141,7 @@ const HeroSection = () => {
         </div>
 
         {/* Group 3 */}
-        <div className="relative -mt-12 -ml-6 w-[354px] h-[260px] transform rounded-[32px] shadow-lg transition-transform duration-300 hover:-translate-x-2 hover:scale-110 hover:brightness-110 animate-float hover:shadow-emerald-700">
+        <div className="relative -mt-16 -ml-6 w-[354px] h-[260px] transform rounded-[32px] shadow-lg transition-transform duration-300  animate-float">
           <img
             src={img5}
             alt="Travel 5"
@@ -150,7 +150,7 @@ const HeroSection = () => {
         </div>
 
         {/* Group 4 */}
-        <div className="relative mt-1 w-[254px] rounded-[32px] shadow-sm transform transition-transform duration-300 hover:-translate-x-2 hover:scale-110 hover:brightness-110 animate-float hover:shadow-emerald-700">
+        <div className="relative -mt-4 w-[254px] rounded-[32px] shadow-sm transform transition-transform duration-300  animate-float">
           <img
             src={img6}
             alt="Travel 6"

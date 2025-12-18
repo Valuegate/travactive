@@ -190,7 +190,7 @@ const Home = () => {
     {/* Swiper */}
     <Swiper
       slidesPerView={1}
-      spaceBetween={200}
+      spaceBetween={90}
        loop={true}   //
       breakpoints={{
         640: { slidesPerView: 1 },
@@ -208,7 +208,7 @@ const Home = () => {
     >
       {testimonialData.map((item, i) => (
         <SwiperSlide key={i}>
-          <div className="bg-white w-70 shadow-sm rounded-2xl p-8 text-left hover:shadow-lg transition-all duration-300 relative">
+          <div className="bg-white w-70 h-[337.31px] shadow-sm rounded-2xl p-8 text-left hover:shadow-lg transition-all duration-300 relative">
             <h5 className="text-[#03B5AA] font-semibold text-sm mb-3 absolute top-4 left-6">
               {item.title}
             </h5>

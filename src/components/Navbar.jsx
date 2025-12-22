@@ -39,7 +39,7 @@ export default function Navbar() {
 
       {/* CTA Button (Desktop) */}
       <div className="hidden md:block">
-        <Link to="/contact">
+        <Link to="/get-started">
           <button className="bg-white border border-[#023436] text-[#023436] px-5 py-2 rounded-full font-sora font-semibold text-[16px] transition duration-300 hover:bg-[#023436] hover:text-white">
             Get Started Now
           </button>

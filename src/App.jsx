@@ -11,6 +11,8 @@ import Home from "./Pages/Home.jsx";
 import About from "./Pages/About.jsx";
 import Contact from "./Pages/Contact.jsx";
 import GetStarted from "./Pages/GetStarted.jsx";
+import SignUpPage from "./Pages/SignUpPage.jsx";
+import LoginPage from "./Pages/LoginPage.jsx";
 import "./index.css";
 
 const Layout = ({ children }) => {
@@ -57,6 +59,8 @@ const App = () => {
             </Layout>
           }
         />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/signup" element={<SignUpPage />} />
         <Route path="/get-started" element={<GetStarted />} />
       </Routes>
     </Router>

@@ -3,6 +3,7 @@ import { FaGoogle, FaEye, FaEyeSlash } from "react-icons/fa";
 import { Eye, EyeOff, Compass } from "lucide-react";
 import WelcomeBackIMG from "../assets/WelcomeBack.png";
 import TravactiveLogo from "../assets/TravactiveLogo.png";
+import GoogleIcon from "../assets/GoogleIcon.png";
 
 
 const LoginPage = () => {
@@ -35,15 +36,10 @@ const LoginPage = () => {
 
         {/* GOOGLE BUTTON */}
         <button className="flex items-center justify-center w-full py-3.5 rounded-full border border-gray-200 bg-white shadow-sm hover:bg-gray-50 transition mb-4">
-          <img
-            src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/smartlock/google.svg"
-            alt="google"
-            className="w-5 h-5 mr-3"
-          />
-          <span className="text-gray-700 font-semibold text-sm">
-            Continue with Google
-          </span>
-        </button>
+  <img src={GoogleIcon} alt="Google logo" className="w-5 h-5 mr-3" />
+  <span className="text-gray-700 font-semibold text-sm">Continue with Google</span>
+</button>
+
 
         {/* Divider */}
         <div className="flex items-center my-4">

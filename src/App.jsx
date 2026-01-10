@@ -13,6 +13,8 @@ import Contact from "./Pages/Contact.jsx";
 import GetStarted from "./Pages/GetStarted.jsx";
 import SignUpPage from "./Pages/SignUpPage.jsx";
 import LoginPage from "./Pages/LoginPage.jsx";
+import ResetPasswordPage from "./Pages/ResetPasswordPage.jsx";
+import PasswordReset from './Pages/PasswordReset';
 import "./index.css";
 
 const Layout = ({ children }) => {
@@ -59,6 +61,9 @@ const App = () => {
             </Layout>
           }
         />
+        <Route path="/forgot-password" element={<ResetPasswordPage />} />
+        <Route path="/password-reset" element={<PasswordReset />} />
+        <Route path="/reset-password" element={<ResetPasswordPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/signup" element={<SignUpPage />} />
         <Route path="/get-started" element={<GetStarted />} />

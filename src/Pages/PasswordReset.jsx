@@ -1,31 +1,53 @@
 import React, { useState } from 'react';
-import { Eye, EyeOff } from 'lucide-react'; // Using lucide-react for the eye icons
+import { useNavigate } from 'react-router-dom'; // Import useNavigate
+import { Eye, EyeOff } from 'lucide-react';
 
 const PasswordReset = () => {
+  const navigate = useNavigate(); // Initialize the navigate function
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const [error, setError] = useState('');
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setError('');
+
+    // 1. Basic Validation
+    if (!password || !confirmPassword) {
+      setError('Please fill in all fields');
+      return;
+    }
+
+    if (password !== confirmPassword) {
+      setError('Passwords do not match');
+      return;
+    }
+
+    // 2. Logic for API call would go here
+    console.log("Password reset successful logic...");
+
+    // 3. Navigate to Success Page
+    // Use { replace: true } so they can't go back to the reset form via back button
+    navigate('/reset-success', { replace: true });
+  };
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-[#2d2d2d]">
       <div className="w-full max-w-lg p-12 bg-white rounded-xl shadow-2xl mx-4">
-        {/* Header Text */}
         <div className="text-center mb-10">
-          <p className="text-gray-700 text-lg font-medium">
-            We have received your password reset request.
-          </p>
-          <p className="text-gray-700 text-lg font-medium">
-            Enter your new password below
-          </p>
+          <p className="text-gray-700 text-lg font-medium">We have received your password reset request.</p>
+          <p className="text-gray-700 text-lg font-medium">Enter your new password below</p>
         </div>
 
-        <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
+        <form className="space-y-6" onSubmit={handleSubmit}>
+          {/* Error Message Display */}
+          {error && <p className="text-red-500 text-sm text-center font-medium">{error}</p>}
+
           {/* Password Field */}
           <div className="space-y-2">
-            <label className="block text-black font-bold text-md ml-1">
-              Password:
-            </label>
+            <label className="block text-black font-bold text-md ml-1">Password:</label>
             <div className="relative">
               <input
                 type={showPassword ? "text" : "password"}
@@ -46,9 +68,7 @@ const PasswordReset = () => {
 
           {/* Confirm Password Field */}
           <div className="space-y-2">
-            <label className="block text-black font-bold text-md ml-1">
-              Confirm Password:
-            </label>
+            <label className="block text-black font-bold text-md ml-1">Confirm Password:</label>
             <div className="relative">
               <input
                 type={showConfirmPassword ? "text" : "password"}
@@ -67,7 +87,6 @@ const PasswordReset = () => {
             </div>
           </div>
 
-          {/* Submit Button */}
           <button
             type="submit"
             className="w-full mt-4 py-4 bg-[#003131] hover:bg-[#004141] text-white font-bold rounded-full transition-colors duration-200 shadow-md"

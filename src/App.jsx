@@ -16,6 +16,7 @@ import LoginPage from "./Pages/LoginPage.jsx";
 import ResetPasswordPage from "./Pages/ResetPasswordPage.jsx";
 import PasswordReset from './Pages/PasswordReset';
 import PasswordChangedSuccess from './Pages/PasswordChangedSuccess';
+import Overview from "./Pages/Overview.jsx";
 import "./index.css";
 
 const Layout = ({ children }) => {
@@ -62,6 +63,7 @@ const App = () => {
             </Layout>
           }
         />
+        <Route path="/dashboard/overview" element={<Overview />} />
         <Route path="/reset-success" element={<PasswordChangedSuccess />} />
         <Route path="/forgot-password" element={<ResetPasswordPage />} />
         <Route path="/password-reset" element={<PasswordReset />} />

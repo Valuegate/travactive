@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Eye, EyeOff } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-
 import WelcomeBackIMG from "../assets/WelcomeBack.png";
 import TravactiveLogo from "../assets/TravactiveLogo.png";
 import GoogleIcon from "../assets/GoogleIcon.png";

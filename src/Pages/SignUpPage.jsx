@@ -138,7 +138,7 @@ const SignUpPage = () => {
           <img
             src={SignUpImage}
             alt="Travel"
-            className="w-full h-full object-cover p-5 rounded-3xl"
+            className="w-full h-full object-cover p-5 rounded-4xl"
           />
         </div>
 

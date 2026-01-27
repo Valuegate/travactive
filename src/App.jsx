@@ -3,6 +3,7 @@ import {
   BrowserRouter as Router,
   Routes,
   Route,
+  Navigate,
   useLocation,
 } from "react-router-dom";
 import Navbar from "./Components/Navbar.jsx";
@@ -17,20 +18,23 @@ import ResetPasswordPage from "./Pages/ResetPasswordPage.jsx";
 import PasswordReset from './Pages/PasswordReset';
 import PasswordChangedSuccess from './Pages/PasswordChangedSuccess';
 import Overview from "./Pages/Overview.jsx";
+import Explore from "./Pages/Explore.jsx";
 import "./index.css";
 
-const Layout = ({ children }) => {
+const Layout = ({ children, hideFooter = false }) => {
   const location = useLocation();
+  
+  // Hide footer on specific paths
+  const shouldHideFooter = hideFooter || location.pathname === "/get-started";
 
   return (
     <>
-      {/* Navbar (optional) */}
+      {/* Uncomment if you want to use Navbar */}
       {/* <Navbar /> */}
 
       <div className="mt-6">{children}</div>
 
-      {/* Hide footer on Get Started page */}
-      {location.pathname !== "/get-started" && <Footer />}
+      {!shouldHideFooter && <Footer />}
     </>
   );
 };
@@ -39,6 +43,7 @@ const App = () => {
   return (
     <Router>
       <Routes>
+        {/* Public routes with Layout */}
         <Route
           path="/"
           element={
@@ -63,17 +68,131 @@ const App = () => {
             </Layout>
           }
         />
-        <Route path="/dashboard/overview" element={<Overview />} />
-        <Route path="/reset-success" element={<PasswordChangedSuccess />} />
+        <Route
+          path="/explore"
+          element={
+            <Layout>
+              <Explore />
+            </Layout>
+          }
+        />
+        
+        {/* Auth routes without Layout (or with minimal layout) */}
+        <Route 
+          path="/get-started" 
+          element={
+            <Layout hideFooter={true}>
+              <GetStarted />
+            </Layout>
+          } 
+        />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/signup" element={<SignUpPage />} />
         <Route path="/forgot-password" element={<ResetPasswordPage />} />
         <Route path="/password-reset" element={<PasswordReset />} />
         <Route path="/reset-password" element={<ResetPasswordPage />} />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/signup" element={<SignUpPage />} />
-        <Route path="/get-started" element={<GetStarted />} />
+        <Route path="/reset-success" element={<PasswordChangedSuccess />} />
+        
+        {/* Dashboard routes - consider adding a different layout for dashboard */}
+        <Route path="/dashboard/overview" element={<Overview />} />
+        
+        {/* Redirects */}
+        {/* If you want to redirect from root to dashboard, remove the Home route */}
+        {/* Or create a separate dashboard redirect: */}
+        <Route path="/dashboard" element={<Navigate to="/dashboard/overview" replace />} />
+        
+        {/* Optional: Catch-all route for 404 */}
+        <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </Router>
   );
 };
 
 export default App;
+
+
+
+// import React from "react";
+// import {
+//   BrowserRouter as Router,
+//   Routes,
+//   Route,
+//   Navigate,
+//   useLocation,
+// } from "react-router-dom";
+// import Navbar from "./Components/Navbar.jsx";
+// import Footer from "./Components/Footer.jsx";
+// import Home from "./Pages/Home.jsx";
+// import About from "./Pages/About.jsx";
+// import Contact from "./Pages/Contact.jsx";
+// import GetStarted from "./Pages/GetStarted.jsx";
+// import SignUpPage from "./Pages/SignUpPage.jsx";
+// import LoginPage from "./Pages/LoginPage.jsx";
+// import ResetPasswordPage from "./Pages/ResetPasswordPage.jsx";
+// import PasswordReset from './Pages/PasswordReset';
+// import PasswordChangedSuccess from './Pages/PasswordChangedSuccess';
+// import Overview from "./Pages/Overview.jsx";
+// import Explore from "./Pages/Explore.jsx";
+// import "./index.css";
+
+// const Layout = ({ children }) => {
+//   const location = useLocation();
+
+//   return (
+//     <>
+//       {/* Navbar (optional) */}
+//       {/* <Navbar /> */}
+
+//       <div className="mt-6">{children}</div>
+
+//       {/* Hide footer on Get Started page */}
+//       {location.pathname !== "/get-started" && <Footer />}
+//     </>
+//   );
+// };
+
+// const App = () => {
+//   return (
+//     <Router>
+//       <Routes>
+//         <Route
+//           path="/"
+//           element={
+//             <Layout>
+//               <Home />
+//             </Layout>
+//           }
+//         />
+//         <Route
+//           path="/about"
+//           element={
+//             <Layout>
+//               <About />
+//             </Layout>
+//           }
+//         />
+//         <Route
+//           path="/contact"
+//           element={
+//             <Layout>
+//               <Contact />
+//             </Layout>
+//           }
+//         />
+//         <Route path="/dashboard/overview" element={<Overview />} />
+//         <Route path="/explore" element={<Explore />} />
+//         {/* Default redirect to Overview */}
+//         <Route path="/" element={<Navigate to="/overview" replace />} />
+//         <Route path="/reset-success" element={<PasswordChangedSuccess />} />
+//         <Route path="/forgot-password" element={<ResetPasswordPage />} />
+//         <Route path="/password-reset" element={<PasswordReset />} />
+//         <Route path="/reset-password" element={<ResetPasswordPage />} />
+//         <Route path="/login" element={<LoginPage />} />
+//         <Route path="/signup" element={<SignUpPage />} />
+//         <Route path="/get-started" element={<GetStarted />} />
+//       </Routes>
+//     </Router>
+//   );
+// };
+
+// export default App;

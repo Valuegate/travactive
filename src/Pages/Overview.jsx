@@ -331,7 +331,8 @@ const CalendarCard = () => {
       <div className="grid grid-cols-7 gap-1">
         {renderCalendar()}
       </div>
-      <div className="mt-6 pt-4 border-t border-gray-100">
+
+      {/* <div className="mt-6 pt-4 border-t border-gray-100">
         <div className="text-xs text-gray-500 mb-2">Selected Date:</div>
         <div className="text-sm font-medium bg-teal-50 text-teal-900 px-3 py-2 rounded-lg inline-block">
           {selectedDate.toLocaleDateString('en-US', { 
@@ -341,7 +342,8 @@ const CalendarCard = () => {
             year: 'numeric' 
           })}
         </div>
-      </div>
+      </div> */}
+      
     </div>
   );
 };

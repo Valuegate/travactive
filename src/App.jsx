@@ -21,63 +21,40 @@ import Overview from "./Pages/Overview.jsx";
 import Explore from "./Pages/Explore.jsx";
 import "./index.css";
 
+/* ===================== SHARED LAYOUT ===================== */
 const Layout = ({ children, hideFooter = false }) => {
-  const location = useLocation();
-  
-  // Hide footer on specific paths
-  const shouldHideFooter = hideFooter || location.pathname === "/get-started";
-
   return (
-    <>
-      {/* Uncomment if you want to use Navbar */}
+    <div className="flex flex-col min-h-screen">
       {/* <Navbar /> */}
-
-      <div className="mt-6">{children}</div>
-
-      {!shouldHideFooter && <Footer />}
-    </>
+      <div className="flex-grow mt-6">
+        {children}
+      </div>
+      {!hideFooter && <Footer />}
+    </div>
   );
 };
 
+/* ===================== MAIN APP COMPONENT ===================== */
 const App = () => {
   return (
     <Router>
       <Routes>
-        {/* Public routes with Layout */}
-        <Route
-          path="/"
+        {/* PUBLIC ROUTES WITH FOOTER */}
+        <Route path="/" element={<Layout><Home /></Layout>} />
+        <Route path="/about" element={<Layout><About /></Layout>} />
+        <Route path="/contact" element={<Layout><Contact /></Layout>} />
+
+        {/* EXPLORE DASHBOARD - FOOTER REMOVED HERE */}
+        <Route 
+          path="/explore" 
           element={
-            <Layout>
-              <Home />
-            </Layout>
-          }
-        />
-        <Route
-          path="/about"
-          element={
-            <Layout>
-              <About />
-            </Layout>
-          }
-        />
-        <Route
-          path="/contact"
-          element={
-            <Layout>
-              <Contact />
-            </Layout>
-          }
-        />
-        <Route
-          path="/explore"
-          element={
-            <Layout>
+            <Layout hideFooter={true}>
               <Explore />
             </Layout>
-          }
+          } 
         />
         
-        {/* Auth routes without Layout (or with minimal layout) */}
+        {/* AUTH & ONBOARDING ROUTES - FOOTER REMOVED */}
         <Route 
           path="/get-started" 
           element={
@@ -86,6 +63,7 @@ const App = () => {
             </Layout>
           } 
         />
+        
         <Route path="/login" element={<LoginPage />} />
         <Route path="/signup" element={<SignUpPage />} />
         <Route path="/forgot-password" element={<ResetPasswordPage />} />
@@ -93,15 +71,11 @@ const App = () => {
         <Route path="/reset-password" element={<ResetPasswordPage />} />
         <Route path="/reset-success" element={<PasswordChangedSuccess />} />
         
-        {/* Dashboard routes - consider adding a different layout for dashboard */}
+        {/* DASHBOARD ROUTES */}
         <Route path="/dashboard/overview" element={<Overview />} />
-        
-        {/* Redirects */}
-        {/* If you want to redirect from root to dashboard, remove the Home route */}
-        {/* Or create a separate dashboard redirect: */}
         <Route path="/dashboard" element={<Navigate to="/dashboard/overview" replace />} />
         
-        {/* Optional: Catch-all route for 404 */}
+        {/* 404 CATCH-ALL */}
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </Router>
@@ -109,7 +83,6 @@ const App = () => {
 };
 
 export default App;
-
 
 
 // import React from "react";

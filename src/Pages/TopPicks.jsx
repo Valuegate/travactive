@@ -18,15 +18,51 @@ const TopPicks = () => {
 
    const isActive = (path) => location.pathname.startsWith(path);
 
- const sidebarItems = [
+const sidebarItems = [
   { icon: <LayoutDashboard size={20} />, label: "Overview", path: "/dashboard/overview" },
-  { icon: <Compass size={20} />, label: "Explore", path: "/dashboard/explore" },
-  { icon: <Star size={20} />, label: "Top Picks", path: "/dashboard/top-picks" },
-  { icon: <MessageSquare size={20} />, label: "Ask Travactiv", path: "/dashboard/ask" },
-  { icon: <Settings size={20} />, label: "Settings", path: "/dashboard/settings" },
+  { icon: <Compass size={20} />, label: "Explore", path: "/explore" },
+  { icon: <Star size={20} />, label: "Top Picks", path: "/top-picks" },
+  { icon: <MessageSquare size={20} />, label: "Ask Travactiv", path: "/ask" },
+  { icon: <Settings size={20} />, label: "Settings", path: "/settings" },
 ];
 
+
  
+const links = [
+  {
+    title: "Study in Germany (No Tuition Fees)",
+    desc: "Public universities offering world-class education with minimal cost.",
+  },
+  {
+    title: "Canada Student Visa Guide",
+    desc: "Step-by-step process and funding options for international students.",
+  },
+  {
+    title: "Scholarships in Finland",
+    desc: "Fully funded and partial scholarships for international students.",
+  },
+];
+
+const visaAlerts = [
+  {
+    flag: "🇨🇦",
+    country: "Canada",
+    news: "New study permit cap announced for 2025",
+    source: "IRCC",
+  },
+  {
+    flag: "🇩🇪",
+    country: "Germany",
+    news: "Extended post-study work visa duration",
+    source: "DAAD",
+  },
+  {
+    flag: "🇫🇮",
+    country: "Finland",
+    news: "More English-taught programs added",
+    source: "StudyInfo",
+  },
+];
 
   return (
     <div className="flex min-h-screen bg-[#F8F9FA] font-sans text-[#333333]">

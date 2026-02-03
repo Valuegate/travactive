@@ -208,16 +208,40 @@ const Explore = () => {
           <div className="w-40 h-10 flex items-center justify-center">
             <img src={TravactiveLogo} alt="Travactive Logo" className="w-full h-full object-contain" />
           </div>
-          {/* <h1 className="text-xl font-bold text-[#0F3D3E]">Travactiv</h1> */}
+          
         </div>
 
         <nav className="flex-1 space-y-2">
+  <NavItem
+    icon={<LayoutDashboard size={20} />}
+    label="Overview"
+    onClick={() => navigate("/dashboard/overview")}
+  />
+
+  <NavItem
+    icon={<Compass size={20} />}
+    label="Explore"
+    active
+  />
+
+  <NavItem
+    icon={<Star size={20} />}
+    label="Top Picks"
+    onClick={() => navigate("/top-picks")}
+  />
+
+  <NavItem icon={<MessageSquare size={20} />} label="Ask Travactiv" />
+  <NavItem icon={<Settings size={20} />} label="Settings" />
+</nav>
+
+
+        {/* <nav className="flex-1 space-y-2">
           <NavItem icon={<LayoutDashboard size={20}/>} label="Overview" onClick={() => navigate('/dashboard')} />
           <NavItem icon={<Compass size={20}/>} label="Explore" active />
           <NavItem icon={<Star size={20}/>} label="Top Picks" />
           <NavItem icon={<MessageSquare size={20}/>} label="Ask Travactiv" />
           <NavItem icon={<Settings size={20}/>} label="Settings" />
-        </nav>
+        </nav> */}
 
         <button className="flex items-center gap-3 text-red-500 hover:bg-red-50 p-3 rounded-xl transition-colors mt-auto font-bold">
           <LogOut size={20} className="rotate-180" />

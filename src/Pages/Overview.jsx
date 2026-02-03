@@ -51,28 +51,59 @@ const Logo = () => (
 );
 
 /* ===================== UPDATED NAVIGATION COMPONENT ===================== */
+
 const Navigation = () => {
   const navigate = useNavigate();
 
   return (
     <nav className="flex-1 space-y-2">
-      <SidebarItem 
-        icon={<LayoutDashboard size={20} />} 
-        label="Overview" 
-        active 
-        onClick={() => navigate('/overview')} 
+      <SidebarItem
+        icon={<LayoutDashboard size={20} />}
+        label="Overview"
+        onClick={() => navigate("/dashboard/overview")}
       />
-      <SidebarItem 
-        icon={<Compass size={20} />} 
-        label="Explore" 
-        onClick={() => navigate('/explore')} 
+
+      <SidebarItem
+        icon={<Compass size={20} />}
+        label="Explore"
+        onClick={() => navigate("/explore")}
       />
-      <SidebarItem icon={<Bookmark size={20} />} label="Top Picks" />
+
+      <SidebarItem
+        icon={<Bookmark size={20} />}
+        label="Top Picks"
+        onClick={() => navigate("/top-picks")}
+      />
+
       <SidebarItem icon={<MessageSquare size={20} />} label="Ask Travactiv" />
       <SidebarItem icon={<Settings size={20} />} label="Settings" />
     </nav>
   );
 };
+
+
+// const Navigation = () => {
+//   const navigate = useNavigate();
+
+//   return (
+//     <nav className="flex-1 space-y-2">
+//       <SidebarItem 
+//         icon={<LayoutDashboard size={20} />} 
+//         label="Overview" 
+//         active 
+//         onClick={() => navigate('/overview')} 
+//       />
+//       <SidebarItem 
+//         icon={<Compass size={20} />} 
+//         label="Explore" 
+//         onClick={() => navigate('/explore')} 
+//       />
+//       <SidebarItem icon={<Bookmark size={20} />} label="Top Picks" />
+//       <SidebarItem icon={<MessageSquare size={20} />} label="Ask Travactiv" />
+//       <SidebarItem icon={<Settings size={20} />} label="Settings" />
+//     </nav>
+//   );
+// };
 
 /* ===================== LOGOUT BUTTON COMPONENT ===================== */
 const LogoutButton = () => (

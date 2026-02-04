@@ -30,16 +30,28 @@ const sidebarItems = [
  
 const links = [
   {
-    title: "Study in Germany (No Tuition Fees)",
-    desc: "Public universities offering world-class education with minimal cost.",
+    title: "Visa-Free Countries for Nigerians",
+    desc: "Discover-Hassel-Free travel spots where you can pack your bags and go, no paperwork required.",
   },
   {
-    title: "Canada Student Visa Guide",
-    desc: "Step-by-step process and funding options for international students.",
+    title: "Cheapest fligh deals right now",
+    desc: "Stay informed on the latest flight path and deals that help you travel smarter while spending less.",
   },
   {
-    title: "Scholarships in Finland",
-    desc: "Fully funded and partial scholarships for international students.",
+    title: "Top 5 Budget-Friendly Destination for 2026",
+    desc: "Destinations that offer great experiences without breaking the bank, so you get more value for every trip.",
+  },
+  {
+    title: "Real-Time Currency Exchange Rates",
+    desc: "Get up-to-date currency exchange rates and tips to make every penny count while traveling abroad.",
+  },
+  {
+    title: "Best Travel Insurance Options",
+    desc: "Budget-friendly travel insurance options that keeps you covered and confident throughout your journey.",
+  },
+  {
+    title: "Weather & Season Guide By Country",
+    desc: "Learn the perfect time of the year to travel, enjoy peak attractions, and avoid crowd for a memorable trip.",
   },
 ];
 

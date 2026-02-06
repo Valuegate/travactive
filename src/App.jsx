@@ -22,6 +22,8 @@ import PasswordChangedSuccess from "./Pages/PasswordChangedSuccess.jsx";
 import Overview from "./Pages/Overview.jsx";
 import Explore from "./Pages/Explore.jsx";
 import TopPicks from "./Pages/TopPicks.jsx";
+import AskTravactiv from "./Pages/AskTravactiv.jsx";
+import Settings from "./Pages/Settings.jsx";
 
 import "./index.css";
 
@@ -59,6 +61,14 @@ const App = () => {
         <Route path="/reset-success" element={<PasswordChangedSuccess />} />
 
         {/* ===== DASHBOARD ROUTES (NO FOOTER) ===== */}
+        <Route
+          path="/settings"
+          element={<Layout hideFooter><Settings /></Layout>}
+        />
+        <Route
+          path="/ask-travactiv"
+          element={<Layout hideFooter><AskTravactiv /></Layout>}
+        />
         <Route
           path="/explore"
           element={<Layout hideFooter><Explore /></Layout>}

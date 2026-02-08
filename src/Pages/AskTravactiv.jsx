@@ -7,6 +7,69 @@ import {
   ChevronDown
 } from 'lucide-react';
 
+/* ===================== HEADER COMPONENT ===================== */
+const Header = () => (
+  <header className="h-20 bg-white border-b border-gray-100 px-8 flex items-center justify-between sticky top-0 z-10">
+    {/* Left Spacer to balance the layout if needed, or just let SearchBar center */}
+    <div className="flex-1" /> 
+
+    {/* Centered Search Bar */}
+    <div className="flex-[2] flex justify-center">
+      <SearchBar />
+    </div>
+
+    {/* Right Aligned Profile & Notifications */}
+    <div className="flex-1 flex items-center justify-end gap-6">
+      <UserAvatar />
+      <NotificationBell />
+    </div>
+  </header>
+);
+
+/* ===================== SEARCH BAR COMPONENT ===================== */
+const SearchBar = () => (
+  <div className="relative w-full max-w-[450px]">
+    <input
+      type="text"
+      placeholder="Search here...."
+      className="w-full bg-gray-50 py-2 pl-5 pr-12 rounded-full border border-gray-200 focus:ring-1 focus:ring-teal-500 text-sm placeholder-gray-400 focus:outline-none transition-all duration-200"
+    />
+    <button className="absolute right-1.5 top-1/2 -translate-y-1/2 bg-[#134e4a] p-2 rounded-full text-white hover:bg-teal-800 transition-colors duration-200">
+      <Search size={16} />
+    </button>
+  </div>
+);
+
+/* ===================== USER AVATAR COMPONENT ===================== */
+const UserAvatar = () => (
+  <div className="flex items-center gap-3">
+    <div className="relative">
+      <img
+        src="https://randomuser.me/api/portraits/men/32.jpg"
+        className="w-11 h-11 rounded-full object-cover border-2 border-teal-100 hover:scale-105 transition-transform duration-200"
+        alt="User"
+      />
+      <div className="absolute -bottom-0.5 -right-0.5 w-3 h-3 bg-green-500 rounded-full border-2 border-white"></div>
+    </div>
+    <div className="text-right">
+      <p className="text-sm font-bold leading-none text-gray-800">Samuel F.</p>
+      <p className="text-xs text-gray-500">Traveler</p>
+    </div>
+  </div>
+);
+
+/* ===================== NOTIFICATION BELL COMPONENT ===================== */
+const NotificationBell = () => (
+  <div className="relative">
+    <button className="p-2 hover:bg-gray-100 rounded-full transition-colors duration-200">
+      <Bell size={24} className="text-gray-600" />
+    </button>
+    <span className="absolute -top-1 -right-1 bg-red-500 text-white text-[10px] w-5 h-5 flex items-center justify-center rounded-full font-bold">
+      1
+    </span>
+  </div>
+);
+
 const AskTravactiv = () => {
   const chatHistory = [
     {
@@ -46,37 +109,8 @@ const AskTravactiv = () => {
       {/* --- MAIN CONTENT AREA --- */}
       <div className="flex-1 flex flex-col overflow-hidden">
         
-        {/* Top Navbar */}
-        <header className="h-16 bg-white border-b border-gray-100 flex items-center justify-between px-8 sticky top-0 z-10">
-          <div className="relative w-96">
-            <input 
-              type="text" 
-              placeholder="Search here..." 
-              className="w-full bg-[#F4F7F9] border-none rounded-full py-2 pl-4 pr-10 text-sm focus:ring-2 focus:ring-[#005F59] focus:outline-none transition-all duration-200"
-            />
-            <button className="absolute right-3 top-1/2 -translate-y-1/2 bg-[#005F59] p-1.5 rounded-full cursor-pointer hover:bg-teal-800 transition-colors duration-200">
-              <Search size={14} className="text-white" />
-            </button>
-          </div>
-
-          <div className="flex items-center gap-4">
-            <div className="flex items-center gap-3">
-              <div className="text-right">
-                <p className="text-sm font-bold">Samuel F.</p>
-                <p className="text-xs text-gray-400">Traveler</p>
-              </div>
-              <img 
-                src="https://randomuser.me/api/portraits/men/32.jpg" 
-                alt="Profile" 
-                className="w-10 h-10 rounded-full object-cover border-2 border-teal-100 hover:scale-105 transition-transform duration-200"
-              />
-            </div>
-            <div className="relative p-2 bg-gray-50 rounded-full cursor-pointer hover:bg-gray-100 transition-colors duration-200">
-              <Bell size={20} className="text-gray-600" />
-              <span className="absolute top-2 right-2 w-2 h-2 bg-red-500 rounded-full border-2 border-white"></span>
-            </div>
-          </div>
-        </header>
+        {/* Using the new Header component */}
+        <Header />
 
         {/* Content Body */}
         <main className="flex-1 flex p-6 gap-6 overflow-hidden">
@@ -185,7 +219,6 @@ const AskTravactiv = () => {
 };
 
 export default AskTravactiv;
-
 
 // import React from 'react';
 // import Sidebar from './Sidebar';

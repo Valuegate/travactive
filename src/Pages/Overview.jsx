@@ -37,9 +37,17 @@ const Overview = () => (
 
 /* ===================== HEADER COMPONENT ===================== */
 const Header = () => (
-  <header className="h-20 bg-white border-b border-gray-200 px-8 flex items-center justify-between sticky top-0 z-10">
-    <SearchBar />
-    <div className="flex items-center gap-4">
+  <header className="h-20 bg-white border-b border-gray-100 px-8 flex items-center justify-between sticky top-0 z-10">
+    {/* Left Spacer to balance the layout if needed, or just let SearchBar center */}
+    <div className="flex-1" /> 
+
+    {/* Centered Search Bar */}
+    <div className="flex-[2] flex justify-center">
+      <SearchBar />
+    </div>
+
+    {/* Right Aligned Profile & Notifications */}
+    <div className="flex-1 flex items-center justify-end gap-6">
       <UserAvatar />
       <NotificationBell />
     </div>
@@ -48,13 +56,13 @@ const Header = () => (
 
 /* ===================== SEARCH BAR COMPONENT ===================== */
 const SearchBar = () => (
-  <div className="relative w-[400px]">
+  <div className="relative w-full max-w-[450px]">
     <input
       type="text"
       placeholder="Search here...."
-      className="w-full bg-gray-100 py-2.5 pl-5 pr-12 rounded-full border-none focus:ring-2 focus:ring-teal-500 text-sm italic placeholder-gray-400 focus:outline-none transition-all duration-200"
+      className="w-full bg-gray-50 py-2 pl-5 pr-12 rounded-full border border-gray-200 focus:ring-1 focus:ring-teal-500 text-sm placeholder-gray-400 focus:outline-none transition-all duration-200"
     />
-    <button className="absolute right-2 top-1.5 bg-teal-900 p-2 rounded-full text-white hover:bg-teal-800 transition-colors duration-200">
+    <button className="absolute right-1.5 top-1/2 -translate-y-1/2 bg-[#134e4a] p-2 rounded-full text-white hover:bg-teal-800 transition-colors duration-200">
       <Search size={16} />
     </button>
   </div>

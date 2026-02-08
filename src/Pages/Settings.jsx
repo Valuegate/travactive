@@ -7,6 +7,50 @@ import {
   ChevronDown
 } from 'lucide-react';
 
+/* ===================== SEARCH BAR COMPONENT ===================== */
+const SearchBar = () => (
+  <div className="relative w-full max-w-[450px]">
+    <input
+      type="text"
+      placeholder="Search here...."
+      className="w-full bg-gray-50 py-2 pl-5 pr-12 rounded-full border border-gray-200 focus:ring-1 focus:ring-teal-500 text-sm placeholder-gray-400 focus:outline-none transition-all duration-200"
+    />
+    <button className="absolute right-1.5 top-1/2 -translate-y-1/2 bg-[#134e4a] p-2 rounded-full text-white hover:bg-teal-800 transition-colors duration-200">
+      <Search size={16} />
+    </button>
+  </div>
+);
+
+/* ===================== USER AVATAR COMPONENT ===================== */
+const UserAvatar = () => (
+  <div className="flex items-center gap-3">
+    <div className="relative">
+      <img
+        src="https://randomuser.me/api/portraits/men/32.jpg"
+        className="w-11 h-11 rounded-full object-cover border-2 border-teal-100 hover:scale-105 transition-transform duration-200"
+        alt="User"
+      />
+      <div className="absolute -bottom-0.5 -right-0.5 w-3 h-3 bg-green-500 rounded-full border-2 border-white"></div>
+    </div>
+    <div className="text-right">
+      <p className="text-sm font-bold leading-none text-gray-800">Samuel F.</p>
+      <p className="text-xs text-gray-500">Traveler</p>
+    </div>
+  </div>
+);
+
+/* ===================== NOTIFICATION BELL COMPONENT ===================== */
+const NotificationBell = () => (
+  <div className="relative">
+    <button className="p-2 hover:bg-gray-100 rounded-full transition-colors duration-200">
+      <Bell size={24} className="text-gray-600" />
+    </button>
+    <span className="absolute -top-1 -right-1 bg-red-500 text-white text-[10px] w-5 h-5 flex items-center justify-center rounded-full font-bold">
+      1
+    </span>
+  </div>
+);
+
 // Main Component
 const Settings = () => {
   return (
@@ -26,33 +70,19 @@ const Settings = () => {
 
 // Header Component
 const Header = () => (
-  <header className="bg-white h-20 flex items-center justify-between px-12 border-b border-gray-100 sticky top-0 z-10">
-    <div className="relative w-96">
-      <input 
-        type="text" 
-        placeholder="Search here...." 
-        className="w-full bg-slate-50 border border-slate-200 rounded-full py-2 px-5 pr-12 focus:outline-none focus:ring-2 focus:ring-teal-500/20 transition-all duration-200"
-      />
-      <button className="absolute right-1 top-1 bg-teal-800 p-1.5 rounded-full text-white cursor-pointer hover:bg-teal-900 transition-colors duration-200">
-        <Search size={18} />
-      </button>
+  <header className="h-20 bg-white border-b border-gray-100 px-8 flex items-center justify-between sticky top-0 z-10">
+    {/* Left Spacer to balance the layout if needed, or just let SearchBar center */}
+    <div className="flex-1" /> 
+
+    {/* Centered Search Bar */}
+    <div className="flex-[2] flex justify-center">
+      <SearchBar />
     </div>
-    <div className="flex items-center gap-6">
-      <div className="flex items-center gap-3">
-        <img 
-          src="https://randomuser.me/api/portraits/men/32.jpg" 
-          alt="Profile" 
-          className="w-10 h-10 rounded-full object-cover border-2 border-slate-100 hover:scale-105 transition-transform duration-200"
-        />
-        <div className="leading-tight">
-          <p className="font-bold text-sm">Samuel F.</p>
-          <p className="text-xs text-slate-500 font-medium">Traveler</p>
-        </div>
-      </div>
-      <div className="relative cursor-pointer hover:bg-gray-50 p-2 rounded-full transition-colors duration-200">
-        <Bell size={22} className="text-slate-400" />
-        <div className="absolute top-0 right-0 w-2.5 h-2.5 bg-red-500 border-2 border-white rounded-full"></div>
-      </div>
+
+    {/* Right Aligned Profile & Notifications */}
+    <div className="flex-1 flex items-center justify-end gap-6">
+      <UserAvatar />
+      <NotificationBell />
     </div>
   </header>
 );

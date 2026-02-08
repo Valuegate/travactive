@@ -218,7 +218,8 @@ const TopPicks = () => {
                   <div className="grid grid-cols-4 gap-3">
                     <img src="https://images.unsplash.com/photo-1533105079780-92b9be482077?w=150" className="h-16 w-full object-cover rounded-xl hover:scale-110 transition-transform duration-300" alt="Thumb" />
                     <img src="https://images.unsplash.com/photo-1516483638261-f4dbaf036963?w=150" className="h-16 w-full object-cover rounded-xl hover:scale-110 transition-transform duration-300" alt="Thumb" />
-                    <img src="https://images.unsplash.com/photo-1493246507139-91e8bef99c02?w=150" className="h-16 w-full object-cover rounded-xl hover:scale-110 transition-transform duration-300" alt="Thumb" />
+                    <img src="https://images.unsplash.com/photo-1533105079780-92b9be482077?w=150" className="h-16 w-full object-cover rounded-xl hover:scale-110 transition-transform duration-300" alt="Thumb" />
+                    {/* <img src="https://images.unsplash.com/photo-1493246507139-91e8bef99c02?w=150" className="h-16 w-full object-cover rounded-xl hover:scale-110 transition-transform duration-300" alt="Thumb" /> */}
                     <div className="relative h-16 w-full rounded-xl overflow-hidden cursor-pointer group">
                       <img 
                         src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=150" 

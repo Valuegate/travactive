@@ -23,6 +23,7 @@ const NewsItem = ({ flag, title, source }) => (
   </div>
 );
 
+/* ===================== CALENDAR COMPONENT ===================== */
 const CalendarCard = () => {
   const [currentDate, setCurrentDate] = useState(new Date());
   const [selectedDate, setSelectedDate] = useState(new Date(currentDate.getFullYear(), currentDate.getMonth(), 8));
@@ -300,6 +301,124 @@ const TopPicks = () => {
 };
 
 export default TopPicks;
+
+
+
+// Calendar Components
+
+// const CalendarCard = () => {
+//   const [currentDate, setCurrentDate] = useState(new Date());
+//   const [selectedDate, setSelectedDate] = useState(new Date(currentDate.getFullYear(), currentDate.getMonth(), 8));
+
+//   const navigateMonth = (direction) => {
+//     const newDate = new Date(currentDate);
+//     newDate.setMonth(currentDate.getMonth() + direction);
+//     setCurrentDate(newDate);
+//   };
+
+//   const formatDate = (date) => {
+//     return date.toLocaleDateString("en-US", { month: "long", year: "numeric" });
+//   };
+
+//   const getDaysInMonth = (date) => {
+//     const year = date.getFullYear();
+//     const month = date.getMonth();
+//     const firstDay = new Date(year, month, 1);
+//     const lastDay = new Date(year, month + 1, 0);
+//     const daysInMonth = lastDay.getDate();
+//     const startingDay = firstDay.getDay();
+//     const adjustedStartingDay = startingDay === 0 ? 6 : startingDay - 1;
+//     return { daysInMonth, adjustedStartingDay };
+//   };
+
+//   const renderCalendar = () => {
+//     const { daysInMonth, adjustedStartingDay } = getDaysInMonth(currentDate);
+//     const today = new Date();
+//     const days = [];
+
+//     for (let i = 0; i < adjustedStartingDay; i++) {
+//       days.push(<div key={`empty-${i}`} className="h-10"></div>);
+//     }
+
+//     for (let day = 1; day <= daysInMonth; day++) {
+//       const isToday = today.getDate() === day && today.getMonth() === currentDate.getMonth() && today.getFullYear() === currentDate.getFullYear();
+//       const isSelected = selectedDate.getDate() === day && selectedDate.getMonth() === currentDate.getMonth() && selectedDate.getFullYear() === currentDate.getFullYear();
+
+//       days.push(
+//         <button
+//           key={day}
+//           onClick={() => setSelectedDate(new Date(currentDate.getFullYear(), currentDate.getMonth(), day))}
+//           className={`h-10 w-10 flex items-center justify-center rounded-full text-sm font-semibold transition-all duration-200
+//             ${isSelected ? "bg-[#004D40] text-white shadow-lg scale-110" : ""}
+//             ${isToday && !isSelected ? "bg-teal-50 text-[#004D40] border border-teal-200" : ""}
+//             ${!isSelected && !isToday ? "hover:bg-gray-100 text-gray-700 hover:scale-110" : ""}
+//           `}
+//         >
+//           {day}
+//         </button>
+//       );
+//     }
+//     return days;
+//   };
+
+//   return (
+//     <div className="bg-white p-8 rounded-[32px] shadow-sm border border-gray-100">
+//       <div className="flex justify-between items-center mb-8">
+//         <h4 className="font-bold text-base text-gray-800">{formatDate(currentDate)}</h4>
+//         <div className="flex gap-2">
+//           <button onClick={() => navigateMonth(-1)} className="p-2 hover:bg-gray-50 rounded-full border border-gray-100 transition-colors duration-200">
+//             <ChevronLeft size={18} className="text-gray-600" />
+//           </button>
+//           <button onClick={() => navigateMonth(1)} className="p-2 hover:bg-gray-50 rounded-full border border-gray-100 transition-colors duration-200">
+//             <ChevronRight size={18} className="text-gray-600" />
+//           </button>
+//         </div>
+//       </div>
+//       <div className="grid grid-cols-7 gap-2 mb-4">
+//         {["Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"].map((day) => (
+//           <div key={day} className="text-center text-gray-400 text-[11px] font-bold uppercase tracking-wider">
+//             {day}
+//           </div>
+//         ))}
+//       </div>
+//       <div className="grid grid-cols-7 gap-2">{renderCalendar()}</div>
+//     </div>
+//   );
+// };
+
+// const NewsCard = () => {
+//   const newsItems = [
+//     { code: "gb", title: "UK expands Business Visa deadline", source: "websites.com/USAFaseEnews" },
+//     { code: "us", title: "USA Ease Entry Rule for Health Tourists", source: "The Indian Times" },
+//     { code: "ca", title: "Canada Tightens Work Permit Rules", source: "ircc.org" },
+//     { code: "au", title: "Australia Ban Multiple Access Route", source: "minsha.gov.au" },
+//     { code: "fr", title: "France Introduction E-visa Regime in Africa", source: "france-visas.gouv.fr" },
+//     { code: "de", title: "Germany Now Requires Compulsory UV", source: "daad.de" },
+//     { code: "ie", title: "Ireland Ban Visa on Arrival for Africans", source: "eban.com" },
+//     { code: "es", title: "Spain Launch New Visa Regime for NG", source: "sunrise.com" },
+//   ];
+
+//   return (
+//     <div className="bg-white p-8 rounded-[32px] shadow-sm border border-gray-100">
+//       <div className="flex justify-between items-center mb-6">
+//         <h4 className="font-bold text-base text-gray-800">Alert and News</h4>
+//         <button className="text-[12px] text-[#004D40] hover:underline font-bold transition-colors duration-200 hover:text-teal-900">
+//           See All
+//         </button>
+//       </div>
+//       <div className="space-y-4 max-h-[420px] overflow-y-auto pr-2">
+//         {newsItems.map((item, index) => (
+//           <NewsItem
+//             key={index}
+//             flag={<img src={`https://flagcdn.com/${item.code}.svg`} alt="flag" className="w-6 h-4 object-cover rounded-sm shadow-sm" />}
+//             title={item.title}
+//             source={item.source}
+//           />
+//         ))}
+//       </div>
+//     </div>
+//   );
+// };
 
 
 

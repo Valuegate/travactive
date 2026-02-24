@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+
 import img1 from "../assets/Img1.png";
 import img2 from "../assets/Img2.png";
 import img3 from "../assets/Img3.png";
@@ -106,7 +108,9 @@ const HeroSection = () => {
               <span>Join As Traveler</span>
             </span>
           </button>
+          <Link to="/get-started">
           <button className="btn-secondary">Get Started</button>
+          </Link>
         </div>
       </div>
 

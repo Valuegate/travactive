@@ -1,6 +1,6 @@
-🌍 ##Travactiv – Frontend Documentation
+🌍 **Travactiv – Frontend Documentation**
 
-#Smarter Travel Decisions, Powered by AI
+Smarter Travel Decisions, **Powered by AI**
 
 Travactiv is an AI-powered travel guide and travel inspiration web application designed to assist:
 
@@ -12,7 +12,7 @@ Travactiv is an AI-powered travel guide and travel inspiration web application d
 
 Travactiv simplifies global travel information, visa rules, study-abroad guidance, and destination inspiration into one intelligent platform.
 
-📌 #Project Overview
+📌 **Project Overview**
 
 Travactiv is built to:
 
@@ -36,12 +36,12 @@ The platform contains two major dashboards:
 
 Travactiv was built by:
 
-#Samuel Sonola – Product Designer (UI/UX Designer)
+**Samuel Sonola** – Product Designer (UI/UX Designer)
 Travactiv is Samuel’s original project idea.
 
-#Ulor Michael – Team Lead & Frontend Developer
+**Ulor Michael** – Team Lead & Frontend Developer
 
-#Benjamin Dada – Frontend Developer
+**Benjamin Dada** – Frontend Developer
 
 🏗️ Frontend Architecture
 
@@ -123,6 +123,7 @@ Secondary text:
 Muted text:
 
 #AAB8B6
+
 🔤 Typography
 
 The UI uses a clean modern sans-serif font style similar to:
@@ -148,7 +149,7 @@ font-family: 'Poppins', sans-serif;
 
 Logo: Travactiv icon + text
 
-Navigation Links:
+**Navigation Links:**
 
 Home
 
@@ -169,14 +170,14 @@ Main page background:
 #0F3F3B (Deep teal)
 🔹 Hero Section
 
-Headline:
+**Headline:**
 
 Smarter Travel Decisions, Powered by AI
 
 Subtext:
 AI-powered hub for real-time travel updates, visa rules, study-abroad insights, and global advisories.
 
-Buttons:
+**Buttons:**
 
 🟠 Unlock Travel Insights (Primary CTA)
 
@@ -189,7 +190,7 @@ border-radius: 9999px;
 padding: 12px 24px;
 🔹 About Section
 
-Headline:
+**Headline:**
 
 We Don’t Just Share Travel Info; We Simplify It for You
 
@@ -201,14 +202,14 @@ Built for Every Kind of Traveler
 
 Clear Insights. Smarter Decisions.
 
-Card Style:
+**Card Style:**
 
 background-color: #F4F6F5;
 border-radius: 16px;
 box-shadow: 0 10px 30px rgba(0,0,0,0.05);
 🎓 Student Dashboard
 
-The Student Dashboard is designed specifically for:
+**The Student Dashboard is designed specifically for:**
 
 Study abroad destination insights
 
@@ -238,7 +239,7 @@ Primary dashboard panel background:
 
 #FFFFFF
 
-Sidebar:
+**Sidebar:**
 
 #0F3F3B
 
@@ -247,7 +248,7 @@ Active item indicator:
 #FF5A2C
 🌍 Travelers Dashboard
 
-Designed for:
+**Designed for:**
 
 Trip planning
 
@@ -261,7 +262,7 @@ Cultural highlights
 
 AI travel recommendation system
 
-Features include:
+**Features include:**
 
 Destination cards
 
@@ -273,7 +274,7 @@ Personalized suggestions
 
 AI chat assistant
 
-📱 Responsiveness
+📱 **Responsiveness**
 
 Travactiv is fully responsive.
 
@@ -285,32 +286,8 @@ lg: 1024px
 xl: 1280px
 2xl: 1536px
 
-Mobile-first approach using Tailwind CSS.
+**Mobile-first approach using Tailwind CSS.**
 
-📂 Project Folder Structure (Frontend)
-travactiv-frontend/
-│
-├── public/
-├── src/
-│   ├── assets/
-│   ├── components/
-│   │   ├── Navbar.jsx
-│   │   ├── Hero.jsx
-│   │   ├── FeatureCard.jsx
-│   │   └── Footer.jsx
-│   │
-│   ├── pages/
-│   │   ├── Home.jsx
-│   │   ├── About.jsx
-│   │   ├── Contact.jsx
-│   │   ├── StudentDashboard.jsx
-│   │   └── TravelersDashboard.jsx
-│   │
-│   ├── routes/
-│   ├── App.jsx
-│   └── main.jsx
-│
-└── tailwind.config.js
 🚀 Getting Started
 1️⃣ Clone the Repository
 git clone https://github.com/your-username/travactiv-frontend.git
@@ -318,7 +295,8 @@ git clone https://github.com/your-username/travactiv-frontend.git
 npm install
 3️⃣ Start Development Server
 npm run dev
-🧠 Core Value Proposition
+
+🧠 **Core Value Proposition**
 
 Travactiv combines:
 
@@ -334,7 +312,7 @@ Personalized Travel Inspiration
 
 All in one platform.
 
-🔮 Future Improvements
+🔮 **Future Improvements**
 
 AI Chatbot Integration
 
@@ -352,7 +330,7 @@ Payment Integration (Premium Plans)
 
 This project is proprietary and developed by the Travactiv team.
 
-🌟 Final Note
+🌟 **Final Note**
 
 Travactiv is more than a travel guide.
 

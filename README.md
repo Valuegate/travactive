@@ -1,6 +1,6 @@
 🌍 ##Travactiv – Frontend Documentation
 
-Smarter Travel Decisions, Powered by AI
+#Smarter Travel Decisions, Powered by AI
 
 Travactiv is an AI-powered travel guide and travel inspiration web application designed to assist:
 

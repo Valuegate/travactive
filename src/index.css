@@ -16,6 +16,15 @@ body {
   @apply text-gray-300 text-base md:text-lg max-w-lg mb-8 leading-relaxed;
 }
 
+
+html, body, #root {
+  height: 100%;
+}
+
+* {
+  box-sizing: border-box;
+}
+
 /* ======== ANIMATIONS ======== */
 @keyframes blink {
   0%, 50%, 100% { opacity: 1; }

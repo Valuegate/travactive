@@ -1,0 +1,199 @@
+<svg height="800" width="400" viewBox="0 0 400 800" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=Rajdhani:wght@600;700&amp;display=swap');
+
+      .plane-group { animation: planeFly1 3.5s linear infinite; }
+      @keyframes planeFly1 {
+        0%   { transform: translate(-120px, 680px) rotate(-22deg); opacity: 0; }
+        12%  { opacity: 1; }
+        88%  { opacity: 1; }
+        100% { transform: translate(480px, -100px) rotate(-22deg); opacity: 0; }
+      }
+
+      .stripe1 { animation: stripe 2.2s linear infinite 0s; }
+      .stripe2 { animation: stripe 2.2s linear infinite 0.73s; }
+      .stripe3 { animation: stripe 2.2s linear infinite 1.46s; }
+      @keyframes stripe {
+        0%   { transform: translateY(-4px); opacity: 1; }
+        100% { transform: translateY(804px); opacity: 0.15; }
+      }
+
+      .glow-pulse { animation: glowPulse 3s ease-in-out infinite; }
+      @keyframes glowPulse {
+        0%, 100% { opacity: 0.35; }
+        50% { opacity: 0.7; }
+      }
+
+      .cta-blink { animation: ctaBlink 2s ease-in-out infinite; }
+      @keyframes ctaBlink {
+        0%, 100% { opacity: 0.9; }
+        50% { opacity: 1; }
+      }
+
+      .main-title {
+        font-family: 'Bebas Neue', 'Arial Black', sans-serif;
+        font-size: 72px;
+        font-weight: 400;
+        fill: #00cc00;
+        letter-spacing: 4px;
+      }
+      .subtitle {
+        font-family: 'Bebas Neue', 'Arial Black', sans-serif;
+        font-size: 42px;
+        font-weight: 400;
+        fill: #003300;
+        letter-spacing: 6px;
+      }
+      .powered-by {
+        font-family: 'Rajdhani', 'Arial', sans-serif;
+        font-size: 18px;
+        font-weight: 700;
+        fill: #00aa00;
+        letter-spacing: 8px;
+      }
+      .tag-text {
+        font-family: 'Rajdhani', 'Arial', sans-serif;
+        font-size: 18px;
+        font-weight: 700;
+        fill: #00aa00;
+        letter-spacing: 4px;
+      }
+      .sub-text {
+        font-family: 'Rajdhani', 'Arial', sans-serif;
+        font-size: 13px;
+        font-weight: 600;
+        fill: rgba(0,80,0,0.7);
+        letter-spacing: 3px;
+      }
+      .cta-text {
+        font-family: 'Bebas Neue', 'Arial Black', sans-serif;
+        font-size: 24px;
+        font-weight: 400;
+        fill: #ffffff;
+        letter-spacing: 5px;
+      }
+      .label-text {
+        font-family: 'Rajdhani', 'Arial', sans-serif;
+        font-size: 11px;
+        font-weight: 600;
+        fill: rgba(0,100,0,0.6);
+        letter-spacing: 2px;
+      }
+    </style>
+
+    
+    <pattern patternUnits="userSpaceOnUse" height="24" width="24" id="grid">
+      <path stroke-width="0.5" stroke="rgba(0,180,0,0.08)" fill="none" d="M 24 0 L 0 0 0 24"></path>
+    </pattern>
+
+    <filter id="textGlow">
+      <feGaussianBlur result="blur" stdDeviation="4"></feGaussianBlur>
+      <feMerge><feMergeNode in="blur"></feMergeNode><feMergeNode in="SourceGraphic"></feMergeNode></feMerge>
+    </filter>
+
+    <clipPath id="bannerClip1">
+      <rect height="800" width="400"></rect>
+    </clipPath>
+  </defs>
+
+  
+  <rect fill="#ffffff" height="800" width="400"></rect>
+
+  
+  <rect fill="url(#grid)" height="800" width="400"></rect>
+
+  
+  <rect opacity="0.25" stroke-width="4" stroke="#00cc00" fill="none" height="800" width="400"></rect>
+
+  
+  <g clip-path="url(#bannerClip1)">
+    <rect opacity="0.35" fill="#00cc00" height="3" width="400" y="0" x="0" class="stripe1"></rect>
+    <rect opacity="0.25" fill="#00cc00" height="2" width="400" y="0" x="0" class="stripe2"></rect>
+    <rect opacity="0.18" fill="#00cc00" height="2" width="400" y="0" x="0" class="stripe3"></rect>
+  </g>
+
+  
+  <ellipse fill="rgba(0,180,0,0.08)" ry="160" rx="260" cy="760" cx="200" class="glow-pulse"></ellipse>
+  <ellipse fill="rgba(0,200,0,0.06)" ry="90" rx="140" cy="760" cx="200" class="glow-pulse"></ellipse>
+
+  
+  <line stroke-width="2.5" stroke="#00cc00" y2="3" x2="50" y1="3" x1="3"></line>
+  <line stroke-width="2.5" stroke="#00cc00" y2="50" x2="3" y1="3" x1="3"></line>
+  <line stroke-width="2.5" stroke="#00cc00" y2="3" x2="350" y1="3" x1="397"></line>
+  <line stroke-width="2.5" stroke="#00cc00" y2="50" x2="397" y1="3" x1="397"></line>
+  <line stroke-width="2.5" stroke="#00cc00" y2="797" x2="50" y1="797" x1="3"></line>
+  <line stroke-width="2.5" stroke="#00cc00" y2="750" x2="3" y1="797" x1="3"></line>
+  <line stroke-width="2.5" stroke="#00cc00" y2="797" x2="350" y1="797" x1="397"></line>
+  <line stroke-width="2.5" stroke="#00cc00" y2="750" x2="397" y1="797" x1="397"></line>
+
+  
+  <text filter="url(#textGlow)" text-anchor="middle" y="125" x="200" class="main-title">SMARTER</text>
+  <text text-anchor="middle" y="175" x="200" class="subtitle">TRAVEL</text>
+  <text text-anchor="middle" y="208" x="200" class="powered-by">POWERED BY AI</text>
+
+  
+  <line opacity="0.6" stroke-width="1" stroke="#00cc00" y2="230" x2="360" y1="230" x1="40"></line>
+  <circle fill="#00cc00" r="3" cy="230" cx="200"></circle>
+
+  
+  <text text-anchor="middle" y="255" x="200" class="label-text">INTELLIGENT TRAVEL EXPERIENCES</text>
+
+  
+  <g clip-path="url(#bannerClip1)">
+    <g class="plane-group">
+      
+      <line stroke-dasharray="6 5" opacity="0.6" stroke-width="2" stroke="#00cc00" y2="18" x2="-130" y1="18" x1="-10"></line>
+      <line opacity="0.4" stroke-width="3" stroke="#00cc00" y2="18" x2="-80" y1="18" x1="-10"></line>
+      
+      <path opacity="0.95" fill="#00cc00" d="M0 18 L80 10 L100 18 L80 24 Z"></path>
+      
+      <path fill="#00aa00" d="M50 10 L72 0 L76 10 Z"></path>
+      <path fill="#00aa00" d="M50 24 L72 36 L76 24 Z"></path>
+      
+      <path fill="#008800" d="M16 16 L26 8 L28 16 Z"></path>
+      <path fill="#008800" d="M16 20 L26 28 L28 20 Z"></path>
+      
+      <ellipse fill="rgba(200,255,200,0.7)" ry="4" rx="7" cy="17" cx="82"></ellipse>
+      
+      <rect fill="#006600" rx="2" height="4" width="14" y="8" x="44"></rect>
+      <rect fill="#006600" rx="2" height="4" width="14" y="22" x="44"></rect>
+    </g>
+  </g>
+
+  
+  <rect fill="rgba(0,180,0,0.25)" height="1" width="320" y="330" x="40"></rect>
+
+  
+  <g transform="translate(200,450)" opacity="0.15">
+    <ellipse stroke-width="1" stroke="#00cc00" fill="none" ry="90" rx="90" cy="0" cx="0"></ellipse>
+    <ellipse stroke-width="0.8" stroke="#00cc00" fill="none" ry="35" rx="90" cy="0" cx="0"></ellipse>
+    <line stroke-width="0.8" stroke="#00cc00" y2="0" x2="90" y1="0" x1="-90"></line>
+    <line stroke-width="0.8" stroke="#00cc00" y2="90" x2="0" y1="-90" x1="0"></line>
+    <ellipse stroke-width="0.8" stroke="#00cc00" fill="none" ry="90" rx="55" cy="0" cx="0"></ellipse>
+  </g>
+
+  
+  <text text-anchor="middle" y="570" x="200" class="tag-text">FLY BEYOND LIMITS</text>
+  <text text-anchor="middle" y="596" x="200" class="sub-text">YOUR JOURNEY STARTS HERE</text>
+
+  
+  <line opacity="0.35" stroke-width="0.5" stroke="#00cc00" y2="615" x2="320" y1="615" x1="80"></line>
+
+  
+  <text fill="#00cc00" font-size="32" font-family="'Bebas Neue','Arial Black',sans-serif" text-anchor="middle" y="648" x="100">150+</text>
+  <text letter-spacing="2" fill="rgba(0,90,0,0.65)" font-weight="600" font-size="11" font-family="'Rajdhani','Arial',sans-serif" text-anchor="middle" y="668" x="100">DESTINATIONS</text>
+
+  <line stroke-width="0.5" stroke="rgba(0,160,0,0.3)" y2="670" x2="200" y1="630" x1="200"></line>
+
+  <text fill="#00cc00" font-size="32" font-family="'Bebas Neue','Arial Black',sans-serif" text-anchor="middle" y="648" x="300">24/7</text>
+  <text letter-spacing="2" fill="rgba(0,90,0,0.65)" font-weight="600" font-size="11" font-family="'Rajdhani','Arial',sans-serif" text-anchor="middle" y="668" x="300">SUPPORT</text>
+
+  
+  <polygon fill="#00cc00" points="80,710 320,710 340,730 320,752 80,752 60,730" class="cta-blink"></polygon>
+  <polygon stroke-width="2" stroke="#ffffff" fill="none" points="81,711 319,711 338,730 319,751 81,751 62,730"></polygon>
+  <text text-anchor="middle" y="736" x="200" class="cta-text">BOOK NOW</text>
+
+  
+  <text letter-spacing="3" fill="rgba(0,140,0,0.5)" font-weight="600" font-size="10" font-family="'Rajdhani','Arial',sans-serif" text-anchor="middle" y="778" x="200">TRAVACTIVE.COM</text>
+</svg>

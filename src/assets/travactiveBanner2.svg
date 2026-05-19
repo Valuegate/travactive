@@ -1,0 +1,236 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 800" width="400" height="800">
+  <defs>
+    <style>
+      .plane-grp2 { animation: fly2 4s ease-in-out infinite 0.5s; }
+      @keyframes fly2 {
+        0%   { transform: translate(-120px, 720px) rotate(-25deg); opacity: 0; }
+        15%  { opacity: 1; }
+        85%  { opacity: 1; }
+        100% { transform: translate(500px, -80px) rotate(-25deg); opacity: 0; }
+      }
+
+      .orbit1 { animation: spin1 9s linear infinite; transform-origin: 200px 400px; }
+      .orbit2 { animation: spin2 6s linear infinite reverse; transform-origin: 200px 400px; }
+      .orbit3 { animation: spin1 14s linear infinite 2s; transform-origin: 200px 400px; }
+      @keyframes spin1 { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+      @keyframes spin2 { from { transform: rotate(0deg); } to { transform: rotate(-360deg); } }
+
+      .dot1 { animation: orbitDot1 9s linear infinite; transform-origin: 200px 400px; }
+      .dot2 { animation: orbitDot2 6s linear infinite reverse; transform-origin: 200px 400px; }
+      @keyframes orbitDot1 { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+      @keyframes orbitDot2 { from { transform: rotate(0deg); } to { transform: rotate(-360deg); } }
+
+      .glitch { animation: glitch2 7s ease infinite; }
+      @keyframes glitch2 {
+        0%,88%,100% { transform: translateX(0); filter: none; }
+        90% { transform: translateX(-3px); filter: drop-shadow(3px 0 rgba(255,0,0,0.6)) drop-shadow(-3px 0 rgba(0,255,255,0.6)); }
+        92% { transform: translateX(3px); filter: drop-shadow(-3px 0 rgba(255,0,0,0.6)) drop-shadow(3px 0 rgba(0,255,255,0.6)); }
+        94% { transform: translateX(0); filter: none; }
+      }
+
+      .sweep { animation: sweepAnim 3s ease infinite; }
+      @keyframes sweepAnim {
+        0%   { transform: translateX(-100%) scaleX(1); opacity: 0.15; }
+        50%  { transform: translateX(0) scaleX(1); opacity: 0.08; }
+        100% { transform: translateX(100%) scaleX(1); opacity: 0; }
+      }
+
+      .pulse-ring { animation: pulseRing 2.5s ease-out infinite; }
+      @keyframes pulseRing {
+        0%   { r: 8; opacity: 0.8; }
+        100% { r: 30; opacity: 0; }
+      }
+
+      .cta-pulse { animation: ctaP2 2s ease-in-out infinite; }
+      @keyframes ctaP2 {
+        0%,100% { stroke-opacity: 0.6; }
+        50% { stroke-opacity: 1; }
+      }
+
+      .twinkle1 { animation: tw 2.3s ease-in-out infinite 0.1s; }
+      .twinkle2 { animation: tw 1.8s ease-in-out infinite 0.7s; }
+      .twinkle3 { animation: tw 2.7s ease-in-out infinite 1.3s; }
+      .twinkle4 { animation: tw 2.1s ease-in-out infinite 0.4s; }
+      .twinkle5 { animation: tw 3.0s ease-in-out infinite 1.8s; }
+      @keyframes tw {
+        0%,100% { opacity: 0.15; }
+        50% { opacity: 0.8; }
+      }
+
+      .scan { animation: scanLine 4s linear infinite; }
+      @keyframes scanLine {
+        0% { transform: translateY(-10px); opacity: 0; }
+        10% { opacity: 0.6; }
+        90% { opacity: 0.6; }
+        100% { transform: translateY(810px); opacity: 0; }
+      }
+    </style>
+
+    <clipPath id="clip2">
+      <rect width="400" height="800"/>
+    </clipPath>
+
+    <filter id="glow2">
+      <feGaussianBlur stdDeviation="6" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+
+    <filter id="softGlow">
+      <feGaussianBlur stdDeviation="12" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- Deep forest background -->
+  <rect width="400" height="800" fill="#040f04"/>
+
+  <!-- Subtle diagonal tone -->
+  <polygon points="0,0 400,0 400,350 0,500" fill="rgba(10,40,10,0.5)"/>
+
+  <!-- Star field -->
+  <circle class="twinkle1" cx="60" cy="80" r="1.5" fill="rgba(100,255,100,0.6)"/>
+  <circle class="twinkle2" cx="340" cy="120" r="1.5" fill="rgba(100,255,100,0.6)"/>
+  <circle class="twinkle3" cx="80" cy="280" r="1" fill="rgba(100,255,100,0.5)"/>
+  <circle class="twinkle4" cx="360" cy="310" r="1.5" fill="rgba(100,255,100,0.6)"/>
+  <circle class="twinkle5" cx="30" cy="480" r="1" fill="rgba(100,255,100,0.5)"/>
+  <circle class="twinkle1" cx="370" cy="550" r="1.5" fill="rgba(100,255,100,0.4)"/>
+  <circle class="twinkle3" cx="50" cy="650" r="1" fill="rgba(100,255,100,0.5)"/>
+  <circle class="twinkle2" cx="330" cy="700" r="1.5" fill="rgba(100,255,100,0.4)"/>
+  <circle class="twinkle4" cx="200" cy="60" r="1" fill="rgba(100,255,100,0.5)"/>
+  <circle class="twinkle5" cx="150" cy="730" r="1.5" fill="rgba(100,255,100,0.4)"/>
+
+  <!-- Scan line -->
+  <g clip-path="url(#clip2)">
+    <rect class="scan" x="0" y="0" width="400" height="2" fill="rgba(0,200,0,0.25)"/>
+  </g>
+
+  <!-- Orbit rings centered at 200,420 -->
+  <g clip-path="url(#clip2)">
+    <ellipse class="orbit1" cx="200" cy="420" rx="160" ry="50" fill="none" stroke="rgba(0,200,0,0.12)" stroke-width="1"/>
+    <!-- Orbiting dot on orbit1 -->
+    <g class="dot1">
+      <circle cx="360" cy="420" r="4" fill="#00ff00" filter="url(#glow2)"/>
+      <circle cx="360" cy="420" r="2" fill="#ccffcc"/>
+    </g>
+
+    <ellipse class="orbit2" cx="200" cy="420" rx="120" ry="38" fill="none" stroke="rgba(0,180,0,0.1)" stroke-width="0.8"/>
+    <g class="dot2">
+      <circle cx="80" cy="420" r="3" fill="#00cc00" filter="url(#glow2)"/>
+    </g>
+
+    <ellipse class="orbit3" cx="200" cy="420" rx="190" ry="65" fill="none" stroke="rgba(0,150,0,0.08)" stroke-width="0.6"/>
+  </g>
+
+  <!-- Pulse rings around logo area -->
+  <circle class="pulse-ring" cx="200" cy="420" r="8" fill="none" stroke="#00aa00" stroke-width="1.5"/>
+
+  <!-- LOGO - Orbitron style -->
+  <g class="glitch">
+    <text x="200" y="115"
+      text-anchor="middle"
+      font-family="'Orbitron','Courier New',monospace"
+      font-size="42px"
+      font-weight="900"
+      fill="#00ff00"
+      letter-spacing="5"
+      filter="url(#glow2)">TRAVACTIVE</text>
+  </g>
+
+  <text x="200" y="145"
+    text-anchor="middle"
+    font-family="'Orbitron','Courier New',monospace"
+    font-size="13px"
+    font-weight="700"
+    fill="rgba(255,255,255,0.5)"
+    letter-spacing="10">TRAVEL</text>
+
+  <!-- Top decorative line -->
+  <line x1="60" y1="68" x2="340" y2="68" stroke="rgba(0,200,0,0.3)" stroke-width="0.5"/>
+  <line x1="100" y1="64" x2="300" y2="64" stroke="rgba(0,200,0,0.5)" stroke-width="1"/>
+  <polygon points="190,58 200,50 210,58" fill="#00cc00" opacity="0.7"/>
+
+  <!-- Animated Plane -->
+  <g clip-path="url(#clip2)">
+    <g class="plane-grp2">
+      <!-- Long trail -->
+      <line x1="-15" y1="16" x2="-140" y2="16" stroke="#00ee00" stroke-width="1.5" opacity="0.4" stroke-dasharray="5 4"/>
+      <line x1="-15" y1="16" x2="-60" y2="16" stroke="#00ee00" stroke-width="2.5" opacity="0.25"/>
+      <!-- Fuselage -->
+      <path d="M0 16 L72 8 L92 16 L72 22 Z" fill="#00ee00" opacity="0.9"/>
+      <!-- Wings -->
+      <path d="M44 8 L64 0 L68 8 Z" fill="#00bb00"/>
+      <path d="M44 22 L64 32 L68 22 Z" fill="#00bb00"/>
+      <!-- Tails -->
+      <path d="M12 14 L22 6 L24 14 Z" fill="#008800"/>
+      <path d="M12 18 L22 26 L24 18 Z" fill="#008800"/>
+      <!-- Cockpit -->
+      <ellipse cx="76" cy="15" rx="8" ry="4" fill="rgba(180,255,180,0.45)"/>
+      <!-- Engine glow -->
+      <circle cx="0" cy="16" r="5" fill="rgba(0,255,0,0.3)" filter="url(#glow2)"/>
+    </g>
+  </g>
+
+  <!-- Globe / world visual -->
+  <g transform="translate(200,420)" opacity="0.2">
+    <circle cx="0" cy="0" r="100" fill="none" stroke="#00ff00" stroke-width="0.8"/>
+    <ellipse cx="0" cy="0" rx="100" ry="38" fill="none" stroke="#00ff00" stroke-width="0.6"/>
+    <ellipse cx="0" cy="0" rx="60" ry="100" fill="none" stroke="#00ff00" stroke-width="0.6"/>
+    <line x1="-100" y1="0" x2="100" y2="0" stroke="#00ff00" stroke-width="0.6"/>
+    <line x1="0" y1="-100" x2="0" y2="100" stroke="#00ff00" stroke-width="0.6"/>
+    <ellipse cx="0" cy="0" rx="100" ry="20" fill="none" stroke="#00ff00" stroke-width="0.4"/>
+  </g>
+
+  <!-- Center dot -->
+  <circle cx="200" cy="420" r="6" fill="#00ff00" opacity="0.5"/>
+  <circle cx="200" cy="420" r="3" fill="#00ff00"/>
+
+  <!-- Bottom section -->
+  <line x1="40" y1="580" x2="360" y2="580" stroke="rgba(0,180,0,0.25)" stroke-width="0.5"/>
+
+  <text x="200" y="620"
+    text-anchor="middle"
+    font-family="'Orbitron','Courier New',monospace"
+    font-size="11px"
+    font-weight="700"
+    fill="#00ff00"
+    letter-spacing="5">EXPLORE THE WORLD</text>
+
+  <!-- Feature dots row -->
+  <circle cx="120" cy="650" r="3" fill="#00cc00"/>
+  <text x="133" y="655" font-family="'Orbitron','Courier New',monospace" font-size="9" fill="rgba(255,255,255,0.5)" letter-spacing="1">GLOBAL</text>
+  <circle cx="240" cy="650" r="3" fill="#00cc00"/>
+  <text x="253" y="655" font-family="'Orbitron','Courier New',monospace" font-size="9" fill="rgba(255,255,255,0.5)" letter-spacing="1">24/7</text>
+
+  <!-- CTA button outline style -->
+  <rect class="cta-pulse" x="110" y="690" width="180" height="50" fill="rgba(0,0,0,0.4)" stroke="#00c800" stroke-width="1.5" rx="2"/>
+  <!-- Sweep animation layer -->
+  <clipPath id="ctaClip2"><rect x="110" y="690" width="180" height="50" rx="2"/></clipPath>
+  <rect class="sweep" x="110" y="690" width="180" height="50" fill="#00c800" clip-path="url(#ctaClip2)"/>
+
+  <text x="200" y="721"
+    text-anchor="middle"
+    font-family="'Orbitron','Courier New',monospace"
+    font-size="16px"
+    font-weight="700"
+    fill="#00cc00"
+    letter-spacing="3">TAKE OFF</text>
+
+  <!-- Bottom label -->
+  <text x="200" y="776"
+    text-anchor="middle"
+    font-family="'Orbitron','Courier New',monospace"
+    font-size="8px"
+    font-weight="700"
+    fill="rgba(0,200,0,0.35)"
+    letter-spacing="3">TRAVACTIVE.COM</text>
+
+  <!-- Corner tick marks -->
+  <line x1="0" y1="0" x2="30" y2="0" stroke="#00cc00" stroke-width="1.5"/>
+  <line x1="0" y1="0" x2="0" y2="30" stroke="#00cc00" stroke-width="1.5"/>
+  <line x1="400" y1="0" x2="370" y2="0" stroke="#00cc00" stroke-width="1.5"/>
+  <line x1="400" y1="0" x2="400" y2="30" stroke="#00cc00" stroke-width="1.5"/>
+  <line x1="0" y1="800" x2="30" y2="800" stroke="#00cc00" stroke-width="1.5"/>
+  <line x1="0" y1="800" x2="0" y2="770" stroke="#00cc00" stroke-width="1.5"/>
+  <line x1="400" y1="800" x2="370" y2="800" stroke="#00cc00" stroke-width="1.5"/>
+  <line x1="400" y1="800" x2="400" y2="770" stroke="#00cc00" stroke-width="1.5"/>
+</svg>

@@ -1,10 +1,11 @@
 import React from "react";
 import CTAImage from"../assets/CTAImage.png";
+import { Link } from "react-router-dom";
 
 const CTA = () => {
   return (
     <section
-  className="relative text-white  text-center py-12 rounded-2xl shadow-md max-w-6xl mx-auto px-4  sm:mt-16 md:mt-20"
+  className="relative text-white  text-center py-12 rounded-2xl shadow-md max-w-6xl mx-auto px-4 sm:mt-16 md:mt-20"
   style={{
     backgroundImage: `linear-gradient(rgba(255, 76, 41, 0.85), rgba(255, 76, 41, 0.85)), url(${CTAImage})`,
     backgroundSize: "cover",
@@ -22,10 +23,11 @@ const CTA = () => {
     that help you make smarter choices—whether you’re studying abroad or
     exploring the world.
   </p>
-
+ <Link to="/get-started">
   <button className="bg-[#005A58] text-white text-[15px] sm:text-[16px] font-[Sora] font-semibold w-[180px] sm:w-[200px] md:w-[229px] px-6 py-3 rounded-full transition duration-300 hover:bg-[#007A76] hover:scale-105">
     Get Started Now
   </button>
+  </Link>
 </section>
 
   );

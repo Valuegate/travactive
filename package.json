@@ -11,14 +11,21 @@
   },
   "dependencies": {
     "@heroicons/react": "^2.2.0",
+<<<<<<< HEAD
+=======
+    "@react-oauth/google": "^0.13.0",
+>>>>>>> 50d47b0be4d7601c02504b9dcd04f93f8f3493a9
     "lucide-react": "^0.562.0",
     "react": "^19.1.1",
+    "react-calendar": "^6.0.0",
     "react-dom": "^19.1.1",
     "react-icons": "^5.5.0",
     "react-router-dom": "^7.9.5",
     "react-simple-typewriter": "^5.0.1",
+    "react-toastify": "^11.0.5",
     "react-typed": "^2.0.12",
-    "swiper": "^12.0.3"
+    "swiper": "^12.0.3",
+    "three": "^0.183.2"
   },
   "devDependencies": {
     "@eslint/js": "^9.36.0",

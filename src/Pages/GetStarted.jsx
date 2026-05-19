@@ -7,54 +7,63 @@ import HealthTravel from "../assets/healthiconsTravel.png";
 
 const GetStarted = () => {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
+    <div className="min-h-screen flex items-center justify-center bg-gray-100 px-4">
+      
       {/* Main Layout Container */}
       <div
         className="
           relative
-          w-[1488px] h-[958px]
-          top-[12px] left-[12px]
+          w-full max-w-[1488px]
+          min-h-[600px] lg:min-h-[900px]
           rounded-[20px]
-          opacity-100
           bg-[#F6F6F6]
           overflow-hidden
           flex flex-col lg:flex-row
           items-center
           justify-between
-          px-12 lg:px-20
-          py-12
-          gap-12
+          px-6 sm:px-10 lg:px-20
+          py-10 sm:py-12
+          gap-10 lg:gap-12
         "
       >
-        {/* Left side */}
-        <div className="flex-1 flex flex-col items-center text-left gap-6">
-          <Link to="/" className="absolute top-8 left-36 z-10">
-            <img
-              src={Logo}
-              alt="Travactive Logo"
-              className="w-32 h-auto cursor-pointer items-center"
-            />
-          </Link>
+        
+        {/* Logo */}
+        <Link
+          to="/"
+          className="
+            absolute 
+            top-4 sm:top-6 md:top-2 lg:top-8
+            left-4 sm:left-8 md:left-10 lg:left-6
+            z-10
+          "
+        >
+          <img
+            src={Logo}
+            alt="Travactive Logo"
+            className="w-24 sm:w-28 md:w-32 h-auto cursor-pointer"
+          />
+        </Link>
 
+        {/* Left side */}
+        <div className="flex-1 flex flex-col justify-center lg:justify-start text-center lg:text-left gap-4 lg:pr-0 lg:mt-[-400px] px-6">
+
+          
           {/* Heading */}
           <h2
             className="
-    w-[478px] h-[36px]
-    font-[Outfit]
-    font-semibold
-    text-[24px]
-    leading-[36px]
-    tracking-normal
-    text-[#212322]
-    opacity-100
-  "
+              max-w-[478px]
+              font-[Outfit] font-semibold
+              text-xl sm:text-2xl
+              leading-[30px] sm:leading-[36px]
+              text-[#212322]
+            "
           >
             Let's Personalize Your Travel Experience
           </h2>
 
           {/* Paragraph */}
           <p className="text-[rgba(51,51,51,0.72)] w-[478px] h-[72px] font-[Inter] font-medium text-[16px] leading-[24px] tracking-normal">
-            Choose the path that fits you—whether you're a student seeking
+            Choose the path that fits you—whether you’re a student seeking
             study-abroad insights or a traveler exploring global updates.
           </p>
 
@@ -67,7 +76,7 @@ const GetStarted = () => {
     mt-4
   "
           >
-            {/* Button 1 - As a Student */}
+            {/* Button 1 */}
             <a
               href="#"
               className="
@@ -81,8 +90,6 @@ const GetStarted = () => {
       shadow-[0_4px_12px_0_#0000001A]
       hover:bg-[#03B5AA]
       transition
-      cursor-pointer
-      no-underline
     "
             >
               <img
@@ -106,9 +113,9 @@ const GetStarted = () => {
               </p>
             </a>
 
-            {/* Button 2 - As a Traveler (Updated with Link component) */}
-            <Link
-              to="/signup"
+            {/* Button 2 */}
+            <a
+              href="#"
               className="
       flex flex-col items-start
       flex-1
@@ -120,9 +127,6 @@ const GetStarted = () => {
       shadow-[0_4px_12px_0_#0000001A]
       hover:bg-[#FFDE59]
       transition
-      no-underline
-      cursor-pointer
-      hover:no-underline
     "
             >
               <img
@@ -140,23 +144,24 @@ const GetStarted = () => {
               >
                 exploring global updates.
               </p>
-            </Link>
+            </a>
           </div>
         </div>
 
-        {/* Right side */}
-        <div className="flex-1 flex justify-center items-center mr-[-46px]">
+        {/* Right side (hidden for small & tablet screens) */}
+        <div className="hidden lg:flex flex-1 justify-center items-center w-full">
           <img
             src={RightImage}
             alt="Get Started Illustration"
             className="
-      w-[730px] h-[918px]
-      rounded-[18px]
-      opacity-100
-      object-cover
-    "
+              w-full max-w-[730px]
+              h-[918px]
+              rounded-[18px]
+              object-cover
+            "
           />
         </div>
+
       </div>
     </div>
   );

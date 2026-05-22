@@ -18,6 +18,32 @@ import Home from "./Pages/Home.jsx";
 import About from "./Pages/About.jsx";
 import Contact from "./Pages/Contact.jsx";
 import GetStarted from "./Pages/GetStarted.jsx";
+import Register from "./Pages/StudentDashboard/Register.jsx";
+import Login from "./Pages/StudentDashboard/Login.jsx";
+import TravLogin from "../src/Pages/TravlerDashboard/LoginPage.jsx";
+import TravRegister from "../src/Pages/TravlerDashboard/TravRegister.jsx";
+
+// Student Dashboard
+import Overview from "./Pages/StudentDashboard/Overview.jsx";
+import Explore from "./Pages/StudentDashboard/Explore.jsx";
+import Saved from "./Pages/StudentDashboard/Saved.jsx";
+import AskTravact from "./Pages/StudentDashboard/AskTravact.jsx";
+import Settings from "./Pages/StudentDashboard/Settings.jsx";
+
+// Traveler Dashboard (Lazy Loaded 🚀)
+import TravOverview from "../src/Pages/TravlerDashboard/Overview.jsx";
+import TravSettings from "../src/Pages/TravlerDashboard/TravSettings.jsx";
+
+const TravExplore = lazy(() =>
+  import("../src/Pages/TravlerDashboard/TravExplore.jsx")
+);
+const TravAsk = lazy(() =>
+  import("../src/Pages/TravlerDashboard/TravAsk.jsx")
+);
+const TopPicks = lazy(() =>
+  import("../src/Pages/TravlerDashboard/TopPicks.jsx")
+);
+
 import "./index.css";
 
 const Layout = ({ children }) => {
@@ -68,6 +94,7 @@ const App = () => {
             </Layout>
           }
         />
+
         <Route path="/get-started" element={<GetStarted />} />
         <Route path="/register" element={<Register />} />
         <Route path="/TravLogin" element={<TravLogin />} />

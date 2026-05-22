@@ -11,10 +11,7 @@
   },
   "dependencies": {
     "@heroicons/react": "^2.2.0",
-<<<<<<< HEAD
-=======
     "@react-oauth/google": "^0.13.0",
->>>>>>> 50d47b0be4d7601c02504b9dcd04f93f8f3493a9
     "lucide-react": "^0.562.0",
     "react": "^19.1.1",
     "react-calendar": "^6.0.0",

@@ -1,0 +1,250 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 800" width="400" height="800">
+  <defs>
+    <style>
+      .plane3 { animation: fly3 3.2s ease-in-out infinite 0.8s; }
+      @keyframes fly3 {
+        0%   { transform: translate(-110px, 720px) rotate(-20deg); opacity: 0; }
+        12%  { opacity: 1; }
+        88%  { opacity: 1; }
+        100% { transform: translate(500px, -80px) rotate(-20deg); opacity: 0; }
+      }
+
+      .active-glow { animation: activeGlow 2.8s ease-in-out infinite; }
+      @keyframes activeGlow {
+        0%,100% { filter: drop-shadow(0 0 10px rgba(0,255,0,0.4)); }
+        50% { filter: drop-shadow(0 0 30px rgba(0,255,0,1)) drop-shadow(0 0 60px rgba(0,255,0,0.4)); }
+      }
+
+      .dest-pulse { animation: destP 3.2s ease-in-out infinite 0.4s; }
+      @keyframes destP {
+        0%,100% { opacity: 0.8; }
+        50% { opacity: 1; }
+      }
+
+      .cta-shine { animation: shine3 2.5s ease infinite; }
+      @keyframes shine3 {
+        0%,65%,100% { opacity: 0; }
+        75% { opacity: 0.2; }
+        85% { opacity: 0; }
+      }
+
+      .top-bar { animation: topBar 4s ease-in-out infinite; }
+      @keyframes topBar {
+        0%,100% { stroke-dashoffset: 0; }
+        50% { stroke-dashoffset: -80; }
+      }
+
+      .flicker { animation: flicker3 8s ease infinite; }
+      @keyframes flicker3 {
+        0%,95%,100% { opacity: 1; }
+        96% { opacity: 0.6; }
+        97% { opacity: 1; }
+        98% { opacity: 0.7; }
+      }
+
+      .vline-anim { animation: vlineAnim 5s ease-in-out infinite; }
+      @keyframes vlineAnim {
+        0%,100% { opacity: 0.06; }
+        50% { opacity: 0.14; }
+      }
+    </style>
+
+    <clipPath id="clip3">
+      <rect width="400" height="800"/>
+    </clipPath>
+
+    <filter id="bigGlow">
+      <feGaussianBlur stdDeviation="15" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+
+    <filter id="medGlow">
+      <feGaussianBlur stdDeviation="6" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- Base background -->
+  <rect width="400" height="800" fill="#030d03"/>
+
+  <!-- Top band -->
+  <rect x="0" y="0" width="400" height="220" fill="rgba(8,38,8,0.7)"/>
+
+  <!-- Bottom glow pool -->
+  <ellipse cx="200" cy="800" rx="280" ry="180" fill="rgba(0,160,0,0.1)"/>
+  <ellipse cx="200" cy="800" rx="160" ry="100" fill="rgba(0,200,0,0.08)"/>
+
+  <!-- Vertical grid lines -->
+  <g clip-path="url(#clip3)">
+    <line class="vline-anim" x1="80" y1="0" x2="80" y2="800" stroke="#00ff00" stroke-width="0.8"/>
+    <line class="vline-anim" x1="160" y1="0" x2="160" y2="800" stroke="#00ff00" stroke-width="0.8"/>
+    <line class="vline-anim" x1="240" y1="0" x2="240" y2="800" stroke="#00ff00" stroke-width="0.8"/>
+    <line class="vline-anim" x1="320" y1="0" x2="320" y2="800" stroke="#00ff00" stroke-width="0.8"/>
+  </g>
+
+  <!-- Top accent bar -->
+  <rect x="0" y="0" width="400" height="5" fill="#00cc00"/>
+  <rect x="0" y="0" width="400" height="5" fill="rgba(0,255,0,0.3)"/>
+
+  <!-- Logo top accent line -->
+  <rect x="160" y="28" width="80" height="2.5" fill="#00cc00"/>
+  <rect x="180" y="24" width="40" height="1.5" fill="rgba(0,200,0,0.5)"/>
+
+  <!-- TRAVACTIVE main logo -->
+  <g class="flicker">
+    <!-- TRAV - massive -->
+    <text x="200" y="128"
+      text-anchor="middle"
+      font-family="'Barlow Condensed','Impact','Arial Black',sans-serif"
+      font-size="116px"
+      font-weight="900"
+      fill="#ffffff"
+      letter-spacing="2">TRAV</text>
+
+    <!-- ACTIVE - green glowing -->
+    <g class="active-glow">
+      <text x="200" y="186"
+        text-anchor="middle"
+        font-family="'Barlow Condensed','Impact','Arial Black',sans-serif"
+        font-size="58px"
+        font-weight="900"
+        fill="#00ff00"
+        letter-spacing="16">ACTIVE</text>
+    </g>
+  </g>
+
+  <!-- Thin rule below logo -->
+  <line x1="30" y1="202" x2="370" y2="202" stroke="rgba(0,200,0,0.35)" stroke-width="0.8"/>
+
+  <!-- Animated Plane -->
+  <g clip-path="url(#clip3)">
+    <g class="plane3">
+      <!-- Long vapor trail -->
+      <line x1="-10" y1="17" x2="-160" y2="17" stroke="rgba(255,255,255,0.35)" stroke-width="1.5"/>
+      <line x1="-10" y1="17" x2="-100" y2="17" stroke="rgba(255,255,255,0.2)" stroke-width="3"/>
+      <!-- Fuselage -->
+      <path d="M0 17 L76 9 L96 17 L76 23 Z" fill="white" opacity="0.92"/>
+      <!-- Wings -->
+      <path d="M48 9 L70 0 L74 9 Z" fill="rgba(230,255,230,0.85)"/>
+      <path d="M48 23 L70 34 L74 23 Z" fill="rgba(230,255,230,0.85)"/>
+      <!-- Tail -->
+      <path d="M14 15 L24 7 L26 15 Z" fill="rgba(200,255,200,0.7)"/>
+      <path d="M14 19 L24 27 L26 19 Z" fill="rgba(200,255,200,0.7)"/>
+      <!-- Cockpit -->
+      <ellipse cx="79" cy="16" rx="8" ry="4.5" fill="rgba(150,255,150,0.5)"/>
+      <!-- Engine glow exhaust -->
+      <ellipse cx="3" cy="17" rx="6" ry="3" fill="rgba(0,255,100,0.25)" filter="url(#medGlow)"/>
+    </g>
+  </g>
+
+  <!-- Mid content: destination area -->
+  <text x="200" y="264"
+    text-anchor="middle"
+    font-family="'Barlow Condensed','Impact','Arial Black',sans-serif"
+    font-size="13px"
+    font-weight="700"
+    fill="rgba(255,255,255,0.35)"
+    letter-spacing="6">YOUR NEXT ADVENTURE</text>
+
+  <!-- Decorative H-rule with diamond -->
+  <line x1="30" y1="284" x2="183" y2="284" stroke="rgba(0,200,0,0.35)" stroke-width="0.8"/>
+  <polygon points="200,277 207,284 200,291 193,284" fill="#00cc00" opacity="0.8"/>
+  <line x1="217" y1="284" x2="370" y2="284" stroke="rgba(0,200,0,0.35)" stroke-width="0.8"/>
+
+  <!-- ANYWHERE - large destination word -->
+  <g class="dest-pulse">
+    <text x="200" y="356"
+      text-anchor="middle"
+      font-family="'Barlow Condensed','Impact','Arial Black',sans-serif"
+      font-size="72px"
+      font-weight="900"
+      fill="#00ff00"
+      letter-spacing="2"
+      filter="url(#medGlow)">ANYWHERE</text>
+  </g>
+
+  <text x="200" y="390"
+    text-anchor="middle"
+    font-family="'Barlow Condensed','Impact','Arial Black',sans-serif"
+    font-size="28px"
+    font-weight="700"
+    fill="rgba(255,255,255,0.5)"
+    letter-spacing="8">IN THE WORLD</text>
+
+  <!-- Decorative divider -->
+  <line x1="30" y1="415" x2="370" y2="415" stroke="rgba(0,180,0,0.2)" stroke-width="0.5"/>
+
+  <!-- Features / highlights -->
+  <!-- Feature 1 -->
+  <line x1="44" y1="440" x2="44" y2="500" stroke="#00cc00" stroke-width="2"/>
+  <text x="58" y="458"
+    font-family="'Barlow Condensed','Impact','Arial Black',sans-serif"
+    font-size="26px"
+    font-weight="900"
+    fill="#ffffff">150+ DESTINATIONS</text>
+  <text x="58" y="478"
+    font-family="'Barlow Condensed',sans-serif"
+    font-size="13px"
+    font-weight="700"
+    fill="rgba(255,255,255,0.4)"
+    letter-spacing="2">WORLDWIDE REACH</text>
+
+  <!-- Feature 2 -->
+  <line x1="44" y1="510" x2="44" y2="570" stroke="#00cc00" stroke-width="2"/>
+  <text x="58" y="528"
+    font-family="'Barlow Condensed','Impact','Arial Black',sans-serif"
+    font-size="26px"
+    font-weight="900"
+    fill="#ffffff">BEST PRICE DEALS</text>
+  <text x="58" y="548"
+    font-family="'Barlow Condensed',sans-serif"
+    font-size="13px"
+    font-weight="700"
+    fill="rgba(255,255,255,0.4)"
+    letter-spacing="2">GUARANTEED SAVINGS</text>
+
+  <!-- Feature 3 -->
+  <line x1="44" y1="580" x2="44" y2="640" stroke="#00cc00" stroke-width="2"/>
+  <text x="58" y="598"
+    font-family="'Barlow Condensed','Impact','Arial Black',sans-serif"
+    font-size="26px"
+    font-weight="900"
+    fill="#ffffff">24/7 LIVE SUPPORT</text>
+  <text x="58" y="618"
+    font-family="'Barlow Condensed',sans-serif"
+    font-size="13px"
+    font-weight="700"
+    fill="rgba(255,255,255,0.4)"
+    letter-spacing="2">ALWAYS HERE FOR YOU</text>
+
+  <!-- Bottom rule -->
+  <line x1="30" y1="658" x2="370" y2="658" stroke="rgba(0,200,0,0.25)" stroke-width="0.5"/>
+
+  <!-- CTA button — solid bold -->
+  <rect x="60" y="676" width="280" height="64" rx="1" fill="#00cc00"/>
+  <!-- Shine sweep -->
+  <clipPath id="ctaClip3"><rect x="60" y="676" width="280" height="64" rx="1"/></clipPath>
+  <rect class="cta-shine" x="60" y="676" width="280" height="64" fill="white" clip-path="url(#ctaClip3)"/>
+  <!-- Right arrow accent -->
+  <polygon points="316,708 330,700 330,716" fill="rgba(0,60,0,0.4)"/>
+
+  <text x="188" y="718"
+    text-anchor="middle"
+    font-family="'Barlow Condensed','Impact','Arial Black',sans-serif"
+    font-size="30px"
+    font-weight="900"
+    fill="#001a00"
+    letter-spacing="5">FLY NOW</text>
+
+  <!-- Bottom domain -->
+  <text x="200" y="768"
+    text-anchor="middle"
+    font-family="'Barlow Condensed',sans-serif"
+    font-size="12px"
+    font-weight="700"
+    fill="rgba(0,200,0,0.4)"
+    letter-spacing="4">TRAVACTIVE.COM</text>
+
+  <!-- Bottom accent bar -->
+  <rect x="0" y="795" width="400" height="5" fill="#00cc00" opacity="0.7"/>
+</svg>

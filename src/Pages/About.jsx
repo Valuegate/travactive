@@ -1,9 +1,9 @@
 import React from "react";
 import Navbar from "../Components/Navbar";
-import AboutHero from "../assets/AboutHero.jpg"; // Ensure this image exists in /src/assets
-import Globe from "../assets/FrameGlobe.png"; // Ensure this image exists in /src/assets
-import Globe2 from "../assets/FrameGlobe2.png"; // Ensure this image exists in /src/assets
-import img8 from "../assets/Image.png"; // Ensure this image exists in /src/assets
+import AboutHero from "../assets/AboutHero.jpg";
+import Globe from "../assets/FrameGlobe.png";
+import Globe2 from "../assets/FrameGlobe2.png";
+import img8 from "../assets/Image.png";
 import CTA from "../Components/CTA.jsx";
 import HeroImage from "../assets/CTAImage.png";
 import Simplified from "../assets/Simplified.jpg";
@@ -14,352 +14,143 @@ const About = () => {
   return (
     <>
       {/* ======= Hero Section ======= */}
-      <section className="relative w-full -mt-3 mb-10 flex justify-center">
+      <section className="relative w-full h-auto mb-1 flex justify-center px-2">
         <div
-          className="relative bg-center bg-cover flex flex-col justify-start overflow-hidden rounded-[16px]"
+          className="relative w-full max-w-[1472px] min-h-[600px] sm:min-h-[700px] lg:min-h-[900px] bg-center bg-cover flex flex-col overflow-hidden rounded-[16px]"
           style={{
             backgroundImage: `linear-gradient(#0234368F, #0234368F), url(${AboutHero})`,
-            width: "1472px",
-            height: "982px",
-            backgroundColor: "#0234368F",
-            opacity: "1",
-            top: "1px",
-            // left: "20px",
           }}
         >
           {/* Overlay */}
           <div className="absolute inset-0 bg-black/20 z-0 rounded-2xl"></div>
 
           {/* Navbar */}
-          <div className="relative z-20 mt-8 ">
+          <div className="relative z-20 mt-6 sm:mt-8">
             <Navbar />
           </div>
 
-          {/* Text + Card Container */}
-          <div className="relative z-10   sm:mt-3.5 grow flex flex-col items-center justify-center text-center text-white px-4 sm:px-6 md:px-8">
-            <div className="max-w-4xl -mt-5 mb-72 space-y-12 sm:mb-12 ">
-              <h3 className="text-2xl mb-56 sm:text-3xl md:text-4xl lg:text-5xl font-semibold leading-tight">
+          {/* Hero Text */}
+          <div className="relative z-10 flex flex-col items-center justify-center text-center text-white px-4 sm:px-6 grow">
+            <div className="max-w-4xl mt-10 sm:mt-16 lg:mt-0 mb-10 sm:mb-20 lg:mb-40">
+              <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold leading-tight">
                 We Don’t Just Share Travel Info; We Simplify It for You
               </h3>
             </div>
 
-            {/* Card Section */}
+            {/* Cards */}
             <div
-              className="w-full max-w-full mt-20 md:max-w-[1344px] flex flex-col md:flex-row justify-center gap-4 p-2 mx-auto rounded-[14px] shadow-lg overflow-hidden"
+              className="w-full mt-5 mb-5 sm:mt-16 md:max-w-[1344px] flex flex-col md:flex-row gap-4 p-3 mx-auto rounded-[14px] shadow-lg"
               style={{
                 backgroundImage: `linear-gradient(rgba(255, 76, 41, 0.1), rgba(255, 76, 41, 0.1)), url(${HeroImage})`,
                 backgroundSize: "cover",
-                backgroundRepeat: "no-repeat",
                 backgroundPosition: "center",
-                backgroundBlendMode: "lighten", // blends color with image
-
-                backgroundColor: "rgba(255, 255, 255, 0.75)",
+                backgroundBlendMode: "lighten",
+                backgroundColor: "rgba(255,255,255,0.75)",
               }}
             >
-              <div className="flex flex-col md:flex-row justify-between gap-4 w-full">
-                {/* Card 1 */}
-                <div className="flex flex-row items-center gap-4 w-full md:w-[394px] p-2 border-b md:border-b-0 md:border-r border-[#023436]">
-                  <div className="flex flex-col items-center">
-                    {/* Image */}
-                    <div className="w-24 h-24 overflow-hidden rounded-lg shrink-0">
-                      <img
-                        src={Simplified}
-                        alt="Expert Guides"
-                        className="w-full h-full object-cover"
-                      />
+              {[ 
+                {
+                  img: Simplified,
+                  title: "Fact-Checked Travel, Simplified",
+                  text: "Practical, up-to-date guides written by experienced travellers and local insiders.",
+                },
+                {
+                  img: Bag,
+                  title: "Built for Every Kind of Traveler",
+                  text: "Whether you’re a student or global explorer, we’ve built tools tailored for your journey.",
+                },
+                {
+                  img: ClearInsight,
+                  title: "Clear Insights. Smarter Decisions",
+                  text: "We simplify visas, travel rules, and updates so you can make confident decisions.",
+                },
+              ].map((card, i) => (
+                <div
+                  key={i}
+                 className="flex flex-row md:flex-col lg:flex-row items-cente md:items-start lg:items-center gap-4 w-full md:w-1/3 p-2 border-b md:border-b-0 md:border-r last:border-none border-[#023436]"
+
+                >
+                  <div className="flex flex-col items-center w-full md:items-center">
+
+                    <div className="w-20 h-20 sm:w-24 sm:h-24 overflow-hidden rounded-lg">
+                      <img src={card.img} alt="" className="w-full h-full object-cover" />
                     </div>
 
-                    {/* Two lines under the image */}
                     <div className="flex flex-col gap-1 mt-2 items-center">
-                      <div
-                        style={{
-                          width: "84px",
-                          height: "8px",
-                          borderRadius: "2px",
-                          backgroundColor: "#03B5AA",
-                        }}
-                      ></div>
-                      <div
-                        style={{
-                          width: "56px",
-                          height: "8px",
-                          borderRadius: "2px",
-                          backgroundColor: "#03B5AA",
-                        }}
-                      ></div>
+                      <div className="w-[84px] h-[6px] bg-[#03B5AA] rounded"></div>
+                      <div className="w-[56px] h-[6px] bg-[#03B5AA] rounded"></div>
                     </div>
                   </div>
 
-                  <div className="flex flex-col text-start">
-                    <h4 className="text-[20px] sm:text-[24px] leading-[24px] font-medium text-[#023436] font-[Outfit]">
-                      Fact-Checked Travel, Simplified
+                  <div>
+                    <h4 className="text-[18px] sm:text-[22px] font-medium text-[#023436]">
+                      {card.title}
                     </h4>
-                    <p className="mt-2 text-[12px] sm:text-[14px] leading-[18px] text-[#333333D6] font-[Inter]">
-                      Practical, up-to-date guides written by experienced
-                      travellers and local insiders.
+                    <p className="mt-2 text-[13px] sm:text-[14px] text-[#333333D6]">
+                      {card.text}
                     </p>
                   </div>
                 </div>
-
-                {/* Card 2 */}
-                <div className="flex flex-row items-center gap-4 w-full md:w-[394px] p-2 border-b md:border-b-0 md:border-r border-[#023436]">
-                  <div className="flex flex-col items-center">
-                    <div className="w-24 h-24 overflow-hidden rounded-lg shrink-0">
-
-                
-                    <img
-                      src={Bag}
-                      alt="Simple Tools"
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                   <div className="flex flex-col gap-1 mt-2 items-center">
-                      <div
-                        style={{
-                          width: "84px",
-                          height: "8px",
-                          borderRadius: "2px",
-                          backgroundColor: "#03B5AA",
-                        }}
-                      ></div>
-                      <div
-                        style={{
-                          width: "56px",
-                          height: "8px",
-                          borderRadius: "2px",
-                          backgroundColor: "#03B5AA",
-                        }}
-                      ></div>
-                      </div>
-                    </div>
-                  <div className="flex flex-col text-start">
-                    <h4 className="text-[20px] sm:text-[24px] leading-[24px] font-medium text-[#023436] font-[Outfit]">
-                      Built for Every Kind of Traveler
-                    </h4>
-                    <p className="mt-2 text-[12px] sm:text-[14px] leading-[18px] text-[#333333D6] font-[Inter]">
-                      Whether you’re a student exploring study opportunities, a
-                      global explorer seeking advisories, we’ve built tools just
-                      for you.
-                    </p>
-                  </div>
-                </div>
-
-                {/* Card 3 */}
-                <div className="flex flex-row items-center gap-4 w-full md:w-[394px] p-2">
-                  <div className="flex flex-col items-center">
-                  <div className="w-24 h-24 overflow-hidden rounded-lg shrink-0">
-                    <img
-                      src={ClearInsight}
-                      alt="Trusted Tips"
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                  <div className="flex flex-col gap-1 mt-2 items-center">
-                      <div
-                        style={{
-                          width: "84px",
-                          height: "8px",
-                          borderRadius: "2px",
-                          backgroundColor: "#03B5AA",
-                        }}
-                      ></div>
-                      <div
-                        style={{
-                          width: "56px",
-                          height: "8px",
-                          borderRadius: "2px",
-                          backgroundColor: "#03B5AA",
-                        }}
-                      ></div>
-                      </div>
-                      </div>
-                  <div className="flex flex-col text-start">
-                    <h4 className="text-[20px] sm:text-[24px] leading-[24px] font-medium text-[#023436] font-[Outfit]">
-                      Clear Insights. Smarter Decisions
-                    </h4>
-                    <p className="mt-2 text-[12px] sm:text-[14px] leading-[18px] text-[#333333D6] font-[Inter]">
-                      We cut through the complexity of visas, travel rules &
-                      global updates, giving you clear insights for
-                      decision-making.
-                    </p>
-                  </div>
-                </div>
-              </div>
+              ))}
             </div>
           </div>
         </div>
       </section>
 
-      <div class="w-[1512px] h-0 border-t-2 border-[#023436] opacity-100 absolute top-[1042px]  "></div>
+      {/* Divider */}
+      <div className="w-full border-t-2 border-[#023436] my-12"></div>
 
       {/* ======= About Section ======= */}
-     <section
-  className="mx-auto px-6 py-12 grid grid-cols-1 lg:grid-cols-2 gap-12"
-  style={{
-    width: "1345px",
-    height: "1040px",
-    opacity: 0.98,
-    position: "relative",
-    gap: "86px",
-    top: "120px",
-    left: "0px",
-  }}
->
-  {/* Left Side */}
-  <div className="flex flex-col items-start gap-6">
-    {/* Text */}
-    <div className="w-full max-w-md">
-      <h2
-  className="text-[#023436] font-outfit font-semibold"
-  style={{
-    width: "660px",
-    height: "52px",
-    opacity: 1,
-    fontWeight: 600,
-    fontStyle: "normal",
-    fontSize: "40px",
-    lineHeight: "52px",
-    letterSpacing: "0%",
-  }}
->
-  Behind Travactiv
-</h2>
+      <section className="max-w-[1345px] mx-auto px-4 sm:px-6 py-12 grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16">
+        
+        {/* Left */}
+        <div className="flex flex-col gap-6">
+          <div className="w-full max-w-[660px]">
+            <h2 className="text-[#023436] text-3xl sm:text-4xl font-semibold">
+              Behind Travactiv
+            </h2>
 
-      <p
-  className="text-gray-600"
-  style={{
-    width: "655px",
-    height: "96px",
-    opacity: 1,
-    fontFamily: "Inter",
-    fontWeight: 400,
-    fontStyle: "normal",
-    fontSize: "16px",
-    lineHeight: "24px",
-    letterSpacing: "0px",
-  }}
->
-  At Travactiv, we believe travel decisions should be guided by clarity, not confusion. Built with the modern traveler in mind, our platform blends trusted global sources with AI-powered insights—so you get accurate, timely, and practical information without the noise.
-</p>
- <p
-  className="text-gray-600"
-  style={{
-    width: "655px",
-    height: "96px",
-    opacity: 1,
-    fontFamily: "Inter",
-    fontWeight: 400,
-    fontStyle: "normal",
-    fontSize: "16px",
-    lineHeight: "24px",
-    letterSpacing: "0px",
-  }}
->
-   We’re not just another travel platform; we’re your partner in navigating visas, rules, advisories, and opportunities. Whether you’re a student chasing dreams abroad or a traveler seeking safe, confident journeys, Travactiv was designed to put trustworthy information at your fingertips..
-</p>
+            <p className="text-gray-600 mt-4">
+              At Travactiv, we believe travel decisions should be guided by clarity, not confusion. Built with the modern traveler in mind, our platform blends trusted global sources with AI-powered insights.
+            </p>
 
-    </div>
+            <p className="text-gray-600 mt-4">
+              We’re your partner in navigating visas, rules, advisories, and opportunities—helping you travel smarter and more confidently.
+            </p>
+          </div>
 
-    {/* Image */}
-    <div
-  className="w-full h-[724px] overflow-hidden shadow-lg"
-  style={{
-    width: "660px",
-    height: "724px",
-    opacity: 1,
-    borderTopLeftRadius: "16px",
-    borderTopRightRadius: "80px",
-    borderBottomRightRadius: "16px",
-    borderBottomLeftRadius: "16px",
-  }}
->
-  <img
-    src={Globe}
-    alt="Left Section Illustration"
-    className="w-full h-full object-cover"
-  />
-</div>
+          <div className="w-full h-[300px] sm:h-[500px] lg:h-[724px] overflow-hidden rounded-[16px] shadow-lg" style={{  opacity: 1, borderTopLeftRadius: "16px", borderTopRightRadius: "80px", borderBottomRightRadius: "16px", borderBottomLeftRadius: "16px",}}>
+            <img src={Globe} alt="" className="w-full h-full object-cover" />
+          </div>
+        </div>
 
-  </div>
+        {/* Right */}
+        <div className="flex flex-col gap-6">
+          <div className="w-full h-[300px] sm:h-[500px] lg:h-[724px] overflow-hidden rounded-[16px] shadow-lg " style={{  opacity: 1, borderTopLeftRadius: "16px", borderTopRightRadius: "16px", borderBottomRightRadius: "16px", borderBottomLeftRadius: "80px", }}>
+            <img src={Globe2} alt="" className="w-full h-full object-cover" />
+          </div>
 
-  {/* Right Side */}
-  <div className="flex flex-col items-start gap-6">
-    {/* Image */}
-   <div
-  className="overflow-hidden shadow-lg"
-  style={{
-    width: "661px",
-    height: "724px",
-    opacity: 1,
-    borderTopLeftRadius: "16px",
-    borderTopRightRadius: "16px",
-    borderBottomRightRadius: "16px",
-    borderBottomLeftRadius: "80px",
-  }}
->
-  <img
-    src={Globe2}
-    alt="Right Section Illustration"
-    className="w-full h-full object-cover"
-  />
-</div>
+          <div className="w-full max-w-[660px] lg:ml-auto text-left lg:text-right">
+            <h2 className="text-[#023436] text-3xl sm:text-4xl font-semibold">
+              Why Choose Travactiv
+            </h2>
 
-
-    {/* Text */}
-    <div className="w-full max-w-md">
-      <h2
-  className="text-[#023436] font-outfit font-semibold"
-  style={{
-    width: "442px",
-    height: "52px",
-    opacity: 1,
-    fontWeight: 600,
-    fontStyle: "normal",
-    fontSize: "40px",
-    lineHeight: "52px",
-    letterSpacing: "0%",
-    textAlign: "right",
-    marginLeft: "200px",
-    
-  }}
->
-  Why Choose Travactiv
-</h2>
-
-      
- <p
-  className="text-gray-600 text-right"
-  style={{
-    width: "655px",
-    height: "120px",
-    opacity: 1,
-    fontFamily: "Inter",
-    fontWeight: 400,
-    fontStyle: "normal",
-    fontSize: "16px",
-    lineHeight: "24px",
-    letterSpacing: "0px",
-  }}
->
-  At Travactiv, we go beyond ordinary travel updates. Every piece of information you see is AI-verified, sourced from credible global channels, and tailored to your journey. No noise, no guesswork—just the clarity you need to make informed decisions. Whether you’re navigating visa requirements, checking safety advisories, or planning your next adventure, Travactiv ensures you stay one step ahead.
-</p>
-
-    </div>
-  </div>
-</section>
-
-
-
+            <p className="text-gray-600 mt-4">
+              At Travactiv, we go beyond ordinary travel updates. Every piece of information you see is AI-verified, sourced from credible global channels, and tailored to your journey. No noise, no guesswork—just the clarity you need to make informed decisions. Whether you’re navigating visa requirements, checking safety advisories, or planning your next adventure, Travactiv ensures you stay one step ahead.
+            </p>
+          </div>
+        </div>
+      </section>
 
       {/* Divider Image */}
       <div>
         <img
           src={img8}
-          alt="img8"
-          className="hidden mt-46 lg:block w-full h-[180px] xl:h-[100px] object-cover opacity-100 rounded-[5px]"
+          alt="divider"
+          className="hidden lg:block mt-16 w-full h-[120px] xl:h-[180px] object-cover rounded"
         />
       </div>
- 
+
       {/* CTA */}
       <CTA />
     </>

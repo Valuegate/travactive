@@ -9,6 +9,9 @@ import img5 from "../assets/Img5.png";
 import img6 from "../assets/Img6.png";
 import img7 from "../assets/Img7.png";
 import Dot from "../assets/HeroDot.png";
+import Visa from "../assets/Visa.jpg";
+import Student from "../assets/studentLifestyle.jpg";
+import studyAbroad from "../assets/postStudy.jpg";
 import MobileCarousel from "./MobileCarousel";
 import HeroImage from "../assets/HeroImage.png";
 import "../index.css";
@@ -41,49 +44,72 @@ const HeroSection = () => {
 
   return (
     <section
-      className="relative min-h-screen  w-[1472px] -mb-1 -mt-28 text-white px-8 sm:px-6 md:px-10 lg:px-16 pt-[2px] pb-12 flex flex-col lg:flex-row items-center justify-between overflow-hidden"
-      style={{
-        backgroundImage: `linear-gradient(rgba(2, 52, 54, 0.85), rgba(2, 52, 54, 0.85)), url(${HeroImage})`,
-        backgroundSize: "contain",
-        backgroundPosition: "left center",
-        backgroundRepeat: "no-repeat",
-        width: "1472px",
-        height: "942px",
-      }}
-    >
+  className="relative min-h-screen w-full max-w-[1472px] mx-auto -mb-1 -mt-28 text-white px-8 sm:px-6 md:px-10 lg:px-16 pt-[2px] pb-12 flex flex-col lg:flex-row items-center justify-between overflow-hidden"
+  style={{
+    backgroundImage: `linear-gradient(rgba(2, 52, 54, 0.85), rgba(2, 52, 54, 0.85)), url(${HeroImage})`,
+    backgroundSize: "contain",
+    backgroundPosition: "left center",
+    backgroundRepeat: "no-repeat",
+  }}
+>
+
       {/* Background Carousel for mobile & tablet only */}
-      <MobileCarousel images={[img1, img2, img3, img4, img5, img6, img7]} />
+      <MobileCarousel 
+  slides={[
+  {
+    image: studyAbroad,
+    title: ["Your Personal", "Travel Genius"],
+    text: "Let AI design every step of your journey — from visa guidance to hidden destinations.",
+    button: "Start Your Journey",
+  },
+  {
+    image: Visa,
+    title: ["Smarter Routes.", "Better Memories."],
+    text: "Plan with precision using real-time insights and seamless bookings.",
+    button: "Explore Smarter",
+  },
+  {
+    image: Student,
+    title: ["Where AI Meets", "Adventure"],
+    text: "Stay ahead with live updates and smart travel recommendations.",
+    button: "Get Started",
+  },
+]}
+
+
+/>
+ 
 
       {/* Left side — Text content */}
-      <div className="relative ml-12 -mt-12  w-full lg:w-1/2 space-y-4 text-center lg:text-left flex flex-col items-center lg:items-start z-10">
+     <div className="hidden lg:flex relative -mt-12 w-full lg:w-1/2 space-y-4 text-center lg:text-left flex-col items-center lg:items-start z-10">
+
         {/* H1 with highlight shadow */}
         <div className="relative inline-block w-full">
           <img src={Dot} alt="" className=" mb-3 " />
-          <h1
-            className="font-outfit font-bold text-[56px] leading-[70px] tracking-[8px]
- "
-          >
+           <h1 className="font-outfit font-bold leading-[1.05] tracking-[0.08em] whitespace-nowrap text-[clamp(22px,4.5vw,56px)]">
+
             {displayedLines.map((line, i) => (
               <span
                 key={i}
                 className={`
-        block 
-        ${
-          i === 1
-            ? "font-outfit font-medium text-[56px] leading-[70px] tracking-[0] "
-            : ""
-        } 
-        ${
-          i === 2
-            ? "font-outfit font-bold text-[56px] leading-[70px] tracking-[2px] "
-            : ""
-        }
-      `}
+                  block
+                  ${
+                    i === 1
+                      ? "font-medium tracking-normal whitespace-nowrap"
+                      : ""
+                  }
+                  ${
+                    i === 2
+                      ? "font-bold tracking-[2px] whitespace-nowrap"
+                      : ""
+                  }
+                `}
               >
                 {line}
 
-                {i === displayedLines.length - 1 && (
-                  <span className="ml-1 text-[#FF4C29] animate-blink font-outfit">
+                {/* ✅ Cursor follows active typing line */}
+                {i === lineIndex && (
+                  <span className="ml-1 text-[#FF4C29] animate-blink">
                     |
                   </span>
                 )}
@@ -104,8 +130,10 @@ const HeroSection = () => {
         <div className="flex flex-col sm:flex-row gap-4 mt-6 justify-center lg:justify-start">
           <button className="btn-primary">
             <span className="text-switch">
+               <Link to="/TravRegister">
               <span className="w-183">Unlock Travel Insight</span>
               <span>Join As Traveler</span>
+              </Link>
             </span>
           </button>
           <Link to="/get-started">

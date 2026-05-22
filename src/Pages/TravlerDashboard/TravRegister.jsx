@@ -5,10 +5,10 @@ import RightImage from "../../assets/plane.jpg";
 import GoogleIcon from "../../assets/google.png";
 import { Link } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
-import 'react-toastify/dist/ReactToastify.css';
+import "react-toastify/dist/ReactToastify.css";
 
 const inputWrapperClass = `
-  w-[478px]
+  w-full max-w-[478px]
   h-[42px]
   flex items-center
   gap-[10px]
@@ -16,7 +16,6 @@ const inputWrapperClass = `
   rounded-[24px]
   px-[23px]
   py-[13px]
-  opacity-100
   shadow-[0_2px_12px_0.5px_#031A0914]
 `;
 
@@ -24,10 +23,7 @@ const inputFieldClass = `
   flex-1
   bg-transparent
   outline-none
-  font-[Inter]
-  font-normal
   text-[14px]
-  leading-[16px]
   text-[#0E0E0E]
   placeholder:text-[#9CA3AF]
 `;
@@ -39,62 +35,70 @@ const TravRegister = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [showDialog, setShowDialog] = useState(false);
 
-
   const handleSubmit = (e) => {
-  e.preventDefault();
+    e.preventDefault();
 
-  if (!fullName || !email || !password || !confirmPassword) {
-    toast.error("Please fill all the fields before registering.", { autoClose: 3000 });
-    return;
-  }
+    if (!fullName || !email || !password || !confirmPassword) {
+      toast.error("Please fill all the fields before registering.");
+      return;
+    }
 
-  if (password !== confirmPassword) {
-    toast.error("Passwords do not match.", { autoClose: 3000 });
-    return;
-  }
+    if (password !== confirmPassword) {
+      toast.error("Passwords do not match.");
+      return;
+    }
 
-  // Open dialog box instead of immediate success
-  setShowDialog(true);
-};
-
+    setShowDialog(true);
+  };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100 relative">
-      <div className="relative w-[1488px]   h-[958px] rounded-[20px] bg-[#F6F6F6] overflow-hidden flex flex-col lg:flex-row items-center justify-between px-12 lg:px-20 py-12 gap-12">
-        
-        {/* Left side */}
-        <div className="flex-1 flex flex-col ml-9.5 gap-6">
-          <Link to="/" className="absolute top-8 left-27 z-10">
-            <img src={Logo} alt="Travactive Logo" className="w-32 h-auto cursor-pointer" />
+    <div className="min-h-screen flex items-center justify-center bg-gray-100 p-4">
+      <div className="w-full max-w-[1400px] rounded-[20px] bg-[#F6F6F6] overflow-hidden flex flex-col lg:flex-row items-center justify-between px-6 lg:px-20 py-10 gap-10">
+        {/* LEFT SIDE */}
+        <div className="w-full lg:flex-1 flex flex-col items-center lg:items-start gap-6">
+          {/* LOGO */}
+          {/* LOGO */}
+          <Link to="/" className="absolute top-6 left-6 lg:left-12 z-10">
+            <img
+              src={Logo}
+              alt="Logo"
+              className="w-24 sm:w-28 h-auto object-contain"
+            />
           </Link>
 
-          <h2 className="w-[478px] font-[Outfit] font-semibold text-[24px] leading-[36px] text-[#212322] ml-8">
+          {/* TEXT */}
+          <h2 className="w-full max-w-[478px] text-xl font-semibold text-center lg:text-left">
             Your First Step to Smarter Travel
           </h2>
 
-          <p className="w-[478px] font-[Inter] text-[16px] text-[rgba(51,51,51,0.72)] ml-8">
-            Sign up to access AI-powered updates, trusted insights, and tools designed to make every journey easier
+          <p className="w-full max-w-[478px] text-sm text-gray-600 text-center lg:text-left">
+            Sign up to access AI-powered updates, trusted insights, and tools
+            designed to make every journey easier
           </p>
 
+          {/* GOOGLE */}
           <button
-  onClick={() => window.open("https://accounts.google.com/signin")}
-className="w-[478px] h-[44px] flex items-center justify-center gap-[10px] px-[108px] py-[10px] bg-white rounded-[24px] shadow-[0_4px_12px_0_#0000001A] font-[Inter] font-medium text-[#212322] hover:bg-gray-50 transition ml-8"
->
-  <img src={GoogleIcon} alt="Google" className="w-[20px] h-[20px]" />
-  Continue with Google
-</button>
+            onClick={() => window.open("https://accounts.google.com/signin")}
+            className="w-full max-w-[478px] h-[44px] flex items-center justify-center gap-2 bg-white rounded-full shadow hover:bg-gray-50"
+          >
+            <img src={GoogleIcon} alt="Google" className="w-5" />
+            Continue with Google
+          </button>
 
-          <div className="w-[446px] h-[24px] flex items-center gap-[14px] opacity-100 ml-9">
+          {/* DIVIDER */}
+          <div className="w-full max-w-[478px] flex items-center gap-3">
             <hr className="flex-1 border-gray-300" />
-            <span className="w-[16px] h-[24px] font-['Public_Sans'] font-bold text-[16px] leading-[24px] text-gray-500 opacity-100 text-center flex items-center justify-center">
-              or
-            </span>
+            <span className="text-gray-500 font-bold">or</span>
             <hr className="flex-1 border-gray-300" />
           </div>
 
-          <form onSubmit={handleSubmit} className="w-[478px] h-[476.15px] flex flex-col gap-[18px] ml-8">
-            <div className="flex flex-col gap-[8px]">
-              <label className="font-[Inter] font-semibold text-[16px] leading-[16px] text-[#0E0E0E]">Full Name</label>
+          {/* FORM */}
+          <form
+            onSubmit={handleSubmit}
+            className="w-full max-w-[478px] flex flex-col gap-4"
+          >
+            <div>
+              <label className="text-sm font-semibold">Full Name</label>
               <div className={inputWrapperClass}>
                 <input
                   type="text"
@@ -102,13 +106,12 @@ className="w-[478px] h-[44px] flex items-center justify-center gap-[10px] px-[10
                   className={inputFieldClass}
                   value={fullName}
                   onChange={(e) => setFullName(e.target.value)}
-                  required
                 />
               </div>
             </div>
 
-            <div className="flex flex-col gap-[8px]">
-              <label className="font-[Inter] font-semibold text-[16px] leading-[16px] text-[#0E0E0E]">Email Address</label>
+            <div>
+              <label className="text-sm font-semibold">Email Address</label>
               <div className={inputWrapperClass}>
                 <input
                   type="email"
@@ -116,13 +119,12 @@ className="w-[478px] h-[44px] flex items-center justify-center gap-[10px] px-[10
                   className={inputFieldClass}
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  required
                 />
               </div>
             </div>
 
-            <div className="flex flex-col gap-[8px]">
-              <label className="font-[Inter] font-semibold text-[16px] leading-[16px] text-[#0E0E0E]">Password</label>
+            <div>
+              <label className="text-sm font-semibold">Password</label>
               <div className={inputWrapperClass}>
                 <input
                   type="password"
@@ -130,13 +132,12 @@ className="w-[478px] h-[44px] flex items-center justify-center gap-[10px] px-[10
                   className={inputFieldClass}
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  required
                 />
               </div>
             </div>
 
-            <div className="flex flex-col gap-[8px]">
-              <label className="font-[Inter] font-semibold text-[16px] leading-[16px] text-[#0E0E0E]">Confirm Password</label>
+            <div>
+              <label className="text-sm font-semibold">Confirm Password</label>
               <div className={inputWrapperClass}>
                 <input
                   type="password"
@@ -144,78 +145,74 @@ className="w-[478px] h-[44px] flex items-center justify-center gap-[10px] px-[10
                   className={inputFieldClass}
                   value={confirmPassword}
                   onChange={(e) => setConfirmPassword(e.target.value)}
-                  required
                 />
               </div>
             </div>
 
             <label className="flex items-start gap-2 text-sm text-gray-600">
-              <input type="checkbox" className="w-4 h-4 text-[#023436] bg-danger" required />
-              <span className="font-[Inter] text-[9.42px] leading-[140%] tracking-[0%]">
+              <input type="checkbox" className="w-4 h-4" required />
+              <span>
                 I agree to the{" "}
-                <Link to="/terms" className="font-[Inter] font-bold text-[9.42px] leading-[140%] tracking-[0%]">
+                <Link to="/terms" className="font-bold">
                   Terms & Conditions
                 </Link>
               </span>
             </label>
 
-            <button
-              type="submit"
-               className="mt-4 w-full py-3 bg-[#023436] text-white rounded-[30px] font-semibold hover:bg-[#029e95] transition"
-            >
-                
+            <button className="mt-3 w-full py-3 bg-[#023436] text-white rounded-full font-semibold hover:bg-[#029e95]">
               Register Now
-              
             </button>
 
-            <p className="text-center text-sm text-gray-600 mt-2">
+            <p className="text-center text-sm text-gray-600">
               Been here before?{" "}
-              <Link to="/TravLogin" className="text-[#023436] font-medium hover:underline">
+              <Link to="/TravLogin" className="text-[#023436] font-medium">
                 Login
               </Link>
             </p>
           </form>
         </div>
 
-        <div className="flex-1 flex justify-center items-center mr-[-46px]">
-          <img src={RightImage} alt="Register Illustration" className="w-[730px] h-[918px] rounded-[18px] object-cover" />
+        {/* RIGHT SIDE (HIDDEN ON SMALL + TABLET) */}
+        <div className="hidden lg:flex flex-1 justify-center items-center">
+          <img
+            src={RightImage}
+            alt="Register"
+            className="w-[730px] h-[918px] rounded-[18px] object-cover"
+          />
         </div>
       </div>
 
+      {/* SUCCESS MODAL */}
       {showDialog && (
-  <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
-    <div className="bg-white w-[420px] rounded-[20px] p-6 shadow-xl text-center animate-fadeIn">
-      
-      <h3 className="font-[Outfit] text-[20px] font-semibold text-[#212322] mb-2">
-        Registration Successful 
-      </h3>
+        <div className="fixed inset-0 flex items-center justify-center bg-black/50">
+          <div className="bg-white w-[90%] max-w-[420px] rounded-2xl p-6 text-center shadow-xl">
+            <h3 className="text-lg font-semibold mb-2">
+              Registration Successful
+            </h3>
 
-      <p className="font-[Inter] text-[14px] text-gray-600 mb-6">
-        Your account has been created successfully. You can now log in and start exploring.
-      </p>
+            <p className="text-sm text-gray-600 mb-6">
+              Your account has been created successfully.
+            </p>
 
-      <button
-        onClick={() => {
-          setShowDialog(false);
-          toast.success("Welcome to Travactive!", { autoClose: 3000 });
+            <button
+              onClick={() => {
+                setShowDialog(false);
+                toast.success("Welcome to Travactive!");
 
-          // Optional: clear form
-          setFullName("");
-          setEmail("");
-          setPassword("");
-          setConfirmPassword("");
-        }}
-        className="w-full py-3 bg-[#023436] text-white rounded-[30px] font-semibold hover:bg-[#029e95] transition"
-      >
-        Continue
-      </button>
-    </div>
-  </div>
-)}
+                setFullName("");
+                setEmail("");
+                setPassword("");
+                setConfirmPassword("");
+              }}
+              className="w-full py-3 bg-[#023436] text-white rounded-full font-semibold"
+            >
+              Continue
+            </button>
+          </div>
+        </div>
+      )}
 
-
-      {/* Toast Container */}
-      <ToastContainer position="top-right" />
+      <ToastContainer />
     </div>
   );
 };

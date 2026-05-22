@@ -1,55 +1,61 @@
 import Sidebar from "./Sidebar";
 import { Outlet } from "react-router-dom";
-import { User, Search, Bell } from "lucide-react";
+import { Search, Bell } from "lucide-react";
 import ProfilePic from "../assets/ProfilePic.png";
 
 const DashboardLayout = () => {
   return (
-    <div className="flex min-h-screen bg-[#F6F6F6] ">
-      {/* Sidebar first so it stretches from top */}
+    <div className="flex min-h-screen bg-[#F6F6F6]">
       <Sidebar />
 
-      {/* Main content area */}
       <div className="flex-1 flex flex-col">
+        
+        
         {/* Top Bar */}
-        <div className="flex items-center justify-end h-20 bg-white border-b border-gray-200 shadow-md px-6 ">
-  {/* Right Section: Search + Profile + Bell */}
-  <div className="flex items-center gap-14">
-    {/* Search box */}
-    <div className="relative flex items-center w-[321px] h-[29px] rounded-full border-[0.2px] border-[#400097] px-3 py-1.5">
+<div className="hidden md:flex items-center justify-start md:pl-70 lg:justify-end h-16 lg:h-20 bg-white border-b border-gray-200 shadow-md px-4 lg:px-6">
+  <div className="flex items-center gap-6 lg:gap-14 w-full md:w-auto">
+
+    {/* Search */}
+    <div className="relative flex items-center w-[160px] md:w-[180px] lg:w-[220px] h-[30px] rounded-full border border-[#400097] px-3">
       <input
         type="text"
         placeholder="Search..."
-        className="w-full h-full bg-transparent text-sm placeholder-gray-500 outline-none pr-8"
+        className="w-full h-full bg-transparent text-xs md:text-sm placeholder-gray-500 outline-none pr-6"
       />
-      <div className="absolute right-2 top-1/2 -translate-y-1/2 w-6 h-6 bg-[#005A58] rounded-full flex items-center justify-center">
-        <Search size={12} className="text-white" />
+      <div className="absolute right-2 top-1/2 -translate-y-1/2 w-5 h-5 bg-[#005A58] rounded-full flex items-center justify-center">
+        <Search size={10} className="text-white" />
       </div>
     </div>
 
-    {/* Profile */}
-    <div className="flex items-center gap-2 h-full">
-      <img
-                  src={ProfilePic}
-                  alt="Profile"
-                  className="w-[50px] h-[52px] rounded-full object-cover"
-                />
-      <span className="ml-2">
-        <p className="text-gray-900" style={{ width: "76px", height: "17px", opacity: 1, fontFamily: "Inter", fontWeight: 600, fontStyle: "normal", fontSize: "14px", lineHeight: "100%", letterSpacing: "0px" }}>Samuel S.</p>
+    {/* Profile + Bell */}
+    <div className="flex items-center gap-4 md:gap-6 lg:gap-10">
+      
+      <div className="flex items-center gap-2">
+        <img
+          src={ProfilePic}
+          alt="Profile"
+          className="w-9 h-9 md:w-10 md:h-10 lg:w-[50px] lg:h-[52px] rounded-full object-cover"
+        />
 
-        <p className="text-gray-500" style={{ width: "86px", height: "15px", opacity: 0.9, fontFamily: "Inter", fontWeight: 400, fontStyle: "normal", fontSize: "12px", lineHeight: "100%", letterSpacing: "0px" }}>Student</p>
+        <div className="leading-tight">
+          <p className="text-gray-900 text-xs md:text-sm font-semibold">
+            Samuel S.
+          </p>
+          <p className="text-gray-500 text-[10px] md:text-xs">
+            Student
+          </p>
+        </div>
+      </div>
 
-      </span>
+      <Bell className="w-5 h-5 md:w-6 md:h-6 text-gray-600 cursor-pointer" />
     </div>
-
-    {/* Notification Bell */}
-    <Bell size={24} className="text-gray-600 cursor-pointer" />
   </div>
 </div>
 
 
-        {/* Main Outlet */}
-        <main className="flex-1 p-6">
+
+        {/* Main */}
+        <main className="flex-1 p-4 md:p-6">
           <Outlet />
         </main>
       </div>

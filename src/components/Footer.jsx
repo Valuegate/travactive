@@ -5,6 +5,8 @@ import Instagram from "../assets/Instagram.png";
 import Twitter from "../assets/twitter.png";
 import LinkedIn from "../assets/Linkedin.png";
 import MailIcon from "../assets/Light-surface-container.png";
+import { Link } from "react-router-dom";
+
 
 const Footer = () => {
   return (
@@ -94,30 +96,29 @@ const Footer = () => {
             </h5>
             <ul className="space-y-2 text-[14px] text-gray-300">
               <li>
-                <a href="/" className="hover:text-[#FF4C29] transition">
-                  Home
-                </a>
-              </li>
-              <li>
-                <a href="about" className="hover:text-[#FF4C29] transition">
-                  About Us
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-[#FF4C29] transition">
-                  Services
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-[#FF4C29] transition">
-                  Testimonials
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-[#FF4C29] transition">
-                  Contact Us
-                </a>
-              </li>
+  <Link to="/" className="hover:text-[#FF4C29] transition">
+    Home
+  </Link>
+</li>
+
+<li>
+  <Link to="/about" className="hover:text-[#FF4C29] transition">
+    About Us
+  </Link>
+</li>
+
+<li>
+  <Link to="/contact" className="hover:text-[#FF4C29] transition">
+    Contact Us
+  </Link>
+</li>
+
+<li>
+  <Link to="/get-started" className="hover:text-[#FF4C29] transition">
+    Get Started
+  </Link>
+</li>
+
             </ul>
           </div>
 
@@ -130,47 +131,49 @@ const Footer = () => {
               Subscribe to get travel tips, updates, and insights directly to
               your inbox.
             </p>
-            <form className="relative w-[312px] h-[41px]">
-              <input
-                type="email"
-                placeholder="Your email"
-                className="
+            <form className="relative w-full max-w-[312px] md:max-w-[280px] lg:max-w-[312px] h-[41px]">
+  <input
+    type="email"
+    placeholder="Your email"
+    className="
       w-full h-full
       bg-transparent
       border border-white/50
       rounded-[8px]
       px-[11px] py-[6px]
-      pr-[135px]
+      pr-[120px] sm:pr-[135px]
       text-sm text-white
       outline-none
       focus:border-white
     "
-              />
+  />
 
-              <button
-                type="submit"
-                className="
+  <button
+    type="submit"
+    className="
       absolute right-[6px] top-1/2 -translate-y-1/2
-      w-[123px] h-[29px]
+      h-[29px]
+      px-[12px] sm:px-[20px]
+      text-xs sm:text-sm
       bg-[#FF4C29]
       text-white
-      text-sm font-semibold
+      font-semibold
       rounded-[12px]
-      px-[20px] py-[4px]
       hover:bg-[#ff684d]
       transition
     "
-              >
-                Subscribe
-              </button>
-            </form>
+  >
+    Subscribe
+  </button>
+</form>
+
           </div>
         </div>
       </div>
 
       {/* Divider */}
       <div className="border-t  border-white mt-10 pt-6 text-center text-[13px] text-gray-400">
-        © {new Date().getFullYear()} Travactive — All Rights Reserved.
+        © Copyright {new Date().getFullYear()}  All rights reserved by Travactiv. A Product by ValueGate Consulting.
       </div>
     </footer>
   );

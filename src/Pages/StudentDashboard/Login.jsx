@@ -79,7 +79,7 @@ const Login = () => {
     <div className="min-h-screen flex items-center justify-center bg-gray-100 px-4">
 
       {/* Main Container */}
-      <div className="relative w-full max-w-[1488px] min-h-[600px] lg:min-h-[900px] rounded-[20px] bg-[#F6F6F6] flex flex-col lg:flex-row items-center justify-between px-6 sm:px-10 lg:px-20 py-10 gap-10">
+      <div className="relative w-full max-w-[1488px] min-h-[600px] lg:min-h-[900px] rounded-[20px] bg-[#F6F6F6] flex flex-col lg:flex-row items-center justify-between px-4 sm:px-8 lg:px-16 py-10 gap-10">
 
         {/* Logo */}
         <Link

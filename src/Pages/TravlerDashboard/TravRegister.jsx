@@ -53,7 +53,7 @@ const TravRegister = () => {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100 p-4">
-      <div className="w-full max-w-[1400px] rounded-[20px] bg-[#F6F6F6] overflow-hidden flex flex-col lg:flex-row items-center justify-between px-6 lg:px-20 py-10 gap-10">
+      <div className="w-full max-w-[1400px] rounded-[20px] bg-[#F6F6F6] overflow-hidden flex flex-col lg:flex-row items-center justify-between px-4 lg:px-20 py-10 gap-10">
         {/* LEFT SIDE */}
         <div className="w-full lg:flex-1 flex flex-col items-center lg:items-start gap-6">
           {/* LOGO */}

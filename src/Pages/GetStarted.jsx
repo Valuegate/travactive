@@ -7,51 +7,24 @@ import HealthTravel from "../assets/healthiconsTravel.png";
 
 const GetStarted = () => {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100 px-4">
-      
-      {/* Main Layout Container */}
-      <div
-        className="
-          relative
-          w-full max-w-[1488px]
-          min-h-[600px] lg:min-h-[900px]
-          rounded-[20px]
-          bg-[#F6F6F6]
-          overflow-hidden
-          flex flex-col lg:flex-row
-          items-center
-          justify-between
-          px-6 sm:px-10 lg:px-20
-          py-10 sm:py-12
-          gap-10 lg:gap-12
-        "
-      >
-        
-        {/* Logo */}
-        <Link
-          to="/"
-          className="
-            absolute 
-            top-4 sm:top-6 md:top-2 lg:top-8
-            left-4 sm:left-8 md:left-10 lg:left-6
-            z-10
-          "
-        >
+    <div className="min-h-screen flex flex-col gap-6 bg-gray-100 md:px-4 px-2">
+       {/* Logo */}
+      <Link to="/" className="" >
           <img
             src={Logo}
             alt="Travactive Logo"
-            className="w-24 sm:w-28 md:w-32 h-auto cursor-pointer"
+            className="w-32 sm:w-36 md:w-44 h-auto cursor-pointer mt-10 md:ml-16"
           />
         </Link>
-
+      
+      {/* Main Layout Container */}
+      <div className="flex flex-col justify-center items-center lg:flex-row gap-6 px-4 lg:px-24 pb-10 " >     
         {/* Left side */}
-        <div className="flex-1 flex flex-col justify-center lg:justify-start text-center lg:text-left gap-4 lg:pr-0 lg:mt-[-400px] px-6">
-
-          
+        <div className="flex-1 flex flex-col justify-center ">  
           {/* Heading */}
           <h2
             className="
-              max-w-[478px]
+              max-w-[520px]
               font-[Outfit] font-semibold
               text-xl sm:text-2xl
               leading-[30px] sm:leading-[36px]
@@ -108,13 +81,13 @@ const GetStarted = () => {
         </div>
 
         {/* Right side (hidden for small & tablet screens) */}
-        <div className="hidden lg:flex flex-1 justify-center items-center w-full">
+        <div className="hidden lg:flex flex-1 justify-center items-center w-full h-full">
           <img
             src={RightImage}
             alt="Get Started Illustration"
             className="
               w-full max-w-[730px]
-              h-[918px]
+              h-full max-h-[600px] 
               rounded-[18px]
               object-cover
             "

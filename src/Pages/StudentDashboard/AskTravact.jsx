@@ -97,7 +97,7 @@ const AskTravactiv = () => {
   };
 
   return (
-    <div className="flex flex-col lg:flex-row min-h-screen bg-[#F4F7F9] gap-4 p-4 pt-16 md:pt-4 overflow-y-auto lg:overflow-hidden">
+    <div className="flex flex-col lg:flex-row min-h-screen bg-[#F4F7F9] gap-4 p-1 sm:p-0 pt-12 md:pt-0 overflow-y-auto lg:overflow-hidden">
       {/* 🔹 LEFT SIDEBAR */}
       <div className="w-full lg:w-[320px] bg-white rounded-xl shadow flex flex-col">
         <div className="p-4 space-y-4 border-b">

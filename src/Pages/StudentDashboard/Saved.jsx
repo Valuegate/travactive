@@ -65,7 +65,7 @@ const Saved = () => {
   const { savedItems, removeSavedItem } = useContext(SavedContext);
 
   return (
-    <div className="pt-18 p-4 sm:p-6 lg:p-8">
+    <div className="pt-12 sm:pt-0 p-1 sm:p-2 ">
       <div className="flex flex-col lg:flex-row gap-6">
         {/* ================= LEFT SIDE ================= */}
         <div className="flex-1">
@@ -143,52 +143,52 @@ const Saved = () => {
 
           {/* ================= RESEARCH LINKS ================= */}
           <div className="w-full bg-white rounded-xl p-5 shadow mt-6 flex flex-col gap-4">
-  <h3 className="text-[20px] font-semibold">
-    Carefully Researched Links For You
-  </h3>
+            <h3 className="text-[20px] font-semibold">
+              Carefully Researched Links For You
+            </h3>
 
-  <p className="text-[14px] text-gray-600">
-    Explore countries with low tuition, scholarships, and easy visa
-    access.
-  </p>
+            <p className="text-[14px] text-gray-600">
+              Explore countries with low tuition, scholarships, and easy visa
+              access.
+            </p>
 
-  {researchLinks.map((item) => (
-    <div
-      key={item.id}
-      className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3"
-    >
-      <div className="flex items-center gap-3">
-        <img
-          src={item.img}
-          alt={item.title}
-          className="w-[50px] h-[50px] rounded-md object-cover"
-        />
+            {researchLinks.map((item) => (
+              <div
+                key={item.id}
+                className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3"
+              >
+                <div className="flex items-center gap-3">
+                  <img
+                    src={item.img}
+                    alt={item.title}
+                    className="w-[50px] h-[50px] rounded-md object-cover"
+                  />
 
-        <div>
-          <h5 className="text-[15px] font-medium">{item.title}</h5>
-          <p className="text-[12px] text-gray-500">{item.desc}</p>
-        </div>
-      </div>
+                  <div>
+                    <h5 className="text-[15px] font-medium">{item.title}</h5>
+                    <p className="text-[12px] text-gray-500">{item.desc}</p>
+                  </div>
+                </div>
 
-      <a
-  href={item.link}
-  target="_blank"
-  rel="noopener noreferrer"
->
-  <button className="relative overflow-hidden w-[111px] h-[30px] rounded-full border border-[#023436] text-[10px] font-semibold text-[#023436] group">
-    
-    {/* Hover Background */}
-    <span className="absolute inset-0 bg-[#023436] -translate-x-full group-hover:translate-x-0 transition-transform duration-300 ease-in-out"></span>
+                <a
+            href={item.link}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <button className="relative overflow-hidden w-[111px] h-[30px] rounded-full border border-[#023436] text-[10px] font-semibold text-[#023436] group">
+              
+              {/* Hover Background */}
+              <span className="absolute inset-0 bg-[#023436] -translate-x-full group-hover:translate-x-0 transition-transform duration-300 ease-in-out"></span>
 
-    {/* Button Text */}
-    <span className="relative z-10 group-hover:text-white transition-colors duration-300">
-      Browse Now
-    </span>
-  </button>
-</a>
-    </div>
-  ))}
-</div>
+              {/* Button Text */}
+              <span className="relative z-10 group-hover:text-white transition-colors duration-300">
+                Browse Now
+              </span>
+            </button>
+          </a>
+              </div>
+            ))}
+          </div>
         </div>
 
         {/* ================= RIGHT SIDE ================= */}

@@ -57,8 +57,8 @@ const Register = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100 relative p-4">
-      <div className="relative w-full max-w-[1488px] rounded-[20px] bg-[#F6F6F6] overflow-hidden flex flex-col lg:flex-row items-center justify-between px-4 sm:px-12 lg:px-20 py-8 lg:py-12 gap-6">
+    <div className="min-h-screen flex items-center justify-center bg-gray-100 relative p-2">
+      <div className="relative w-full max-w-[1488px] rounded-[20px] bg-[#F6F6F6] overflow-hidden flex flex-col lg:flex-row items-center justify-between px-4 sm:px-6 lg:px-16 py-8 lg:py-12 gap-6">
         {/* Logo at top-left */}
         <div className="absolute top-4 left-4 sm:top-8 md:top-1 sm:left-8 z-20">
           <Link to="/">

@@ -34,7 +34,7 @@ const opportunities = [
 /* ================= MAIN ================= */
 const Overview = () => {
   return (
-    <div className="w-full min-h-screen bg-[#F6F6F6] px-3 sm:px-4 md:px-6 py-6 mt-[60px] md:mt-0 overflow-x-hidden">
+    <div className="w-full min-h-screen bg-[#F6F6F6] px-1  md:pt-1 pb-5 mt-[50px] md:mt-0 overflow-x-hidden">
       {/* TOP SECTION */}
       <div className="flex flex-col lg:flex-row gap-4 md:gap-6">
         {/* LEFT */}

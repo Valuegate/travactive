@@ -40,7 +40,7 @@ export default function Explore() {
   `;
 
   return (
-    <div className="w-full px-4 lg:px-8 pt-20 sm:pt-24 md:pt-28 lg:pt-6 pb-6 max-w-[1400px] mx-auto space-y-10">
+    <div className="w-full px-1 sm:px-0 pt-12 sm:pt-0 pb-6 max-w-[1400px] mx-auto space-y-10">
       {/* ===== TOP SECTION ===== */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         {/* LEFT */}

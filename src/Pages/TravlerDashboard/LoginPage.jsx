@@ -37,7 +37,6 @@ const LoginPage = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  // ✅ FIXED STATES
   const [showResetModal, setShowResetModal] = useState(false);
   const [showSuccessModal, setShowSuccessModal] = useState(false);
   const [resetEmail, setResetEmail] = useState("");
@@ -60,7 +59,6 @@ const LoginPage = () => {
     }, 1500);
   };
 
-  // ✅ RESET HANDLER
   const handlePasswordReset = () => {
     if (!resetEmail) {
       toast.error("Please enter your email");
@@ -79,8 +77,8 @@ const LoginPage = () => {
         <img src={Logo} alt="Logo" className="w-24 sm:w-28 h-auto object-contain" />
       </Link>
 
-      {/* MAIN CONTAINER */}
-      <div className="w-full max-w-[1400px] rounded-[20px] bg-[#F6F6F6] overflow-hidden flex flex-col lg:flex-row px-4 sm:px-6 lg:px-20 py-10 sm:py-12 lg:py-16 gap-10 mx-auto">
+      {/* MAIN CONTAINER (UPDATED) */}
+      <div className="w-full max-w-[1400px] min-h-[850px] rounded-[20px] bg-[#F6F6F6] overflow-hidden flex flex-col lg:flex-row px-4 sm:px-6 lg:px-12 py-10 sm:py-12 gap-10 mx-auto items-center">
 
         {/* LEFT SIDE */}
         <div className="w-full lg:flex-1 flex flex-col items-center lg:items-start gap-6 mt-16 sm:mt-10 md:mt-0">
@@ -93,7 +91,6 @@ const LoginPage = () => {
             Stay connected to verified travel alerts, global advisories, and essential updates that keep your journey safe and stress-free
           </p>
 
-          {/* GOOGLE LOGIN */}
           <button
             onClick={() => window.open("https://accounts.google.com/signin")}
             className="w-full max-w-[478px] h-[44px] flex items-center justify-center gap-2 bg-white rounded-full shadow hover:bg-gray-50"
@@ -102,17 +99,14 @@ const LoginPage = () => {
             Continue with Google
           </button>
 
-          {/* DIVIDER */}
           <div className="w-full max-w-[478px] flex items-center gap-3">
             <hr className="flex-1 border-gray-300" />
             <span className="text-gray-500 font-bold">or</span>
             <hr className="flex-1 border-gray-300" />
           </div>
 
-          {/* FORM */}
           <form onSubmit={handleSubmit} className="w-full max-w-[478px] flex flex-col gap-4">
 
-            {/* EMAIL */}
             <div>
               <label className="font-semibold text-sm">Email Address</label>
               <div className={inputWrapperClass}>
@@ -126,7 +120,6 @@ const LoginPage = () => {
               </div>
             </div>
 
-            {/* PASSWORD */}
             <div>
               <label className="font-semibold text-sm">Password</label>
               <div className={inputWrapperClass}>
@@ -143,14 +136,12 @@ const LoginPage = () => {
               </div>
             </div>
 
-            {/* OPTIONS */}
             <div className="flex justify-between text-sm">
               <label className="flex gap-2">
                 <input type="checkbox" />
                 Remember me
               </label>
 
-              {/* ✅ FIXED */}
               <button
                 type="button"
                 onClick={() => setShowResetModal(true)}
@@ -160,7 +151,6 @@ const LoginPage = () => {
               </button>
             </div>
 
-            {/* BUTTON */}
             <button className="mt-3 w-full py-3 bg-[#023436] text-white rounded-full font-semibold hover:bg-[#029e95]">
               Login
             </button>
@@ -174,12 +164,12 @@ const LoginPage = () => {
           </form>
         </div>
 
-        {/* RIGHT IMAGE */}
-        <div className="hidden lg:flex flex-1 justify-center items-center">
+        {/* RIGHT IMAGE (FIXED) */}
+        <div className="hidden lg:flex lg:w-1/2 justify-center items-center h-full">
           <img
             src={RightImage}
             alt="Login"
-            className="w-full max-w-[600px] h-[500px] xl:h-[700px] rounded-[18px] object-cover"
+            className="w-full h-[720px] rounded-[24px] object-cover"
           />
         </div>
       </div>
@@ -210,9 +200,7 @@ const LoginPage = () => {
           <div className="bg-white w-[90%] max-w-[400px] p-6 rounded-xl text-center">
             <h2 className="text-lg font-semibold">Password Reset Link Sent</h2>
             <button
-              onClick={() => {
-                setShowSuccessModal(false);
-              }}
+              onClick={() => setShowSuccessModal(false)}
               className="mt-4 bg-[#023436] text-white px-6 py-2 rounded-full"
             >
               Close
@@ -221,7 +209,6 @@ const LoginPage = () => {
         </div>
       )}
 
-      {/* LOADER */}
       {loading && <Loader text="Logging in..." />}
 
       <ToastContainer />

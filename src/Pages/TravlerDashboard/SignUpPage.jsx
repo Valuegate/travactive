@@ -1,13 +1,40 @@
 import React, { useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import GoogleIcon from "../../assets/google.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import SignUpImage from "../../assets/plane.jpg";
 import TravactiveLogo from "../../assets/TravactiveLogo.png";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const SignUpPage = () => {
+  const navigate = useNavigate();
+
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+
+  const [fullName, setFullName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+
+  const [showDialog, setShowDialog] = useState(false);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    if (!fullName || !email || !password || !confirmPassword) {
+      toast.error("Please fill all fields");
+      return;
+    }
+
+    if (password !== confirmPassword) {
+      toast.error("Passwords do not match");
+      return;
+    }
+
+    setShowDialog(true);
+  };
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100 px-4 py-6">
@@ -38,8 +65,15 @@ const SignUpPage = () => {
             </p>
 
             {/* Google Button */}
-            <button className="w-full flex items-center justify-center gap-3 border border-gray-200 rounded-full py-3 mb-6 hover:bg-gray-50 transition shadow-sm bg-white">
+            <button
+              type="button"
+              onClick={() =>
+                window.open("https://accounts.google.com/signin")
+              }
+              className="w-full flex items-center justify-center gap-3 border border-gray-200 rounded-full py-3 mb-6 hover:bg-gray-50 transition shadow-sm bg-white"
+            >
               <img src={GoogleIcon} alt="Google" className="w-5 h-5" />
+
               <span className="font-medium text-gray-700">
                 Continue with Google
               </span>
@@ -57,9 +91,14 @@ const SignUpPage = () => {
 
               {/* NAME */}
               <div>
-                <label className="text-sm text-gray-600">Full Name</label>
+                <label className="text-sm text-gray-600">
+                  Full Name
+                </label>
+
                 <input
                   type="text"
+                  value={fullName}
+                  onChange={(e) => setFullName(e.target.value)}
                   className="w-full mt-1 px-4 py-3 rounded-full bg-gray-100 focus:outline-none"
                   placeholder="Enter your full name"
                 />
@@ -67,9 +106,14 @@ const SignUpPage = () => {
 
               {/* EMAIL */}
               <div>
-                <label className="text-sm text-gray-600">Email Address</label>
+                <label className="text-sm text-gray-600">
+                  Email Address
+                </label>
+
                 <input
                   type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                   className="w-full mt-1 px-4 py-3 rounded-full bg-gray-100 focus:outline-none"
                   placeholder="Enter your email"
                 />
@@ -77,13 +121,19 @@ const SignUpPage = () => {
 
               {/* PASSWORD */}
               <div>
-                <label className="text-sm text-gray-600">Password</label>
+                <label className="text-sm text-gray-600">
+                  Password
+                </label>
+
                 <div className="relative">
                   <input
                     type={showPassword ? "text" : "password"}
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
                     className="w-full mt-1 px-4 py-3 rounded-full bg-gray-100 focus:outline-none pr-10"
                     placeholder="Enter password"
                   />
+
                   <button
                     type="button"
                     onClick={() => setShowPassword(!showPassword)}
@@ -99,12 +149,18 @@ const SignUpPage = () => {
                 <label className="text-sm text-gray-600">
                   Confirm Password
                 </label>
+
                 <div className="relative">
                   <input
                     type={showConfirmPassword ? "text" : "password"}
+                    value={confirmPassword}
+                    onChange={(e) =>
+                      setConfirmPassword(e.target.value)
+                    }
                     className="w-full mt-1 px-4 py-3 rounded-full bg-gray-100 focus:outline-none pr-10"
                     placeholder="Confirm password"
                   />
+
                   <button
                     type="button"
                     onClick={() =>
@@ -112,19 +168,34 @@ const SignUpPage = () => {
                     }
                     className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400"
                   >
-                    {showConfirmPassword ? <FaEyeSlash /> : <FaEye />}
+                    {showConfirmPassword ? (
+                      <FaEyeSlash />
+                    ) : (
+                      <FaEye />
+                    )}
                   </button>
                 </div>
               </div>
 
               {/* TERMS */}
               <div className="flex items-center gap-2 text-sm">
-                <input type="checkbox" className="accent-emerald-600" />
-                <span>I agree to the Terms and conditions</span>
+                <input
+                  type="checkbox"
+                  className="accent-emerald-600"
+                  required
+                />
+
+                <span>
+                  I agree to the Terms and conditions
+                </span>
               </div>
 
               {/* BUTTON */}
-              <button className="w-full bg-emerald-800 hover:bg-emerald-900 text-white rounded-full py-3 font-medium transition">
+              <button
+                type="button"
+                onClick={handleSubmit}
+                className="w-full bg-emerald-800 hover:bg-emerald-900 text-white rounded-full py-3 font-medium transition"
+              >
                 Register Now
               </button>
             </form>
@@ -132,6 +203,7 @@ const SignUpPage = () => {
             {/* LOGIN LINK */}
             <p className="text-center text-sm text-gray-500 mt-6">
               Been here before?{" "}
+
               <Link
                 to="/TravLogin"
                 className="font-semibold text-emerald-700 hover:underline"
@@ -142,7 +214,7 @@ const SignUpPage = () => {
           </div>
         </div>
 
-        {/* RIGHT – IMAGE (HIDDEN ON SMALL + TABLET) */}
+        {/* RIGHT – IMAGE */}
         <div className="hidden lg:flex lg:w-1/2">
           <img
             src={SignUpImage}
@@ -151,6 +223,44 @@ const SignUpPage = () => {
           />
         </div>
       </div>
+
+      {/* SUCCESS DIALOG */}
+      {showDialog && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
+          <div className="bg-white w-[90%] max-w-[420px] rounded-[20px] p-6 shadow-xl text-center">
+
+            <h3 className="text-[22px] font-semibold text-[#212322] mb-3">
+              Registration Successful
+            </h3>
+
+            <p className="text-[14px] text-gray-600 mb-6">
+              Your account has been created successfully.
+              You can now log in and start exploring.
+            </p>
+
+            <button
+              onClick={() => {
+                setShowDialog(false);
+
+                toast.success("Welcome to Travactive!");
+
+                setFullName("");
+                setEmail("");
+                setPassword("");
+                setConfirmPassword("");
+
+                navigate("/TravLogin");
+              }}
+              className="w-full py-3 bg-emerald-800 text-white rounded-full font-semibold hover:bg-emerald-900 transition"
+            >
+              Continue
+            </button>
+
+          </div>
+        </div>
+      )}
+
+      <ToastContainer position="top-right" />
     </div>
   );
 };

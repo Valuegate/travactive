@@ -9,7 +9,7 @@ import Oxford5 from "../../assets/OxfordUniversity4.jpg";
 import Oxford6 from "../../assets/OxfordUniversity5.jpg";
 import Oxford7 from "../../assets/OxfordUniversity6.jpg";
 import Oxford8 from "../../assets/OxfordUniversity7.jpg";
-import FlashImg from "../../assets/diagram1.svg";
+import FlashImg from "../../assets/TravactiveImg.jpeg";
 
 import NewsCard from "../../Components/NewsCard.jsx";
 import { scholarships } from "../../assets/scholarshipData";
@@ -188,16 +188,17 @@ export default function Explore() {
 
         {/* RIGHT - FLASH (DESKTOP ONLY) */}
         <div className="hidden lg:block w-full h-full">
-          <div className="relative h-full flex items-center justify-center bg-[#F6F6F6] rounded-[12px] overflow-hidden group cursor-pointer p-2">
-            <img
-              src={FlashImg}
-              alt="Promo"
-              className="max-w-[100%] max-h-[140%] object-contain transition-transform duration-500 group-hover:scale-105"
-            />
+  <div className="relative h-full min-h-[420px] flex items-stretch justify-center bg-[#F6F6F6] rounded-[12px] overflow-hidden group cursor-pointer p-0">
 
-            <div className="absolute inset-0 bg-black/5 group-hover:bg-black/10 transition"></div>
-          </div>
-        </div>
+    <img
+      src={FlashImg}
+      alt="Promo"
+      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+    />
+
+    <div className="absolute inset-0 bg-black/5 group-hover:bg-black/10 transition"></div>
+  </div>
+</div>
       </div>
     </div>
   );

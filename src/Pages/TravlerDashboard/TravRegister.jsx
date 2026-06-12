@@ -3,7 +3,7 @@ import { Eye, EyeOff } from "lucide-react";
 import Logo from "../../assets/TravactiveLogo.png";
 import RightImage from "../../assets/plane.jpg";
 import GoogleIcon from "../../assets/google.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -29,6 +29,8 @@ const inputFieldClass = `
 `;
 
 const TravRegister = () => {
+  const navigate = useNavigate();
+
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -53,10 +55,11 @@ const TravRegister = () => {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100 p-4">
-      <div className="w-full max-w-[1400px] rounded-[20px] bg-[#F6F6F6] overflow-hidden flex flex-col lg:flex-row items-center justify-between px-4 lg:px-20 py-10 gap-10">
+
+      <div className="w-full max-w-[1400px] rounded-[20px] bg-[#F6F6F6] overflow-hidden flex flex-col lg:flex-row items-center justify-between px-6 lg:px-20 py-10 gap-10">
         {/* LEFT SIDE */}
         <div className="w-full lg:flex-1 flex flex-col items-center lg:items-start gap-6">
-          {/* LOGO */}
+
           {/* LOGO */}
           <Link to="/" className="absolute top-6 left-6 lg:left-12 z-10">
             <img
@@ -78,6 +81,7 @@ const TravRegister = () => {
 
           {/* GOOGLE */}
           <button
+            type="button"
             onClick={() => window.open("https://accounts.google.com/signin")}
             className="w-full max-w-[478px] h-[44px] flex items-center justify-center gap-2 bg-white rounded-full shadow hover:bg-gray-50"
           >
@@ -93,12 +97,11 @@ const TravRegister = () => {
           </div>
 
           {/* FORM */}
-          <form
-            onSubmit={handleSubmit}
-            className="w-full max-w-[478px] flex flex-col gap-4"
-          >
+          <form className="w-full max-w-[478px] flex flex-col gap-4">
+
             <div>
               <label className="text-sm font-semibold">Full Name</label>
+
               <div className={inputWrapperClass}>
                 <input
                   type="text"
@@ -112,6 +115,7 @@ const TravRegister = () => {
 
             <div>
               <label className="text-sm font-semibold">Email Address</label>
+
               <div className={inputWrapperClass}>
                 <input
                   type="email"
@@ -125,6 +129,7 @@ const TravRegister = () => {
 
             <div>
               <label className="text-sm font-semibold">Password</label>
+
               <div className={inputWrapperClass}>
                 <input
                   type="password"
@@ -137,7 +142,10 @@ const TravRegister = () => {
             </div>
 
             <div>
-              <label className="text-sm font-semibold">Confirm Password</label>
+              <label className="text-sm font-semibold">
+                Confirm Password
+              </label>
+
               <div className={inputWrapperClass}>
                 <input
                   type="password"
@@ -151,6 +159,7 @@ const TravRegister = () => {
 
             <label className="flex items-start gap-2 text-sm text-gray-600">
               <input type="checkbox" className="w-4 h-4" required />
+
               <span>
                 I agree to the{" "}
                 <Link to="/terms" className="font-bold">
@@ -159,7 +168,11 @@ const TravRegister = () => {
               </span>
             </label>
 
-            <button className="mt-3 w-full py-3 bg-[#023436] text-white rounded-full font-semibold hover:bg-[#029e95]">
+            <button
+              type="button"
+              onClick={handleSubmit}
+              className="mt-3 w-full py-3 bg-[#023436] text-white rounded-full font-semibold hover:bg-[#029e95]"
+            >
               Register Now
             </button>
 
@@ -172,7 +185,7 @@ const TravRegister = () => {
           </form>
         </div>
 
-        {/* RIGHT SIDE (HIDDEN ON SMALL + TABLET) */}
+        {/* RIGHT SIDE */}
         <div className="hidden lg:flex flex-1 justify-center items-center">
           <img
             src={RightImage}
@@ -186,6 +199,7 @@ const TravRegister = () => {
       {showDialog && (
         <div className="fixed inset-0 flex items-center justify-center bg-black/50">
           <div className="bg-white w-[90%] max-w-[420px] rounded-2xl p-6 text-center shadow-xl">
+
             <h3 className="text-lg font-semibold mb-2">
               Registration Successful
             </h3>
@@ -197,12 +211,15 @@ const TravRegister = () => {
             <button
               onClick={() => {
                 setShowDialog(false);
+
                 toast.success("Welcome to Travactive!");
 
                 setFullName("");
                 setEmail("");
                 setPassword("");
                 setConfirmPassword("");
+
+                navigate("/TravLogin");
               }}
               className="w-full py-3 bg-[#023436] text-white rounded-full font-semibold"
             >

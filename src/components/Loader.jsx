@@ -1,7 +1,7 @@
 import React from "react";
 import Logo from "../assets/CardAI.png";
 
-const Loader = ({ text = "Travactive" }) => {
+const Loader = ({ text = "Travactiv" }) => {
   return (
     <div className="fixed inset-0 bg-black/40 backdrop-blur-sm flex items-center justify-center z-50 px-4">
       

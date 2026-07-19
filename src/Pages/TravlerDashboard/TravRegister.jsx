@@ -6,6 +6,7 @@ import GoogleIcon from "../../assets/google.png";
 import { Link, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { register } from "../../services/register";
 
 const inputWrapperClass = `
   w-full max-w-[478px]
@@ -31,32 +32,53 @@ const inputFieldClass = `
 const TravRegister = () => {
   const navigate = useNavigate();
 
-  const [fullName, setFullName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
-  const [showDialog, setShowDialog] = useState(false);
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    if (!fullName || !email || !password || !confirmPassword) {
-      toast.error("Please fill all the fields before registering.");
-      return;
-    }
-
-    if (password !== confirmPassword) {
-      toast.error("Passwords do not match.");
-      return;
-    }
-
-    setShowDialog(true);
-  };
+  const [formData, setFormData] = useState({
+      name: "",
+      email: "",
+      password: "",
+      confirmPassword: "",
+      userType: "traveler",
+    });
+    const [showDialog, setShowDialog] = useState(false);
+  
+    const handleSubmit = async (e) => {
+      e.preventDefault();
+  
+      if (!formData.name || !formData.email || !formData.password || !formData.confirmPassword) {
+        toast.error("Please fill all the fields before registering.", {
+          autoClose: 3000,
+        });
+        return;
+      }
+  
+      console.log('password:', formData.password, 'confirmPassword:', formData.confirmPassword);
+  
+      if (formData.password !== formData.confirmPassword) {
+        toast.error("Passwords do not match.");
+        return;
+      }
+      
+       try {
+          
+          const data = await register(formData);
+          console.log(data);
+          toast.success("Registration successful!");
+          setShowDialog(true);
+        } catch (error) {
+          toast.error(
+            error.response?.data?.message || "Invalid email or password."
+          );
+          if(error){
+            setShowDialog(false)
+          } 
+        } 
+        
+    };
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100 p-4">
-      <div className="w-full max-w-[1400px] rounded-[20px] bg-[#F6F6F6] overflow-hidden flex flex-col lg:flex-row items-center justify-between px-6 lg:px-20 py-10 gap-10">
 
+      <div className="w-full max-w-[1400px] rounded-[20px] bg-[#F6F6F6] overflow-hidden flex flex-col lg:flex-row items-center justify-between px-6 lg:px-20 py-10 gap-10">
         {/* LEFT SIDE */}
         <div className="w-full lg:flex-1 flex flex-col items-center lg:items-start gap-6">
 
@@ -107,8 +129,8 @@ const TravRegister = () => {
                   type="text"
                   placeholder="Enter your full name"
                   className={inputFieldClass}
-                  value={fullName}
-                  onChange={(e) => setFullName(e.target.value)}
+                  value={formData.name}
+                  onChange={(e) => setFormData({...formData, name: e.target.value})}
                 />
               </div>
             </div>
@@ -121,8 +143,8 @@ const TravRegister = () => {
                   type="email"
                   placeholder="Enter your email address"
                   className={inputFieldClass}
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
+                  value={formData.email}
+                  onChange={(e) => setFormData({...formData, email: e.target.value})}
                 />
               </div>
             </div>
@@ -135,8 +157,8 @@ const TravRegister = () => {
                   type="password"
                   placeholder="Create a password"
                   className={inputFieldClass}
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
+                  value={formData.password}
+                  onChange={(e) => setFormData({...formData, password: e.target.value})}
                 />
               </div>
             </div>
@@ -151,8 +173,8 @@ const TravRegister = () => {
                   type="password"
                   placeholder="Re-enter your password"
                   className={inputFieldClass}
-                  value={confirmPassword}
-                  onChange={(e) => setConfirmPassword(e.target.value)}
+                  value={formData.confirmPassword}
+                  onChange={(e) => setFormData({...formData, confirmPassword: e.target.value})}
                 />
               </div>
             </div>
@@ -211,14 +233,6 @@ const TravRegister = () => {
             <button
               onClick={() => {
                 setShowDialog(false);
-
-                toast.success("Welcome to Travactive!");
-
-                setFullName("");
-                setEmail("");
-                setPassword("");
-                setConfirmPassword("");
-
                 navigate("/TravLogin");
               }}
               className="w-full py-3 bg-[#023436] text-white rounded-full font-semibold"

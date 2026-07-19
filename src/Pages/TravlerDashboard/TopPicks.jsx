@@ -11,7 +11,7 @@ import Icon from "../../assets/location.png";
 
 const TopPicks = () => {
   return (
-    <div className="w-full pt-20 px-4 pb-4 md:px-6 md:pb-6">
+    <div className="w-full pt-14 md:pt-0 px-1 pb-4 md:px-0 md:pb-6">
       {/* GRID WITH CUSTOM WIDTH */}
       <div className="grid grid-cols-1 lg:grid-cols-[2fr_1fr] gap-6">
         {/* LEFT SIDE (WIDER) */}

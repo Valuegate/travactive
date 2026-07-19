@@ -5,6 +5,7 @@ import GoogleIcon from "../../assets/google.png";
 import { Link, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { register } from "../../services/register";
 
 const inputWrapperClass = `
   w-full sm:w-[478px]
@@ -33,35 +34,52 @@ const inputFieldClass = `
 
 const Register = () => {
   const navigate = useNavigate();
-
-  const [fullName, setFullName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+    userType: "student",
+  });
   const [showDialog, setShowDialog] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!fullName || !email || !password || !confirmPassword) {
+    if (!formData.name || !formData.email || !formData.password || !formData.confirmPassword) {
       toast.error("Please fill all the fields before registering.", {
         autoClose: 3000,
       });
       return;
     }
 
-    if (password !== confirmPassword) {
-      toast.error("Passwords do not match.", { autoClose: 3000 });
+    console.log('password:', formData.password, 'confirmPassword:', formData.confirmPassword);
+
+    if (formData.password !== formData.confirmPassword) {
+      toast.error("Passwords do not match.");
       return;
     }
-
-    setShowDialog(true);
+    
+     try {
+        
+        const data = await register(formData);
+        console.log(data);
+        toast.success("Registration successful!");
+        setShowDialog(true);
+      } catch (error) {
+        toast.error(
+          error.response?.data?.message || "Invalid email or password."
+        );
+        if(error){
+          setShowDialog(false)
+        } 
+      } 
+      
   };
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100 relative p-4">
       <div className="relative w-full max-w-[1488px] rounded-[20px] bg-[#F6F6F6] overflow-hidden flex flex-col lg:flex-row items-center justify-between px-4 sm:px-12 lg:px-20 py-8 lg:py-12 gap-6">
-        
         {/* Logo at top-left */}
         <div className="absolute top-4 left-4 sm:top-8 md:top-1 sm:left-8 z-20">
           <Link to="/">
@@ -120,8 +138,8 @@ const Register = () => {
                   type="text"
                   placeholder="Enter your full name"
                   className={inputFieldClass}
-                  value={fullName}
-                  onChange={(e) => setFullName(e.target.value)}
+                  value={formData.name}
+                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                   required
                 />
               </div>
@@ -138,8 +156,8 @@ const Register = () => {
                   type="email"
                   placeholder="Enter your email address"
                   className={inputFieldClass}
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
+                  value={formData.email}
+                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                   required
                 />
               </div>
@@ -156,8 +174,8 @@ const Register = () => {
                   type="password"
                   placeholder="Create a password"
                   className={inputFieldClass}
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
+                  value={formData.password}
+                  onChange={(e) => setFormData({ ...formData, password: e.target.value })}
                   required
                 />
               </div>
@@ -174,8 +192,8 @@ const Register = () => {
                   type="password"
                   placeholder="Re-enter your password"
                   className={inputFieldClass}
-                  value={confirmPassword}
-                  onChange={(e) => setConfirmPassword(e.target.value)}
+                  value={formData.confirmPassword}
+                  onChange={(e) => setFormData({ ...formData, confirmPassword: e.target.value })}
                   required
                 />
               </div>
@@ -245,19 +263,7 @@ const Register = () => {
             <button
               onClick={() => {
                 setShowDialog(false);
-
-                toast.success("Welcome to Travactive!", {
-                  autoClose: 2000,
-                });
-
-                setFullName("");
-                setEmail("");
-                setPassword("");
-                setConfirmPassword("");
-
-                setTimeout(() => {
-                  navigate("/login");
-                }, 2000);
+                navigate("/login");
               }}
               className="w-full py-3 bg-[#023436] text-white rounded-[30px] font-semibold hover:bg-[#029e95] transition"
             >

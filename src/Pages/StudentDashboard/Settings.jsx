@@ -24,7 +24,7 @@ const Settings = () => {
   };
 
   return (
-    <div className="w-full p-4 md:p-6 pt-16 md:pt-6">
+    <div className="w-full p-1 pt-12 md:pt-1">
       {/* TOP NAV */}
       <div className="flex items-center justify-between">
         <h2
@@ -58,7 +58,7 @@ const Settings = () => {
           <img
             src={profileImage}
             alt="Profile"
-            className="w-16 h-16 rounded-full object-cover"
+            className="md:w-16 md:h-16 w-10 h-10 rounded-full object-cover"
           />
 
           <div>
@@ -80,20 +80,15 @@ const Settings = () => {
           />
 
           {/* UPLOAD BUTTON */}
-          <label
-            htmlFor="profile-upload"
-            className="border border-[#005A58] text-[#005A58] px-4 py-2 rounded-xl shadow-sm cursor-pointer"
-          >
-            Upload
-          </label>
+          <div className="flex gap-3">
+            <button className="border border-[#005A58] text-[#005A58] cursor-pointer hover:bg-[#005A58] hover:text-white transition-all duration-300 ease-in px-2 py-1 md:px-4 md:py-2 text-xs md:text-sm rounded-xl shadow-sm">
+              Upload
+            </button>
 
-          {/* DELETE BUTTON */}
-          <button
-            onClick={handleDeleteImage}
-            className="border border-red-500 text-red-500 px-4 py-2 rounded-xl shadow-sm"
-          >
-            Delete
-          </button>
+            <button className="border border-red-500 text-red-500 cursor-pointer hover:bg-red-500 hover:text-white transition-all duration-300 ease-in px-2 py-1 md:px-4 md:py-2 text-xs md:text-sm rounded-xl shadow-sm">
+              Delete
+            </button>
+          </div>
         </div>
       </div>
 
@@ -109,12 +104,12 @@ const Settings = () => {
         <input
           type="text"
           placeholder="Full Name"
-          className="w-full border rounded-md p-2"
+          className="w-full border rounded-md p-2 outline-none focus:ring-[1px] focus:ring-[#005A58]"
         />
         <input
           type="password"
           placeholder="Password"
-          className="w-full border rounded-md p-2"
+          className="w-full border rounded-md p-2 outline-none focus:ring-[1px] focus:ring-[#005A58]  "
         />
       </div>
 
@@ -125,12 +120,12 @@ const Settings = () => {
         <input
           type="email"
           placeholder="Email Address"
-          className="w-full border rounded-md p-2"
+          className="w-full border rounded-md p-2 outline-none focus:ring-[1px] focus:ring-[#005A58]"
         />
         <input
           type="password"
           placeholder="Confirm Password"
-          className="w-full border rounded-md p-2"
+          className="w-full border rounded-md p-2 outline-none focus:ring-[1px] focus:ring-[#005A58]"
         />
       </div>
 
@@ -141,12 +136,12 @@ const Settings = () => {
         <input
           type="text"
           placeholder="City"
-          className="w-full border rounded-md p-2"
+          className="w-full border rounded-md p-2 outline-none focus:ring-[1px] focus:ring-[#005A58]"
         />
         <input
           type="text"
           placeholder="Country"
-          className="w-full border rounded-md p-2"
+          className="w-full border rounded-md p-2 outline-none focus:ring-[1px] focus:ring-[#005A58]"
         />
       </div>
 
@@ -243,7 +238,7 @@ const Settings = () => {
 
       {/* SAVE BUTTON */}
       <div className="flex justify-center mt-6">
-        <button className="w-[249px] h-[44px] rounded-full bg-[#005A58] text-white font-semibold text-sm shadow-md hover:opacity-90 transition">
+        <button className="w-[249px] h-[44px] rounded-full bg-[#005A58] transition-all duration-300 ease-in-out text-white font-semibold text-sm shadow-md hover:opacity-90 ">
           Save Changes
         </button>
       </div>

@@ -41,9 +41,9 @@ const overviewData = [
 
 const Overview = () => {
   return (
-    <div className="w-full min-h-screen bg-[#F6F6F6] p-4 md:p-6">
+    <div className="w-full min-h-screen bg-[#F6F6F6] p-1 md:p-2">
       {/* TOP SECTION */}
-      <div className="flex flex-col lg:flex-row gap-6">
+      <div className="flex flex-col lg:flex-row mt-7 md:mt-0 gap-6">
         {/* LEFT */}
         <div className="flex-1 flex flex-col gap-6">
           {/* BANNER */}

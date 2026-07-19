@@ -2,14 +2,14 @@ import React, { useState, useContext } from "react";
 import Calender from "../../Components/MyCalender.jsx";
 
 import Oxford from "../../assets/OxfordUniversity.jpg";
-import Oxford2 from "../../assets/CambridgeUniversity.jpg";
-import Oxford3 from "../../assets/OxfordUniversity2.jpg";
-import Oxford4 from "../../assets/OxfordUniversity3.jpg";
-import Oxford5 from "../../assets/OxfordUniversity4.jpg";
-import Oxford6 from "../../assets/OxfordUniversity5.jpg";
-import Oxford7 from "../../assets/OxfordUniversity6.jpg";
-import Oxford8 from "../../assets/OxfordUniversity7.jpg";
+import TheUniversisty_of_british_columbia from '../../assets/TheUniversisty_of_british_columbia.jpg';
 import FlashImg from "../../assets/TravactiveImg.jpeg";
+import GriffithUniversity from '../../assets/GriffithUniversity.webp'
+import University_of_Alberta_Canada from '../../assets/University_of_Alberta_Canada.webp'
+import University_of_Bonn_Germany from '../../assets/University_of_Bonn_Germany.webp'
+import University_of_Hamburg_Germany from '../../assets/University_of_Hamburg_Germany.webp'
+import University_of_Kent_UK from '../../assets/University_of_Kent_UK.webp'
+import University_of_Melbourne_Australia from '../../assets/University_of_Melbourne_Australia.webp'
 
 import NewsCard from "../../Components/NewsCard.jsx";
 import { scholarships } from "../../assets/scholarshipData";
@@ -22,6 +22,17 @@ const flags = [
   { id: 4, country: "Ukraine", flag: "https://flagcdn.com/w20/ua.png" },
   { id: 5, country: "Canada", flag: "https://flagcdn.com/w20/ca.png" },
 ];
+
+const Schools = [
+  { img: Oxford, link: ' https://www.ox.ac.uk/', name: 'Oxford University', id: 1},
+  { img: GriffithUniversity, link: ' https://www.griffith.edu.au/', name: 'Griffith University', id: 2},
+  { img: TheUniversisty_of_british_columbia, link: ' https://www.ubc.ca/', name: 'The University of British Columbia', id: 3},
+  { img: University_of_Alberta_Canada, link: 'https://www.ualberta.ca/en/index.html', name: 'University of Alberta', id: 4},
+  { img: University_of_Bonn_Germany, link: 'https://www.uni-bonn.de/', name: 'University of Bonn', id: 5},
+  { img: University_of_Hamburg_Germany, link: 'https://www.uni-hamburg.de/', name: 'University of Hamburg', id: 6},
+  { img: University_of_Kent_UK, link: ' https://www.kent.ac.uk/', name: 'University of Kent', id: 7},
+  { img: University_of_Melbourne_Australia, link: ' https://www.unimelb.edu.au/', name: 'University of Melbourne', id: 8}
+]
 
 export default function Explore() {
   const [selectedCountry, setSelectedCountry] = useState(flags[0]);
@@ -40,7 +51,7 @@ export default function Explore() {
   `;
 
   return (
-    <div className="w-full px-4 lg:px-8 pt-20 sm:pt-24 md:pt-28 lg:pt-6 pb-6 max-w-[1400px] mx-auto space-y-10">
+    <div className="w-full px-1 sm:px-0 pt-12 sm:pt-0 pb-6 max-w-[1400px] mx-auto space-y-10">
       {/* ===== TOP SECTION ===== */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         {/* LEFT */}
@@ -148,33 +159,29 @@ export default function Explore() {
         <div className="lg:col-span-2 space-y-8">
           {/* UNIVERSITIES */}
           <div className="bg-white p-4 sm:p-5 rounded-[12px] shadow">
-            <h3 className="text-lg sm:text-xl font-semibold mb-2">
-              Top Universities
-            </h3>
+            <div className="flex items-center justify-between mb-2">
+              <h3 className="text-lg sm:text-xl font-semibold mb-2">Top Universities</h3>
+              <p className="md:text-sm hover:underline hover:cursor-pointer text-xs text-red-600 font-bold" onClick={()=>window.open('https://goingto.university/',' _blank')}> See All</p>
+            </div>
 
             <p className="text-sm text-gray-600 mb-4">
               Discover highly ranked universities across key study destinations.
             </p>
 
             <div className="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-4 gap-3">
-              {[
-                Oxford,
-                Oxford2,
-                Oxford3,
-                Oxford4,
-                Oxford5,
-                Oxford6,
-                Oxford7,
-                Oxford8,
-              ].map((img, index) => (
+              {Schools.map((school) => (
                 <div
-                  key={index}
-                  className="relative h-[100px] rounded-[12px] overflow-hidden"
+                  key={school.id}
+                  onClick={() => window.open(school.link, "_blank")}
+                  className="relative h-[100px] cursor-pointer group rounded-[12px] overflow-hidden"
                 >
                   <img
-                    src={img}
+                    src={school.img}
                     className="w-full h-full object-cover opacity-70"
                   />
+                  <p className="hidden group-hover:block absolute bottom-0 left-0 right-0 duration-300 transition ease-in-out bg-black/70 text-xs text-white text-center py-1">
+                    {school.name}
+                  </p>
                 </div>
               ))}
             </div>
@@ -188,17 +195,17 @@ export default function Explore() {
 
         {/* RIGHT - FLASH (DESKTOP ONLY) */}
         <div className="hidden lg:block w-full h-full">
-  <div className="relative h-full min-h-[420px] flex items-stretch justify-center bg-[#F6F6F6] rounded-[12px] overflow-hidden group cursor-pointer p-0">
+          <div className="relative h-full min-h-[420px] flex items-stretch justify-center bg-[#F6F6F6] rounded-[12px] overflow-hidden group cursor-pointer p-0">
 
-    <img
-      src={FlashImg}
-      alt="Promo"
-      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-    />
+            <img
+              src={FlashImg}
+              alt="Promo"
+              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+            />
 
-    <div className="absolute inset-0 bg-black/5 group-hover:bg-black/10 transition"></div>
-  </div>
-</div>
+          <div className="absolute inset-0 bg-black/5 group-hover:bg-black/10 transition"></div>
+        </div>
+      </div>
       </div>
     </div>
   );

@@ -11,6 +11,7 @@ import successIcon from "../../assets/success.png";
 
 // ✅ Import the branded loader
 import Loader from "../../Components/Loader.jsx"; 
+import { login } from "../../services/studentLogin.js";
 
 const inputWrapperClass = `
   w-full max-w-[478px]
@@ -36,34 +37,43 @@ const inputFieldClass = `
 
 const Login = () => {
   const navigate = useNavigate();
-
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [formData, setFormData] = useState({
+    email: '',
+    password: '',
+    userType: 'student'
+  })
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
-
   const [showResetModal, setShowResetModal] = useState(false);
   const [resetEmail, setResetEmail] = useState("");
-
   const [showSuccessModal, setShowSuccessModal] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!email || !password) {
+    if (!formData.email || !formData.password) {
       toast.error("Please enter your email and password.");
       return;
     }
-
-    // Show the loader
-    setLoading(true);
-
-    setTimeout(() => {
-      localStorage.setItem("isAuthenticated", "true");
-      toast.success("Login successful!");
-      setLoading(false);
-      navigate("/dashboard");
-    }, 2000);
+    try {
+        setLoading(true);
+        const data = await login(formData.email, formData.password, formData.userType);
+        console.log('Login data:', data);
+        if(data.user.userType !== formData.userType){
+          toast.error("You are not authorized to access the student dashboard.");
+          return;
+        }
+        localStorage.setItem("token", data.token);
+        localStorage.setItem("user", JSON.stringify(data.user));
+        toast.success("Login successful!");
+        navigate("/dashboard");
+      } catch (error) {
+        toast.error(
+          error.response?.data?.message || "Invalid email or password."
+        );
+      } finally {
+        setLoading(false);
+      }
   };
 
   const handlePasswordReset = () => {
@@ -125,8 +135,8 @@ const Login = () => {
                   type="email"
                   placeholder="Enter your email"
                   className={inputFieldClass}
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
+                  value={formData.email}
+                  onChange={(e) => setFormData({...formData, email: e.target.value})}
                 />
               </div>
             </div>
@@ -139,8 +149,8 @@ const Login = () => {
                   type={showPassword ? "text" : "password"}
                   placeholder="Enter password"
                   className={inputFieldClass}
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
+                  value={formData.password}
+                  onChange={(e) => setFormData({...formData, password: e.target.value})}
                 />
                 <button type="button" onClick={() => setShowPassword(!showPassword)}>
                   {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}

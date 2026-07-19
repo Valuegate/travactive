@@ -7,6 +7,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Loader from "../../Components/Loader.jsx";
+import { login } from "../../services/studentLogin.js";
 
 const inputWrapperClass = `
   w-full max-w-[478px]
@@ -32,32 +33,44 @@ const inputFieldClass = `
 const LoginPage = () => {
   const navigate = useNavigate();
 
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [showPassword, setShowPassword] = useState(false);
-  const [loading, setLoading] = useState(false);
-
-  const [showResetModal, setShowResetModal] = useState(false);
-  const [showSuccessModal, setShowSuccessModal] = useState(false);
-  const [resetEmail, setResetEmail] = useState("");
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    if (!email || !password) {
-      toast.error("Please enter your email and password.");
-      return;
-    }
-
-    setLoading(true);
-
-    setTimeout(() => {
-      setLoading(false);
-      localStorage.setItem("isAuthenticated", "true");
-      toast.success("Login successful. Welcome back!");
-      navigate("/traveler-dashboard");
-    }, 1500);
-  };
+  const [formData, setFormData] = useState({
+      email: '',
+      password: '',
+      userType: 'traveler'
+    })
+    const [showPassword, setShowPassword] = useState(false);
+    const [loading, setLoading] = useState(false);
+    const [showResetModal, setShowResetModal] = useState(false);
+    const [resetEmail, setResetEmail] = useState("");
+    const [showSuccessModal, setShowSuccessModal] = useState(false);
+  
+    const handleSubmit = async (e) => {
+      e.preventDefault();
+  
+      if (!formData.email || !formData.password) {
+        toast.error("Please enter your email and password.");
+        return;
+      }
+      try {
+          setLoading(true);
+          const data = await login(formData.email, formData.password, formData.userType);
+          console.log('Login data:', data);
+          if(data.user.userType !== formData.userType){
+            toast.error("You are not authorized to access the traveler dashboard.");
+            return;
+          }
+          localStorage.setItem("token", data.token);
+          localStorage.setItem("user", JSON.stringify(data.user));
+          toast.success("Login successful!");
+          navigate("/traveler-dashboard");
+        } catch (error) {
+          toast.error(
+            error.response?.data?.message || "Invalid email or password."
+          );
+        } finally {
+          setLoading(false);
+        }
+    };
 
   const handlePasswordReset = () => {
     if (!resetEmail) {
@@ -114,8 +127,8 @@ const LoginPage = () => {
                   type="email"
                   placeholder="Enter your email"
                   className={inputFieldClass}
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
+                  value={formData.email}
+                  onChange={(e) => setFormData({...formData, email: e.target.value})}
                 />
               </div>
             </div>
@@ -127,8 +140,8 @@ const LoginPage = () => {
                   type={showPassword ? "text" : "password"}
                   placeholder="Enter password"
                   className={inputFieldClass}
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
+                  value={formData.password}
+                  onChange={(e) => setFormData({...formData, password: e.target.value})}
                 />
                 <button type="button" onClick={() => setShowPassword(!showPassword)}>
                   {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}

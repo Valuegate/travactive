@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Logo from "../../assets/TravactiveLogo.png";
 import RightImage from "../../assets/plane.jpg";
 import GoogleIcon from "../../assets/google.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -32,6 +32,8 @@ const inputFieldClass = `
 `;
 
 const Register = () => {
+  const navigate = useNavigate();
+
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -59,6 +61,7 @@ const Register = () => {
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100 relative p-4">
       <div className="relative w-full max-w-[1488px] rounded-[20px] bg-[#F6F6F6] overflow-hidden flex flex-col lg:flex-row items-center justify-between px-4 sm:px-12 lg:px-20 py-8 lg:py-12 gap-6">
+        
         {/* Logo at top-left */}
         <div className="absolute top-4 left-4 sm:top-8 md:top-1 sm:left-8 z-20">
           <Link to="/">
@@ -71,12 +74,13 @@ const Register = () => {
         </div>
 
         {/* Left Side */}
-        <div className="flex-1 flex flex-col gap-4 sm:gap-6 items-center  w-full lg:w-auto mt-16 lg:mt-0">
+        <div className="flex-1 flex flex-col gap-4 sm:gap-6 items-center w-full lg:w-auto mt-16 lg:mt-0">
+          
           <h2 className="font-[Outfit] font-semibold text-[20px] sm:text-[24px] text-center leading-[28px] sm:leading-[36px] text-[#212322]">
             Your First Step to Smarter Travel
           </h2>
 
-          <p className="font-[Inter]  leading-relaxed text-[14px] sm:text-[16px] text-[rgba(51,51,51,0.72)]">
+          <p className="font-[Inter] leading-relaxed text-[14px] sm:text-[16px] text-[rgba(51,51,51,0.72)]">
             Sign up to access AI-powered updates, trusted insights,
             <br className="hidden sm:block" /> and tools designed to make every
             journey easier
@@ -104,11 +108,13 @@ const Register = () => {
             onSubmit={handleSubmit}
             className="w-full sm:w-[478px] flex flex-col gap-4 sm:gap-[18px]"
           >
-            {/** Full Name */}
+            
+            {/* Full Name */}
             <div className="flex flex-col gap-2 sm:gap-[8px]">
               <label className="font-[Inter] font-semibold text-[14px] sm:text-[16px] text-[#0E0E0E]">
                 Full Name
               </label>
+
               <div className={inputWrapperClass}>
                 <input
                   type="text"
@@ -121,11 +127,12 @@ const Register = () => {
               </div>
             </div>
 
-            {/** Email */}
+            {/* Email */}
             <div className="flex flex-col gap-2 sm:gap-[8px]">
               <label className="font-[Inter] font-semibold text-[14px] sm:text-[16px] text-[#0E0E0E]">
                 Email Address
               </label>
+
               <div className={inputWrapperClass}>
                 <input
                   type="email"
@@ -138,11 +145,12 @@ const Register = () => {
               </div>
             </div>
 
-            {/** Password */}
+            {/* Password */}
             <div className="flex flex-col gap-2 sm:gap-[8px]">
               <label className="font-[Inter] font-semibold text-[14px] sm:text-[16px] text-[#0E0E0E]">
                 Password
               </label>
+
               <div className={inputWrapperClass}>
                 <input
                   type="password"
@@ -155,11 +163,12 @@ const Register = () => {
               </div>
             </div>
 
-            {/** Confirm Password */}
+            {/* Confirm Password */}
             <div className="flex flex-col gap-2 sm:gap-[8px]">
               <label className="font-[Inter] font-semibold text-[14px] sm:text-[16px] text-[#0E0E0E]">
                 Confirm Password
               </label>
+
               <div className={inputWrapperClass}>
                 <input
                   type="password"
@@ -172,13 +181,14 @@ const Register = () => {
               </div>
             </div>
 
-            {/** Terms */}
+            {/* Terms */}
             <label className="flex items-start gap-2 text-sm text-gray-600">
               <input
                 type="checkbox"
-                className="w-4 h-4 text-[#023436] bg-danger"
+                className="w-4 h-4 text-[#023436]"
                 required
               />
+
               <span className="font-[Inter] text-[10px] sm:text-[9.42px] leading-[140%]">
                 I agree to the{" "}
                 <Link to="/terms" className="font-bold text-[#023436]">
@@ -187,7 +197,7 @@ const Register = () => {
               </span>
             </label>
 
-            {/** Submit Button */}
+            {/* Submit Button */}
             <button
               type="submit"
               className="mt-4 w-full py-3 bg-[#023436] text-white rounded-[30px] font-semibold hover:bg-[#029e95] transition"
@@ -195,7 +205,7 @@ const Register = () => {
               Register Now
             </button>
 
-            {/** Login Link */}
+            {/* Login Link */}
             <p className="text-center text-sm text-gray-600 mt-2">
               Been here before?{" "}
               <Link
@@ -222,26 +232,38 @@ const Register = () => {
       {showDialog && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
           <div className="bg-white w-[90%] max-w-[420px] rounded-[20px] p-6 shadow-xl text-center animate-fadeIn">
+            
             <h3 className="font-[Outfit] text-[20px] font-semibold text-[#212322] mb-2">
               Registration Successful
             </h3>
+
             <p className="font-[Inter] text-[14px] text-gray-600 mb-6">
               Your account has been created successfully. You can now log in and
               start exploring.
             </p>
+
             <button
               onClick={() => {
                 setShowDialog(false);
-                toast.success("Welcome to Travactive!", { autoClose: 3000 });
+
+                toast.success("Welcome to Travactive!", {
+                  autoClose: 2000,
+                });
+
                 setFullName("");
                 setEmail("");
                 setPassword("");
                 setConfirmPassword("");
+
+                setTimeout(() => {
+                  navigate("/login");
+                }, 2000);
               }}
               className="w-full py-3 bg-[#023436] text-white rounded-[30px] font-semibold hover:bg-[#029e95] transition"
             >
               Continue
             </button>
+
           </div>
         </div>
       )}

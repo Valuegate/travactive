@@ -45,9 +45,9 @@ const Home = () => {
     <div className="min-h-screen -mt-6 bg-[#023436] text-white relative overflow-hidden">
 
       {/* Navbar */}
-      <div className="sticky top-0 left-0 w-full z-50 bg-[#023436] px-4 sm:px-6 md:px-10 lg:px-16 py-4 sm:py-6">
-        <Navbar />
-      </div>
+      <div className=" mb-32">
+  <Navbar />
+</div>
 
       {/* Hero Section */}
       <HeroSection />

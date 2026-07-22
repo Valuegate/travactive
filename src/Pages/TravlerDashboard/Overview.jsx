@@ -125,7 +125,7 @@ const Overview = () => {
   // State to track the index of the current active city banner
   const [currentBanner, setCurrentBanner] = useState(0);
 
-  // Interval hook to loop through banners every 6 seconds
+  // Interval hook to loop through banners every 15 seconds
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentBanner((prevIndex) => (prevIndex + 1) % banners.length);
@@ -135,31 +135,41 @@ const Overview = () => {
     return () => clearInterval(timer);
   }, []);
 
-  return (
-    <div className="w-full min-h-screen bg-[#F6F6F6] p-4 md:p-6">
-      {/* TOP SECTION */}
-      <div className="flex flex-col lg:flex-row gap-6">
-        {/* LEFT */}
-        <div className="flex-1 flex flex-col gap-6">
-          {/* BANNER */}
-          <div
-            className="w-full min-h-[160px] mt-6 sm:mt-8 md:mt-0 rounded-xl flex flex-col md:flex-row overflow-hidden"
-            style={{
-              backgroundImage: `linear-gradient(rgba(3,181,170,0.65), rgba(3,181,170,0.65)), url(${BannerBackground})`,
-            }}
-          >
-            <div className="flex-1 p-6 flex flex-col justify-center">
-              <h2 className="text-sm">Your next adventure?</h2>
-              <p className="text-2xl md:text-4xl lg:text-5xl font-bold">
-                Rome!
-              </p>
-            </div>
+  const activeBanner = banners[currentBanner];
 
-            <div className="w-full md:w-[200px] lg:w-[250px] xl:w-[300px]">
-              <img
-                src={BannerSideImage}
-                className="w-full h-full object-contain"
-              />
+  return (
+    <>
+      {/* Inject keyframes once for the hero zoom/fade animation */}
+      <style>{heroAnimationStyles}</style>
+
+      <div className="w-full min-h-screen bg-[#F6F6F6] p-4 md:p-6">
+        {/* TOP SECTION */}
+        <div className="flex flex-col lg:flex-row gap-6">
+          {/* LEFT */}
+          <div className="flex-1 flex flex-col gap-6">
+            {/* BANNER */}
+            <div
+              key={currentBanner}
+              className="w-full min-h-[160px] mt-6 sm:mt-8 md:mt-0 rounded-xl flex flex-col md:flex-row overflow-hidden"
+              style={{
+                backgroundImage: `linear-gradient(rgba(3,181,170,0.65), rgba(3,181,170,0.65)), url(${activeBanner.landmark})`,
+                animation: "zoomFadeIn 0.8s ease-out",
+              }}
+            >
+              <div className="flex-1 p-6 flex flex-col justify-center">
+                <h2 className="text-sm">Your next adventure?</h2>
+                <p className="text-2xl md:text-4xl lg:text-5xl font-bold">
+                  {activeBanner.city}!
+                </p>
+              </div>
+
+              <div className="w-full md:w-[200px] lg:w-[250px] xl:w-[300px]">
+                <img
+                  src={activeBanner.landmark}
+                  className="w-full h-full object-contain"
+                  alt={`${activeBanner.city} landmark`}
+                />
+              </div>
             </div>
             {/* ── END HERO BANNER ── */}
 
@@ -200,7 +210,6 @@ const Overview = () => {
 
         {/* SECOND SECTION (Opportunities Feed & News Side Panel) */}
         <div className="mt-8 flex flex-col lg:flex-row gap-6">
-
           {/* OPPORTUNITIES GRID */}
           <div className="flex-1 bg-white rounded-xl shadow p-4">
             <h2 className="text-lg font-semibold mb-4">
@@ -255,7 +264,6 @@ const Overview = () => {
           <div className="w-full bg-white rounded-xl shadow lg:w-[320px] xl:w-[360px] 2xl:w-[400px]">
             <NewsCard />
           </div>
-
         </div>
       </div>
     </>
